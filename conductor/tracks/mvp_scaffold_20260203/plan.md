@@ -1,6 +1,6 @@
 # Implementation Plan: Initialize Multi-Agent Debater MVP
 
-## Phase 1: Environment & Project Setup
+## Phase 1: Environment & Project Setup [checkpoint: 6509ed6]
 - [x] Task: Initialize project structure and environment cc37f52
     - [x] Create Python virtual environment and `requirements.txt`
     - [x] Create `.env.example` with port and model configurations
