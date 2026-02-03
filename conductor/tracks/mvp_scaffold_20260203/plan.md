@@ -1,10 +1,10 @@
 # Implementation Plan: Initialize Multi-Agent Debater MVP
 
 ## Phase 1: Environment & Project Setup
-- [ ] Task: Initialize project structure and environment
-    - [ ] Create Python virtual environment and `requirements.txt`
-    - [ ] Create `.env.example` with port and model configurations
-    - [ ] Implement `start.sh` and `stop.sh` scripts
+- [~] Task: Initialize project structure and environment
+    - [~] Create Python virtual environment and `requirements.txt`
+    - [x] Create `.env.example` with port and model configurations
+    - [~] Implement `start.sh` and `stop.sh` scripts
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Environment & Project Setup' (Protocol in workflow.md)
 
 ## Phase 2: Backend Foundation (FastAPI & LangGraph)

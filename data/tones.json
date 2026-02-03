@@ -1,0 +1,252 @@
+[
+  {
+    "tone": "Formal",
+    "category": "Professional",
+    "description": "Academic, precise, and structured"
+  },
+  {
+    "tone": "Analytical",
+    "category": "Professional",
+    "description": "Data-driven, objective, and cold"
+  },
+  {
+    "tone": "Bureaucratic",
+    "category": "Professional",
+    "description": "Legalistic, rule-bound, and procedural"
+  },
+  {
+    "tone": "Clinical",
+    "category": "Professional",
+    "description": "Detached, objective, and sterile"
+  },
+  {
+    "tone": "Didactic",
+    "category": "Professional",
+    "description": "Instructional, moralizing, and preachy"
+  },
+  {
+    "tone": "Pragmatic",
+    "category": "Professional",
+    "description": "Realist, practical, and grounded"
+  },
+  {
+    "tone": "Passionate",
+    "category": "Positive/Emotional",
+    "description": "Emotional, fiery, and conviction-driven"
+  },
+  {
+    "tone": "Optimistic",
+    "category": "Positive/Emotional",
+    "description": "Visionary, hopeful, and forward-looking"
+  },
+  {
+    "tone": "Empathetic",
+    "category": "Positive/Emotional",
+    "description": "Compassionate, human-centric, and understanding"
+  },
+  {
+    "tone": "Benevolent",
+    "category": "Positive/Emotional",
+    "description": "Kind, charitable, and well-meaning"
+  },
+  {
+    "tone": "Adoring",
+    "category": "Positive/Emotional",
+    "description": "Worshipful, devoted, and uncritical"
+  },
+  {
+    "tone": "Effusive",
+    "category": "Positive/Emotional",
+    "description": "Overly demonstrative, gushing, and enthusiastic"
+  },
+  {
+    "tone": "Jovial",
+    "category": "Positive/Emotional",
+    "description": "Cheerful, friendly, and high-spirited"
+  },
+  {
+    "tone": "Reverent",
+    "category": "Positive/Emotional",
+    "description": "Deeply respectful and awe-struck"
+  },
+  {
+    "tone": "Cynical",
+    "category": "Negative/Critical",
+    "description": "Pessimistic, distrustful, and skeptical"
+  },
+  {
+    "tone": "Aggressive",
+    "category": "Negative/Critical",
+    "description": "Confrontational, forceful, and hostile"
+  },
+  {
+    "tone": "Abrasive",
+    "category": "Negative/Critical",
+    "description": "Harsh, grating, and blunt"
+  },
+  {
+    "tone": "Belligerent",
+    "category": "Negative/Critical",
+    "description": "Hostile, combative, and warlike"
+  },
+  {
+    "tone": "Defiant",
+    "category": "Negative/Critical",
+    "description": "Resistant, non-compliant, and rebellious"
+  },
+  {
+    "tone": "Indignant",
+    "category": "Negative/Critical",
+    "description": "Angered by perceived injustice or mistreatment"
+  },
+  {
+    "tone": "Maudlin",
+    "category": "Negative/Critical",
+    "description": "Tearfully or weakly sentimental"
+  },
+  {
+    "tone": "Apprehensive",
+    "category": "Negative/Critical",
+    "description": "Anxious and fearful of consequences"
+  },
+  {
+    "tone": "Nihilistic",
+    "category": "Negative/Critical",
+    "description": "Rejecting all religious and moral principles"
+  },
+  {
+    "tone": "Sarcastic",
+    "category": "Adversarial/Mocking",
+    "description": "Witty, mocking, and ironic"
+  },
+  {
+    "tone": "Condescending",
+    "category": "Adversarial/Mocking",
+    "description": "Arrogant, superior, and patronizing"
+  },
+  {
+    "tone": "Derisive",
+    "category": "Adversarial/Mocking",
+    "description": "Mocking, contemptuous, and ridiculing"
+  },
+  {
+    "tone": "Dogmatic",
+    "category": "Adversarial/Mocking",
+    "description": "Asserting opinions as absolute facts"
+  },
+  {
+    "tone": "Facetious",
+    "category": "Adversarial/Mocking",
+    "description": "Inappropriately humorous and flippant"
+  },
+  {
+    "tone": "Iconoclastic",
+    "category": "Adversarial/Mocking",
+    "description": "Attacking established beliefs or institutions"
+  },
+  {
+    "tone": "Irreverent",
+    "category": "Adversarial/Mocking",
+    "description": "Disrespectful of sacred or serious things"
+  },
+  {
+    "tone": "Patronizing",
+    "category": "Adversarial/Mocking",
+    "description": "Condescendingly helpful and superior"
+  },
+  {
+    "tone": "Sardonic",
+    "category": "Adversarial/Mocking",
+    "description": "Grimly mocking and biting"
+  },
+  {
+    "tone": "Incredulous",
+    "category": "Adversarial/Mocking",
+    "description": "Disbelieving, shocked, and skeptical"
+  },
+  {
+    "tone": "Conciliatory",
+    "category": "Social/Relational",
+    "description": "Diplomatic, seeking common ground"
+  },
+  {
+    "tone": "Humble",
+    "category": "Social/Relational",
+    "description": "Inquisitive, respectful, and modest"
+  },
+  {
+    "tone": "Apologetic",
+    "category": "Social/Relational",
+    "description": "Regretful, seeking forgiveness or justification"
+  },
+  {
+    "tone": "Obsequious",
+    "category": "Social/Relational",
+    "description": "Fawning, sycophantic, and submissive"
+  },
+  {
+    "tone": "Evasive",
+    "category": "Social/Relational",
+    "description": "Vague, elusive, and slippery"
+  },
+  {
+    "tone": "Ambivalent",
+    "category": "Social/Relational",
+    "description": "Conflicted, uncertain, and non-committal"
+  },
+  {
+    "tone": "Philosophical",
+    "category": "Creative/Narrative",
+    "description": "Abstract, existential, and deep"
+  },
+  {
+    "tone": "Storyteller",
+    "category": "Creative/Narrative",
+    "description": "Narrative, allegorical, and engaging"
+  },
+  {
+    "tone": "Poetic",
+    "category": "Creative/Narrative",
+    "description": "Metaphorical, lyrical, and artistic"
+  },
+  {
+    "tone": "Humorous",
+    "category": "Creative/Narrative",
+    "description": "Lighthearted, joking, and funny"
+  },
+  {
+    "tone": "Nostalgic",
+    "category": "Creative/Narrative",
+    "description": "Conservative, longing for the past"
+  },
+  {
+    "tone": "Grave",
+    "category": "Creative/Narrative",
+    "description": "Serious, solemn, and weighty"
+  },
+  {
+    "tone": "Introspective",
+    "category": "Creative/Narrative",
+    "description": "Self-examining and inward-looking"
+  },
+  {
+    "tone": "Pensive",
+    "category": "Creative/Narrative",
+    "description": "Thoughtful and quietly melancholy"
+  },
+  {
+    "tone": "Radical",
+    "category": "Creative/Narrative",
+    "description": "Revolutionary, disruptive, and extreme"
+  },
+  {
+    "tone": "Urgent",
+    "category": "Creative/Narrative",
+    "description": "Alarmist, warning, and pressing"
+  },
+  {
+    "tone": "Languid",
+    "category": "Creative/Narrative",
+    "description": "Relaxed, slow, and lacking energy"
+  }
+]
