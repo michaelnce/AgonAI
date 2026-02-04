@@ -30,6 +30,6 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Frontend Foundation (React & Tailwind)' (Protocol in workflow.md) acd8a19
 
 ## Phase 4: Integration & Polish
-- [ ] Task: Connect Frontend configuration to Backend
-    - [ ] Implement Profile/Tone selection from UI to backend state
+- [x] Task: Connect Frontend configuration to Backend c6f1c88
+    - [x] Implement Profile/Tone selection from UI to backend state
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Integration & Polish' (Protocol in workflow.md)
