@@ -74,4 +74,36 @@ describe('App Component', () => {
     expect(opponentThinking.length).toBeGreaterThan(0);
     expect(screen.getByText(/thinking/i)).toBeInTheDocument();
   });
+
+  it('displays verdict when debate concludes', async () => {
+    render(
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    );
+
+    const startButton = screen.getByRole('button', { name: /Start Debate/i });
+    fireEvent.click(startButton);
+    
+    const MockEventSource = (window as any).MockEventSource;
+    await act(async () => { await new Promise(resolve => setTimeout(resolve, 20)); });
+    
+    // Emit verdict
+    const verdictData = JSON.stringify({
+      winner: 'Proponent',
+      scores: {
+        proponent: { logic: 9, evidence: 8, style: 9 },
+        opponent: { logic: 7, evidence: 6, style: 8 }
+      },
+      reasoning: 'Proponent was more logical.'
+    });
+
+    await act(async () => {
+      MockEventSource.lastInstance.emit({ type: 'verdict', content: verdictData });
+    });
+
+    expect(screen.getByText(/Final Judgment/i)).toBeInTheDocument();
+    expect(screen.getByText(/Proponent Wins/i)).toBeInTheDocument();
+    expect(screen.getByText(/Proponent was more logical/i)).toBeInTheDocument();
+  });
 });

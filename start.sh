@@ -34,5 +34,7 @@ if [ ! -z "$FRONTEND_PID" ]; then
     echo "Frontend PID: $FRONTEND_PID"
 fi
 
-# Wait for processes
-wait
+
+echo "Services started in background."
+echo "To stop them, run: ./stop.sh"
+exit 0
