@@ -11,10 +11,10 @@
 - [x] Task: Setup FastAPI server with SSE support ba87d87
     - [x] Write tests for health check and SSE streaming endpoint
     - [x] Implement FastAPI app and SSE logic
-- [ ] Task: Implement LangGraph Debate Workflow
-    - [ ] Write tests for State definition and node transitions
-    - [ ] Implement Proponent, Opponent, and Moderator nodes using Ollama
-    - [ ] Integrate workflow with the SSE endpoint
+- [x] Task: Implement LangGraph Debate Workflow 98e3639
+    - [x] Write tests for State definition and node transitions
+    - [x] Implement Proponent, Opponent, and Moderator nodes using Ollama
+    - [x] Integrate workflow with the SSE endpoint
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Backend Foundation (FastAPI & LangGraph)' (Protocol in workflow.md)
 
 ## Phase 3: Frontend Foundation (React & Tailwind)
