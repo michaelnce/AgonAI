@@ -3,6 +3,8 @@ import { Sidebar } from './components/Sidebar';
 import { TopNav } from './components/TopNav';
 import { AgentCard } from './components/AgentCard';
 import { DebateMessage } from './components/DebateMessage';
+import profilesData from './data/profiles.json';
+import tonesData from './data/tones.json';
 
 interface Message {
   speaker: string;
@@ -16,13 +18,10 @@ function App() {
   const [status, setStatus] = useState<'idle' | 'connecting' | 'debating' | 'finished' | 'error'>('idle');
   
   // Agent Configuration State
-  const [proponentProfile, setProponentProfile] = useState("Analytical Scholar");
-  const [proponentTone, setProponentTone] = useState("Assertive");
-  const [opponentProfile, setOpponentProfile] = useState("Creative Disruptor");
-  const [opponentTone, setOpponentTone] = useState("Socratic");
-
-  const profiles = ["Analytical Scholar", "Creative Disruptor", "Empathetic Mediator", "Technocrat"];
-  const tones = ["Assertive", "Socratic", "Emotional", "Formal", "Concise"];
+  const [proponentProfile, setProponentProfile] = useState(profilesData[0].Movement);
+  const [proponentTone, setProponentTone] = useState(tonesData[0].tone);
+  const [opponentProfile, setOpponentProfile] = useState(profilesData[1].Movement);
+  const [opponentTone, setOpponentTone] = useState(tonesData[1].tone);
 
   const eventSourceRef = useRef<EventSource | null>(null);
 
@@ -128,8 +127,8 @@ function App() {
               name="Proponent" 
               role="Proponent" 
               status={status === 'debating' ? 'Speaking' : 'Waiting'} 
-              profiles={profiles}
-              tones={tones}
+              profiles={profilesData}
+              tones={tonesData}
               selectedProfile={proponentProfile}
               selectedTone={proponentTone}
               onProfileChange={setProponentProfile}
@@ -140,8 +139,8 @@ function App() {
               name="Opponent" 
               role="Opponent" 
               status={status === 'debating' ? 'Waiting' : 'Speaking'}
-              profiles={profiles}
-              tones={tones}
+              profiles={profilesData}
+              tones={tonesData}
               selectedProfile={opponentProfile}
               selectedTone={opponentTone}
               onProfileChange={setOpponentProfile}

@@ -1,0 +1,534 @@
+[
+  {
+    "Category": "Logic & Truth",
+    "Movement": "Rationalism",
+    "Definition": "The belief that reason and logic are the primary sources of knowledge, independent of sensory experience.",
+    "OpMove": "Post-Structuralism",
+    "RootConflict": "Objective universal logic vs. Subjective power-based narratives."
+  },
+  {
+    "Category": "Logic & Truth",
+    "Movement": "Post-Structuralism",
+    "Definition": "The theory that meaning is fluid and 'truth' is a construct created by those in power through language.",
+    "OpMove": "Rationalism",
+    "RootConflict": "Subjective power-based narratives vs. Objective universal logic."
+  },
+  {
+    "Category": "Human Progress",
+    "Movement": "Transhumanism",
+    "Definition": "The advocacy for using advanced technology (AI, biotech) to enhance human intellect and physiology.",
+    "OpMove": "Ludditism",
+    "RootConflict": "Technological salvation vs. Technological dehumanization."
+  },
+  {
+    "Category": "Human Progress",
+    "Movement": "Ludditism",
+    "Definition": "The philosophy that modern technology is destructive to human dignity, community, and the soul.",
+    "OpMove": "Transhumanism",
+    "RootConflict": "Technological dehumanization vs. Technological salvation."
+  },
+  {
+    "Category": "Social Order",
+    "Movement": "Libertarianism",
+    "Definition": "A political philosophy upholding individual liberty as the highest goal and seeking to minimize state intervention.",
+    "OpMove": "Authoritarianism",
+    "RootConflict": "Radical individual autonomy vs. State-enforced stability."
+  },
+  {
+    "Category": "Social Order",
+    "Movement": "Authoritarianism",
+    "Definition": "The enforcement of strict obedience to authority and the state at the expense of personal freedom.",
+    "OpMove": "Libertarianism",
+    "RootConflict": "State-enforced stability vs. Radical individual autonomy."
+  },
+  {
+    "Category": "Ethics",
+    "Movement": "Utilitarianism",
+    "Definition": "The ethical doctrine that actions are right if they benefit the majority or maximize total happiness.",
+    "OpMove": "Deontology",
+    "RootConflict": "Calculated outcomes/consequences vs. Absolute moral duties."
+  },
+  {
+    "Category": "Ethics",
+    "Movement": "Deontology",
+    "Definition": "The ethical theory that the morality of an action should be based on whether that action itself is right or wrong under a series of rules.",
+    "OpMove": "Utilitarianism",
+    "RootConflict": "Absolute moral duties vs. Calculated outcomes/consequences."
+  },
+  {
+    "Category": "Economics",
+    "Movement": "Marxism",
+    "Definition": "A method of socioeconomic analysis that views class relations and social conflict as the driver of history.",
+    "OpMove": "Anarcho-Capitalism",
+    "RootConflict": "Class-based collective ownership vs. Radical private property rights."
+  },
+  {
+    "Category": "Economics",
+    "Movement": "Anarcho-Capitalism",
+    "Definition": "A political philosophy that advocates the elimination of the state in favor of individual sovereignty and free markets.",
+    "OpMove": "Marxism",
+    "RootConflict": "Radical private property rights vs. Class-based collective ownership."
+  },
+  {
+    "Category": "Philosophy of Life",
+    "Movement": "Existentialism",
+    "Definition": "The belief that the universe provides no inherent meaning; individuals must create their own purpose through will.",
+    "OpMove": "Traditionalism",
+    "RootConflict": "Self-created meaning vs. Inherited ancestral wisdom."
+  },
+  {
+    "Category": "Philosophy of Life",
+    "Movement": "Traditionalism",
+    "Definition": "The adherence to long-standing customs, religions, and social structures as the best guide for society.",
+    "OpMove": "Existentialism",
+    "RootConflict": "Inherited ancestral wisdom vs. Self-created meaning."
+  },
+  {
+    "Category": "Environment",
+    "Movement": "Anthropocentrism",
+    "Definition": "The belief that human beings are the central or most significant entities in the world; nature is a resource.",
+    "OpMove": "Deep Ecology",
+    "RootConflict": "Human utility of nature vs. Intrinsic value of all species."
+  },
+  {
+    "Category": "Environment",
+    "Movement": "Deep Ecology",
+    "Definition": "The philosophy regarding human life as just one equal component of a global ecosystem with no special rights.",
+    "OpMove": "Anthropocentrism",
+    "RootConflict": "Intrinsic value of all species vs. Human utility of nature."
+  },
+  {
+    "Category": "Social Justice",
+    "Movement": "Meritocracy",
+    "Definition": "A social system where power and rewards are vested in individuals on the basis of talent and achievement.",
+    "OpMove": "Egalitarianism",
+    "RootConflict": "Reward for ability vs. Equality of outcome."
+  },
+  {
+    "Category": "Social Justice",
+    "Movement": "Egalitarianism",
+    "Definition": "The doctrine that all people are equal and deserve equal rights, opportunities, and resources.",
+    "OpMove": "Meritocracy",
+    "RootConflict": "Equality of outcome vs. Reward for ability."
+  },
+  {
+    "Category": "The Future",
+    "Movement": "Accelerationism",
+    "Definition": "The idea that existing social/tech systems should be pushed to their limits to trigger radical transformation.",
+    "OpMove": "Malthusianism",
+    "RootConflict": "Infinite growth/disruption vs. Finite resource management."
+  },
+  {
+    "Category": "The Future",
+    "Movement": "Malthusianism",
+    "Definition": "The theory that population growth will always outpace resource production, requiring strict limits.",
+    "OpMove": "Accelerationism",
+    "RootConflict": "Finite resource management vs. Infinite growth/disruption."
+  },
+  {
+    "Category": "Governance",
+    "Movement": "Technocracy",
+    "Definition": "The government or control of society or industry by an elite of technical experts.",
+    "OpMove": "Populism",
+    "RootConflict": "Rule by expert data vs. Rule by the will of the common people."
+  },
+  {
+    "Category": "Governance",
+    "Movement": "Populism",
+    "Definition": "A political approach that strives to appeal to ordinary people who feel their concerns are ignored by elites.",
+    "OpMove": "Technocracy",
+    "RootConflict": "Rule by the will of the common people vs. Rule by expert data."
+  },
+  {
+    "Category": "National Identity",
+    "Movement": "Cosmopolitanism",
+    "Definition": "The idea that all human beings, regardless of their political affiliation, are citizens of a single community.",
+    "OpMove": "Nationalism",
+    "RootConflict": "Global citizenship/humanity vs. National sovereignty/culture."
+  },
+  {
+    "Category": "National Identity",
+    "Movement": "Nationalism",
+    "Definition": "Identification with one's own nation and support for its interests, especially to the exclusion of others.",
+    "OpMove": "Cosmopolitanism",
+    "RootConflict": "National sovereignty/culture vs. Global citizenship/humanity."
+  },
+  {
+    "Category": "Art & Culture",
+    "Movement": "Modernism",
+    "Definition": "A movement toward modifying traditional beliefs in accordance with modern ideas and experimental forms.",
+    "OpMove": "Reactionism",
+    "RootConflict": "Innovation and breaking tradition vs. Returning to past cultural heights."
+  },
+  {
+    "Category": "Art & Culture",
+    "Movement": "Reactionism",
+    "Definition": "Political and social views that favor a return to a previous state of affairs; 'the old ways were better'.",
+    "OpMove": "Modernism",
+    "RootConflict": "Returning to past cultural heights vs. Innovation and breaking tradition."
+  },
+  {
+    "Category": "Internal State",
+    "Movement": "Hedonism",
+    "Definition": "The ethical theory that pleasure (in the sense of the satisfaction of desires) is the highest good.",
+    "OpMove": "Stoicism",
+    "RootConflict": "Pursuit of pleasure vs. Mastery of self and virtue."
+  },
+  {
+    "Category": "Internal State",
+    "Movement": "Stoicism",
+    "Definition": "A philosophy of personal ethics informed by logic and a focus on what is within one's own control.",
+    "OpMove": "Hedonism",
+    "RootConflict": "Mastery of self and virtue vs. Pursuit of pleasure."
+  },
+  {
+    "Category": "Science & Nature",
+    "Movement": "Empiricism",
+    "Definition": "The theory that all knowledge is derived from sense-experience and hard evidence.",
+    "OpMove": "Skepticism",
+    "RootConflict": "The reliability of evidence vs. The impossibility of absolute certainty."
+  },
+  {
+    "Category": "Science & Nature",
+    "Movement": "Skepticism",
+    "Definition": "The philosophy of doubting knowledge claims and requiring proof for every assertion.",
+    "OpMove": "Empiricism",
+    "RootConflict": "The impossibility of absolute certainty vs. The reliability of evidence."
+  },
+  {
+    "Category": "Economic Distribution",
+    "Movement": "Keynesianism",
+    "Definition": "The belief that government intervention and spending are necessary to manage the economy and prevent crises.",
+    "OpMove": "Austrian Economics",
+    "RootConflict": "State management/intervention vs. Spontaneous market order/non-intervention."
+  },
+  {
+    "Category": "Economic Distribution",
+    "Movement": "Austrian Economics",
+    "Definition": "A school of thought favoring strict adherence to individual choice and zero government interference in the money supply.",
+    "OpMove": "Keynesianism",
+    "RootConflict": "Spontaneous market order/non-intervention vs. State management/intervention."
+  },
+  {
+    "Category": "Human Nature",
+    "Movement": "Optimism",
+    "Definition": "The doctrine that this is the best of all possible worlds and that humanity is inherently improving.",
+    "OpMove": "Pessimism",
+    "RootConflict": "Inherent progress and goodness vs. Inherent suffering and decline."
+  },
+  {
+    "Category": "Human Nature",
+    "Movement": "Pessimism",
+    "Definition": "The belief that the world has a negative value and that suffering outweighs any potential for progress.",
+    "OpMove": "Optimism",
+    "RootConflict": "Inherent suffering and decline vs. Inherent progress and goodness."
+  },
+  {
+    "Category": "Law & Justice",
+    "Movement": "Legal Positivism",
+    "Definition": "The view that laws are rules made by human beings and that there is no inherent link between law and morality.",
+    "OpMove": "Natural Law",
+    "RootConflict": "Man-made social contracts vs. Universal, objective moral laws."
+  },
+  {
+    "Category": "Law & Justice",
+    "Movement": "Natural Law",
+    "Definition": "The philosophy that certain rights or values are inherent by virtue of human nature and universally cognizable through reason.",
+    "OpMove": "Legal Positivism",
+    "RootConflict": "Universal, objective moral laws vs. Man-made social contracts."
+  },
+  {
+    "Category": "Social Structure",
+    "Movement": "Collectivism",
+    "Definition": "The practice of giving a group priority over each individual in it.",
+    "OpMove": "Objectivism",
+    "RootConflict": "The priority of the group vs. The virtue of selfishness/individualism."
+  },
+  {
+    "Category": "Social Structure",
+    "Movement": "Objectivism",
+    "Definition": "The philosophy that the proper moral purpose of one's life is the pursuit of one's own happiness (rational self-interest).",
+    "OpMove": "Collectivism",
+    "RootConflict": "The virtue of selfishness/individualism vs. The priority of the group."
+  },
+  {
+    "Category": "Religious Philosophy",
+    "Movement": "Secular Humanism",
+    "Definition": "A worldview that emphasizes human reason, ethics, and justice while rejecting religious dogma and supernaturalism.",
+    "OpMove": "Theocentrism",
+    "RootConflict": "Human-centered ethics vs. God-centered authority and divine law."
+  },
+  {
+    "Category": "Religious Philosophy",
+    "Movement": "Theocentrism",
+    "Definition": "The belief that God is the central aspect to existence; all ethics and laws must flow from divine will.",
+    "OpMove": "Secular Humanism",
+    "RootConflict": "God-centered authority and divine law vs. Human-centered ethics."
+  },
+  {
+    "Category": "Environmental Strategy",
+    "Movement": "Eco-Modernism",
+    "Definition": "The belief that humanity can protect nature by using high-tech intensification (nuclear, GMOs) to decouple from the environment.",
+    "OpMove": "Agrarianism",
+    "RootConflict": "Technological decoupling vs. Close connection to the land/manual labor."
+  },
+  {
+    "Category": "Environmental Strategy",
+    "Movement": "Agrarianism",
+    "Definition": "A social philosophy that values rural society, traditional farming, and the family farm as superior to urban life.",
+    "OpMove": "Eco-Modernism",
+    "RootConflict": "Close connection to the land/manual labor vs. Technological decoupling."
+  },
+  {
+    "Category": "Historical Change",
+    "Movement": "Reformism",
+    "Definition": "The belief that gradual, democratic changes within existing institutions can improve society.",
+    "OpMove": "Revolutionism",
+    "RootConflict": "Slow institutional reform vs. Total systemic overthrow."
+  },
+  {
+    "Category": "Historical Change",
+    "Movement": "Revolutionism",
+    "Definition": "The belief that existing systems are too corrupt to fix and must be completely destroyed to build something new.",
+    "OpMove": "Reformism",
+    "RootConflict": "Total systemic overthrow vs. Slow institutional reform."
+  },
+  {
+    "Category": "Knowledge & Mind",
+    "Movement": "Physicalism",
+    "Definition": "The doctrine that everything is physical; there is nothing over and above the physical world (no soul/spirit).",
+    "OpMove": "Idealism",
+    "RootConflict": "Reality as purely material vs. Reality as a construct of the mind/spirit."
+  },
+  {
+    "Category": "Knowledge & Mind",
+    "Movement": "Idealism",
+    "Definition": "The group of philosophies which assert that reality is fundamentally mental, mentally constructed, or otherwise immaterial.",
+    "OpMove": "Physicalism",
+    "RootConflict": "Reality as a construct of the mind/spirit vs. Reality as purely material."
+  },
+  {
+    "Category": "Art & Aesthetics",
+    "Movement": "Romanticism",
+    "Definition": "The emphasis on inspiration, subjectivity, and the primacy of the individual's emotions over cold reason.",
+    "OpMove": "Classicism",
+    "RootConflict": "Emotional intensity/individualism vs. Order, balance, and restraint."
+  },
+  {
+    "Category": "Art & Aesthetics",
+    "Movement": "Classicism",
+    "Definition": "The following of ancient Greek or Roman principles and style in art and literature, emphasizing harmony and restraint.",
+    "OpMove": "Romanticism",
+    "RootConflict": "Order, balance, and restraint vs. Emotional intensity/individualism."
+  },
+  {
+    "Category": "Conflict & War",
+    "Movement": "Pacifism",
+    "Definition": "The belief that war and violence are unjustifiable and that all disputes should be settled by peaceful means.",
+    "OpMove": "Bellicism",
+    "RootConflict": "Absolute non-violence vs. War as a valid or necessary tool of state."
+  },
+  {
+    "Category": "Conflict & War",
+    "Movement": "Bellicism",
+    "Definition": "The ideology that war is a positive and necessary part of human society, essential for progress or national health.",
+    "OpMove": "Pacifism",
+    "RootConflict": "War as a valid or necessary tool of state vs. Absolute non-violence."
+  },
+  {
+    "Category": "Epistemology",
+    "Movement": "Foundationalism",
+    "Definition": "The theory that all knowledge rests on a foundation of basic, self-evident beliefs that require no further justification.",
+    "OpMove": "Coherentism",
+    "RootConflict": "Self-evident core truths vs. Interlocking web of mutually supporting beliefs."
+  },
+  {
+    "Category": "Epistemology",
+    "Movement": "Coherentism",
+    "Definition": "The view that a belief is justified if it 'coheres' or fits consistently with a larger system of beliefs.",
+    "OpMove": "Foundationalism",
+    "RootConflict": "Interlocking web of mutually supporting beliefs vs. Self-evident core truths."
+  },
+  {
+    "Category": "Educational Philosophy",
+    "Movement": "Essentialism",
+    "Definition": "The educational theory that students should learn a common core of traditional subjects and 'essential' skills.",
+    "OpMove": "Progressivism",
+    "RootConflict": "Standardized core curriculum vs. Experiential, student-led learning."
+  },
+  {
+    "Category": "Educational Philosophy",
+    "Movement": "Progressivism",
+    "Definition": "An educational movement focusing on the whole child and learning through experience and social interaction.",
+    "OpMove": "Essentialism",
+    "RootConflict": "Experiential, student-led learning vs. Standardized core curriculum."
+  },
+  {
+    "Category": "Law & Governance",
+    "Movement": "Judicial Activism",
+    "Definition": "The philosophy that the courts should take an active role in solving social problems and interpreting the constitution to meet modern needs.",
+    "OpMove": "Judicial Restraint",
+    "RootConflict": "Legislating from the bench vs. Strict adherence to legal precedent/intent."
+  },
+  {
+    "Category": "Law & Governance",
+    "Movement": "Judicial Restraint",
+    "Definition": "The theory of judicial interpretation that encourages judges to limit the exercise of their own power and defer to legislatures.",
+    "OpMove": "Judicial Activism",
+    "RootConflict": "Strict adherence to legal precedent/intent vs. Legislating from the bench."
+  },
+  {
+    "Category": "Meta-Ethics",
+    "Movement": "Moral Realism",
+    "Definition": "The position that ethical sentences express propositions that refer to objective features of the world.",
+    "OpMove": "Moral Relativism",
+    "RootConflict": "Objective moral facts vs. Morality as a social/cultural construct."
+  },
+  {
+    "Category": "Meta-Ethics",
+    "Movement": "Moral Relativism",
+    "Definition": "The view that moral judgments are true or false only relative to some particular standpoint (e.g., a culture).",
+    "OpMove": "Moral Realism",
+    "RootConflict": "Morality as a social/cultural construct vs. Objective moral facts."
+  },
+  {
+    "Category": "Philosophy of Mind",
+    "Movement": "Dualism",
+    "Definition": "The belief that the mind and body are two distinct and separate substances (immaterial mind, material body).",
+    "OpMove": "Monism",
+    "RootConflict": "Mind-body separation vs. Single-substance reality (materialism)."
+  },
+  {
+    "Category": "Philosophy of Mind",
+    "Movement": "Monism",
+    "Definition": "The view that reality is composed of only one substance; specifically, that the mind is a function of the physical brain.",
+    "OpMove": "Dualism",
+    "RootConflict": "Single-substance reality (materialism) vs. Mind-body separation."
+  },
+  {
+    "Category": "Global Strategy",
+    "Movement": "Isolationism",
+    "Definition": "A policy of remaining apart from the affairs or interests of other groups, especially the political affairs of other countries.",
+    "OpMove": "Interventionism",
+    "RootConflict": "National detachment vs. Global police/influence roles."
+  },
+  {
+    "Category": "Global Strategy",
+    "Movement": "Interventionism",
+    "Definition": "A policy of proactive involvement in the affairs of other countries to protect interests or promote values.",
+    "OpMove": "Isolationism",
+    "RootConflict": "Global police/influence roles vs. National detachment."
+  },
+  {
+    "Category": "Civilizational Vision",
+    "Movement": "Primitivism",
+    "Definition": "A philosophy that critiques civilization as inherently corrupting and advocates a return to a non-industrial, hunter-gatherer way of life.",
+    "OpMove": "Futurism",
+    "RootConflict": "Return to nature/ancestry vs. Total technological transcendence."
+  },
+  {
+    "Category": "Civilizational Vision",
+    "Movement": "Futurism",
+    "Definition": "The social and artistic movement that embraces technology, speed, and industrial transformation as the highest human goal.",
+    "OpMove": "Primitivism",
+    "RootConflict": "Total technological transcendence vs. Return to nature/ancestry."
+  },
+  {
+    "Category": "Social Ontology",
+    "Movement": "Communitarianism",
+    "Definition": "The philosophy that emphasizes the connection between the individual and the community; the group shapes the self.",
+    "OpMove": "Atomism",
+    "RootConflict": "The individual as a product of community vs. The individual as an independent self-contained unit."
+  },
+  {
+    "Category": "Social Ontology",
+    "Movement": "Atomism",
+    "Definition": "The belief that society is simply a collection of individuals and that all social phenomena can be explained by individual actions.",
+    "OpMove": "Communitarianism",
+    "RootConflict": "The individual as an independent self-contained unit vs. The individual as a product of community."
+  },
+  {
+    "Category": "Theology",
+    "Movement": "Deism",
+    "Definition": "Belief in the existence of a supreme being who created the universe but does not intervene in its operation.",
+    "OpMove": "Pantheism",
+    "RootConflict": "The Clockmaker/Distant God vs. God as identical with the Universe itself."
+  },
+  {
+    "Category": "Theology",
+    "Movement": "Pantheism",
+    "Definition": "The belief that the universe (or nature as the totality of everything) is identical with divinity.",
+    "OpMove": "Deism",
+    "RootConflict": "God as identical with the Universe itself vs. The Clockmaker/Distant God."
+  },
+  {
+    "Category": "Identity & Culture",
+    "Movement": "Assimilationism",
+    "Definition": "The belief that minority groups should adopt the customs and attitudes of the prevailing culture.",
+    "OpMove": "Multiculturalism",
+    "RootConflict": "The Melting Pot (Uniformity) vs. The Salad Bowl (Diversity)."
+  },
+  {
+    "Category": "Identity & Culture",
+    "Movement": "Multiculturalism",
+    "Definition": "The presence of, or support for the presence of, several distinct cultural or ethnic groups within a society.",
+    "OpMove": "Assimilationism",
+    "RootConflict": "The Salad Bowl (Diversity) vs. The Melting Pot (Uniformity)."
+  },
+  {
+    "Category": "Logic",
+    "Movement": "Deduction",
+    "Definition": "The process of reasoning from one or more general statements to reach a logically certain conclusion.",
+    "OpMove": "Induction",
+    "RootConflict": "Top-down logical certainty vs. Bottom-up probabilistic patterns."
+  },
+  {
+    "Category": "Logic",
+    "Movement": "Induction",
+    "Definition": "The process of reasoning in which the premises are viewed as supplying strong evidence for the truth of the conclusion (but not certainty).",
+    "OpMove": "Deduction",
+    "RootConflict": "Bottom-up probabilistic patterns vs. Top-down logical certainty."
+  },
+  {
+    "Category": "Economic Organization",
+    "Movement": "Corporatism",
+    "Definition": "The organization of society into industrial and professional corporations serving as organs of political representation and exercising control over persons and activities within their jurisdiction.",
+    "OpMove": "Syndicalism",
+    "RootConflict": "Tripartite state-business-labor control vs. Worker-owned/unionized direct control."
+  },
+  {
+    "Category": "Economic Organization",
+    "Movement": "Syndicalism",
+    "Definition": "A movement for transferring the ownership and control of the means of production and distribution to workers' unions.",
+    "OpMove": "Corporatism",
+    "RootConflict": "Worker-owned/unionized direct control vs. Tripartite state-business-labor control."
+  },
+  {
+    "Category": "Systems",
+    "Movement": "Reductionism",
+    "Definition": "The practice of analyzing and describing a complex phenomenon in terms of its simple or fundamental constituents.",
+    "OpMove": "Holism",
+    "RootConflict": "The whole as the sum of its parts vs. The whole as more than the sum of its parts."
+  },
+  {
+    "Category": "Systems",
+    "Movement": "Holism",
+    "Definition": "The theory that parts of a whole are in intimate interconnection, such that they cannot exist independently of the whole, or cannot be understood without reference to the whole.",
+    "OpMove": "Reductionism",
+    "RootConflict": "The whole as more than the sum of its parts vs. The whole as the sum of its parts."
+  },
+  {
+    "Category": "Scientific Method",
+    "Movement": "Falsificationism",
+    "Definition": "The belief that science should be based on the attempt to disprove hypotheses rather than find evidence to support them.",
+    "OpMove": "Verificationism",
+    "RootConflict": "Scientific truth through disproof vs. Scientific truth through confirmation."
+  },
+  {
+    "Category": "Scientific Method",
+    "Movement": "Verificationism",
+    "Definition": "The doctrine that only propositions that are empirically verifiable are meaningful.",
+    "OpMove": "Falsificationism",
+    "RootConflict": "Scientific truth through confirmation vs. Scientific truth through disproof."
+  }
+]
