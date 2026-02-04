@@ -4,6 +4,14 @@ import App from './App';
 import { ThemeProvider } from './context/ThemeContext';
 
 describe('App Component', () => {
+  beforeEach(() => {
+    vi.spyOn(Math, 'random').mockReturnValue(0);
+  });
+
+  afterEach(() => {
+    vi.spyOn(Math, 'random').mockRestore();
+  });
+
   it('renders correctly', () => {
     render(
       <ThemeProvider>
