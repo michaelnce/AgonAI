@@ -21,9 +21,9 @@
 - [x] Task: Scaffold React application d649be8
     - [x] Initialize Vite project with Tailwind CSS
     - [x] Implement ThemeProvider for Dark/Light mode support
-- [ ] Task: Create Debate Arena Dashboard UI
-    - [ ] Write tests for layout and theme toggling
-    - [ ] Implement UI matching `UI_Idea/screen.png` using Tailwind
+- [x] Task: Create Debate Arena Dashboard UI 0338f36
+    - [x] Write tests for layout and theme toggling
+    - [x] Implement UI matching `UI_Idea/screen.png` using Tailwind
 - [ ] Task: Implement SSE Client and Debate Stream
     - [ ] Write tests for EventSource integration
     - [ ] Implement real-time message rendering for the debate
