@@ -15,6 +15,15 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [status, setStatus] = useState<'idle' | 'connecting' | 'debating' | 'finished' | 'error'>('idle');
   
+  // Agent Configuration State
+  const [proponentProfile, setProponentProfile] = useState("Analytical Scholar");
+  const [proponentTone, setProponentTone] = useState("Assertive");
+  const [opponentProfile, setOpponentProfile] = useState("Creative Disruptor");
+  const [opponentTone, setOpponentTone] = useState("Socratic");
+
+  const profiles = ["Analytical Scholar", "Creative Disruptor", "Empathetic Mediator", "Technocrat"];
+  const tones = ["Assertive", "Socratic", "Emotional", "Formal", "Concise"];
+
   const eventSourceRef = useRef<EventSource | null>(null);
 
   const startDebate = () => {
@@ -25,7 +34,15 @@ function App() {
     setMessages([]);
     setStatus('connecting');
 
-    const url = `/api/debate/stream?topic=${encodeURIComponent(topic)}`;
+    const params = new URLSearchParams({
+      topic: topic,
+      proponent_profile: proponentProfile,
+      proponent_tone: proponentTone,
+      opponent_profile: opponentProfile,
+      opponent_tone: opponentTone
+    });
+
+    const url = `/api/debate/stream?${params.toString()}`;
     const es = new EventSource(url);
     eventSourceRef.current = es;
 
@@ -44,9 +61,12 @@ function App() {
           es.close();
         }
       } else if (data.type === 'debate_update') {
+        // Clean content to remove speaker prefix
+        const cleanContent = data.content.replace(/^(Moderator|Proponent|Opponent):\s*/i, '').trim();
+        
         setMessages(prev => [...prev, {
           speaker: data.speaker,
-          content: data.content,
+          content: cleanContent,
           turn: data.turn
         }]);
       } else if (data.type === 'error') {
@@ -104,8 +124,30 @@ function App() {
 
           {/* Agent Configuration */}
           <div className="flex gap-6 mb-8">
-            <AgentCard name="Analytical Scholar" role="Proponent" status={status === 'debating' ? 'Speaking' : 'Waiting'} />
-            <AgentCard name="Creative Disruptor" role="Opponent" status={status === 'debating' ? 'Waiting' : 'Speaking'} />
+            <AgentCard 
+              name="Proponent" 
+              role="Proponent" 
+              status={status === 'debating' ? 'Speaking' : 'Waiting'} 
+              profiles={profiles}
+              tones={tones}
+              selectedProfile={proponentProfile}
+              selectedTone={proponentTone}
+              onProfileChange={setProponentProfile}
+              onToneChange={setProponentTone}
+              disabled={status === 'debating'}
+            />
+            <AgentCard 
+              name="Opponent" 
+              role="Opponent" 
+              status={status === 'debating' ? 'Waiting' : 'Speaking'}
+              profiles={profiles}
+              tones={tones}
+              selectedProfile={opponentProfile}
+              selectedTone={opponentTone}
+              onProfileChange={setOpponentProfile}
+              onToneChange={setOpponentTone}
+              disabled={status === 'debating'}
+            />
           </div>
 
           {/* Topic Configuration - Visible when idle */}

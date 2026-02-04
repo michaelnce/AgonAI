@@ -4,9 +4,26 @@ interface AgentCardProps {
   name: string;
   role: 'Proponent' | 'Opponent';
   status: 'Speaking' | 'Waiting' | 'Leading' | 'Defending';
+  profiles: string[];
+  tones: string[];
+  selectedProfile: string;
+  selectedTone: string;
+  onProfileChange: (val: string) => void;
+  onToneChange: (val: string) => void;
+  disabled?: boolean;
 }
 
-export const AgentCard: React.FC<AgentCardProps> = ({ name, role, status }) => {
+export const AgentCard: React.FC<AgentCardProps> = ({ 
+  role, 
+  status, 
+  profiles, 
+  tones, 
+  selectedProfile, 
+  selectedTone, 
+  onProfileChange, 
+  onToneChange,
+  disabled 
+}) => {
   const isProponent = role === 'Proponent';
   const badgeColor = isProponent ? 'bg-blue-500/20 text-blue-400' : 'bg-purple-500/20 text-purple-400';
   const badgeText = isProponent ? 'LEADING' : 'DEFENDING';
@@ -28,14 +45,24 @@ export const AgentCard: React.FC<AgentCardProps> = ({ name, role, status }) => {
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-[10px] uppercase font-bold text-gray-500 mb-1">Profile</label>
-          <select className="w-full bg-[#0F172A] border border-gray-700 text-gray-300 text-sm rounded-lg p-2.5 appearance-none focus:border-blue-500 focus:outline-none">
-            <option>{name}</option>
+          <select 
+            value={selectedProfile}
+            onChange={(e) => onProfileChange(e.target.value)}
+            disabled={disabled}
+            className="w-full bg-[#0F172A] border border-gray-700 text-gray-300 text-sm rounded-lg p-2.5 appearance-none focus:border-blue-500 focus:outline-none disabled:opacity-50"
+          >
+            {profiles.map(p => <option key={p} value={p}>{p}</option>)}
           </select>
         </div>
         <div>
           <label className="block text-[10px] uppercase font-bold text-gray-500 mb-1">Tone</label>
-          <select className="w-full bg-[#0F172A] border border-gray-700 text-gray-300 text-sm rounded-lg p-2.5 appearance-none focus:border-blue-500 focus:outline-none">
-            <option>{isProponent ? 'Assertive' : 'Socratic'}</option>
+          <select 
+            value={selectedTone}
+            onChange={(e) => onToneChange(e.target.value)}
+            disabled={disabled}
+            className="w-full bg-[#0F172A] border border-gray-700 text-gray-300 text-sm rounded-lg p-2.5 appearance-none focus:border-blue-500 focus:outline-none disabled:opacity-50"
+          >
+             {tones.map(t => <option key={t} value={t}>{t}</option>)}
           </select>
         </div>
       </div>
