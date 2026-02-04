@@ -20,7 +20,8 @@ async def test_word_limit_in_prompt():
             proponent_profile="Rationalism",
             proponent_tone="Assertive",
             opponent_profile="Empiricism",
-            opponent_tone="Skeptical"
+            opponent_tone="Skeptical",
+            verdict=None
         )
         
         await moderator_node(state)

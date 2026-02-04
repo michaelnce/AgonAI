@@ -42,7 +42,8 @@ async def test_node_execution():
             proponent_profile="Rationalism",
             proponent_tone="Assertive",
             opponent_profile="Empiricism",
-            opponent_tone="Skeptical"
+            opponent_tone="Skeptical",
+            verdict=None
         )
         
         # Test moderator node
@@ -55,6 +56,34 @@ async def test_node_execution():
         result = await proponent_node(state)
         assert "Proponent: Mocked response" in result["messages"][0]
         assert result["current_speaker"] == "opponent"
+
+@pytest.mark.asyncio
+async def test_verdict_node():
+    from backend.graph import verdict_node, DebateState
+    
+    mock_json = '{"winner": "Proponent", "scores": {}, "reasoning": "test"}'
+    mock_response = MagicMock()
+    mock_response.content = mock_json
+    
+    mock_llm = MagicMock()
+    mock_llm.ainvoke = AsyncMock(return_value=mock_response)
+    
+    with patch("backend.graph.get_model", return_value=mock_llm):
+        state = DebateState(
+            messages=["Msg 1"], 
+            current_speaker="moderator", 
+            turn_count=10,
+            topic="Test Topic",
+            proponent_profile="Rationalism",
+            proponent_tone="Assertive",
+            opponent_profile="Empiricism",
+            opponent_tone="Skeptical",
+            verdict=None
+        )
+        
+        result = await verdict_node(state)
+        assert "verdict" in result
+        assert result["verdict"] == mock_json
 
 @pytest.mark.asyncio
 async def test_full_workflow():
@@ -80,7 +109,8 @@ async def test_full_workflow():
             proponent_profile="Rationalism",
             proponent_tone="Assertive",
             opponent_profile="Empiricism",
-            opponent_tone="Skeptical"
+            opponent_tone="Skeptical",
+            verdict=None
         )
         
         # Run the graph

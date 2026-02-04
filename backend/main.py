@@ -50,7 +50,22 @@ async def event_generator(
                         'turn': node_output.get('turn_count')
                     })
                     yield f"data: {data}\n\n"
-            
+                
+                # Check for verdict
+                if "verdict" in node_output:
+                    try:
+                        # Ensure verdict is valid JSON, though node_output['verdict'] is string from LLM
+                        # We might want to parse it here or just send it raw
+                        verdict_data = node_output["verdict"]
+                        # Attempt to parse to ensure validity before sending? 
+                        # Or just send as string and let frontend parse.
+                        # Let's clean markdown code blocks if any
+                        verdict_data = verdict_data.replace("```json", "").replace("```", "").strip()
+                        
+                        yield f"data: {json.dumps({'type': 'verdict', 'content': verdict_data})}\n\n"
+                    except Exception as e:
+                         print(f"Error parsing verdict: {e}")
+
             count += 1
             if limit is not None and count >= limit:
                 break

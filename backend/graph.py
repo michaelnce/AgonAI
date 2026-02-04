@@ -46,6 +46,7 @@ class DebateState(TypedDict):
     proponent_tone: str
     opponent_profile: str
     opponent_tone: str
+    verdict: str
 
 def get_model(model_name: str):
     return ChatOllama(base_url=OLLAMA_BASE_URL, model=model_name)
@@ -62,6 +63,35 @@ async def moderator_node(state: DebateState):
     
     response = await llm.ainvoke(prompt)
     return {"messages": [f"Moderator: {response.content}"], "current_speaker": "proponent", "turn_count": state["turn_count"] + 1}
+
+async def verdict_node(state: DebateState):
+    llm = get_model(MODEL_MODERATOR)
+    messages = state["messages"]
+    topic = state.get("topic", "AI Safety")
+    
+    prompt = f"""You are the Chief Judge of the Debate. The topic was '{topic}'.
+    The debate history is: {messages}.
+    
+    Your task is to synthesize the exchange into a final Decision Matrix.
+    1. Decide the winner (Proponent or Opponent).
+    2. Assign scores (0-10) for Logic, Evidence, and Style for each side.
+    3. Provide a punchy, concise rationale (max 50 words) for the decision.
+    
+    You MUST return the result as a valid JSON object with the following structure:
+    {{
+      "winner": "Proponent" | "Opponent",
+      "scores": {{
+        "proponent": {{"logic": int, "evidence": int, "style": int}},
+        "opponent": {{"logic": int, "evidence": int, "style": int}}
+      }},
+      "reasoning": "string"
+    }}
+    
+    Do NOT output any text before or after the JSON.
+    """
+    
+    response = await llm.ainvoke(prompt)
+    return {"messages": [f"Moderator: The debate has concluded. Rendering verdict..."], "verdict": response.content}
 
 async def proponent_node(state: DebateState):
     llm = get_model(MODEL_PROPONENT)
@@ -101,7 +131,7 @@ async def opponent_node(state: DebateState):
 
 def should_continue(state: DebateState):
     if state["turn_count"] > MAX_TURNS:
-        return END
+        return "verdict"
     return state["current_speaker"]
 
 def create_debate_graph():
@@ -112,6 +142,7 @@ def create_debate_graph():
     workflow.add_node("moderator", moderator_node)
     workflow.add_node("proponent", proponent_node)
     workflow.add_node("opponent", opponent_node)
+    workflow.add_node("verdict", verdict_node)
     
     # Add edges
     workflow.set_entry_point("moderator")
@@ -122,7 +153,7 @@ def create_debate_graph():
         {
             "proponent": "proponent",
             "opponent": "opponent",
-            END: END
+            "verdict": "verdict"
         }
     )
     
@@ -132,7 +163,7 @@ def create_debate_graph():
         {
             "opponent": "opponent",
             "moderator": "moderator",
-            END: END
+            "verdict": "verdict"
         }
     )
     
@@ -142,8 +173,10 @@ def create_debate_graph():
         {
             "proponent": "proponent",
             "moderator": "moderator",
-            END: END
+            "verdict": "verdict"
         }
     )
+    
+    workflow.add_edge("verdict", END)
     
     return workflow
