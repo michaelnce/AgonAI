@@ -3,6 +3,7 @@ import { Sidebar } from './components/Sidebar';
 import { TopNav } from './components/TopNav';
 import { AgentCard } from './components/AgentCard';
 import { DebateMessage } from './components/DebateMessage';
+import { TypingIndicator } from './components/TypingIndicator';
 import profilesData from './data/profiles.json';
 import tonesData from './data/tones.json';
 
@@ -16,6 +17,7 @@ function App() {
   const [topic, setTopic] = useState("Is Universal Basic Income the best solution for AI-driven job displacement?");
   const [messages, setMessages] = useState<Message[]>([]);
   const [status, setStatus] = useState<'idle' | 'connecting' | 'debating' | 'finished' | 'error'>('idle');
+  const [pendingSpeaker, setPendingSpeaker] = useState<string | null>(null);
   
   // Agent Configuration State
   const [proponentProfile, setProponentProfile] = useState(profilesData[0].Movement);
@@ -32,6 +34,7 @@ function App() {
 
     setMessages([]);
     setStatus('connecting');
+    setPendingSpeaker('Moderator'); // First speaker
 
     const params = new URLSearchParams({
       topic: topic,
@@ -57,6 +60,7 @@ function App() {
           setStatus('debating');
         } else if (data.content === 'finished') {
           setStatus('finished');
+          setPendingSpeaker(null);
           es.close();
         }
       } else if (data.type === 'debate_update') {
@@ -68,8 +72,15 @@ function App() {
           content: cleanContent,
           turn: data.turn
         }]);
+
+        // Logic to determine NEXT speaker based on WHO just spoke
+        const current = data.speaker.toLowerCase();
+        if (current.includes('moderator')) setPendingSpeaker('Proponent');
+        else if (current.includes('proponent')) setPendingSpeaker('Opponent');
+        else if (current.includes('opponent')) setPendingSpeaker('Proponent');
       } else if (data.type === 'error') {
         setStatus('error');
+        setPendingSpeaker(null);
         es.close();
       }
     };
@@ -77,6 +88,7 @@ function App() {
     es.onerror = (err) => {
       console.error("SSE Error:", err);
       setStatus('error');
+      setPendingSpeaker(null);
       es.close();
     };
   };
@@ -126,7 +138,7 @@ function App() {
             <AgentCard 
               name="Proponent" 
               role="Proponent" 
-              status={status === 'debating' ? 'Speaking' : 'Waiting'} 
+              status={status === 'debating' && pendingSpeaker === 'Proponent' ? 'Speaking' : 'Waiting'} 
               profiles={profilesData}
               tones={tonesData}
               selectedProfile={proponentProfile}
@@ -138,7 +150,7 @@ function App() {
             <AgentCard 
               name="Opponent" 
               role="Opponent" 
-              status={status === 'debating' ? 'Waiting' : 'Speaking'}
+              status={status === 'debating' && pendingSpeaker === 'Opponent' ? 'Speaking' : 'Waiting'}
               profiles={profilesData}
               tones={tonesData}
               selectedProfile={opponentProfile}
@@ -189,10 +201,8 @@ function App() {
                   turn={msg.turn} 
                 />
               ))}
-              {status === 'debating' && (
-                 <div className="flex justify-center mt-4">
-                   <span className="loading-dot"></span>
-                 </div>
+              {status === 'debating' && pendingSpeaker && (
+                 <TypingIndicator speaker={pendingSpeaker} />
               )}
             </div>
 

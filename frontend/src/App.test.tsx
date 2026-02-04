@@ -55,16 +55,23 @@ describe('App Component', () => {
     // Now status should be active
     expect(screen.getByText(/LIVE STATUS: ACTIVE/i)).toBeInTheDocument();
 
-    // Emit a debate update
+    // Emit a debate update with prefix
     await act(async () => {
       MockEventSource.lastInstance.emit({ 
         type: 'debate_update', 
         speaker: 'Proponent', 
-        content: 'Hello World', 
+        content: 'Proponent: Hello World', 
         turn: 1 
       });
     });
 
+    // Should NOT have prefix
     expect(screen.getByText(/Hello World/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Proponent: Hello World/i)).not.toBeInTheDocument();
+
+    // After proponent speaks, next is Opponent
+    const opponentThinking = screen.getAllByText(/Opponent/i);
+    expect(opponentThinking.length).toBeGreaterThan(0);
+    expect(screen.getByText(/thinking/i)).toBeInTheDocument();
   });
 });
