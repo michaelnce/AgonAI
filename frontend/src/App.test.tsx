@@ -10,7 +10,8 @@ describe('App Component', () => {
         <App />
       </ThemeProvider>
     );
-    expect(screen.getByText(/Debate Arena Scaffold/i)).toBeInTheDocument();
+    expect(screen.getByText(/DebateAI/i)).toBeInTheDocument();
+    expect(screen.getByText(/Participants/i)).toBeInTheDocument();
   });
 
   it('toggles theme when button is clicked', () => {
@@ -20,7 +21,7 @@ describe('App Component', () => {
       </ThemeProvider>
     );
     
-    const toggleButton = screen.getByRole('button');
+    const toggleButton = screen.getByTitle(/Toggle Theme/i);
     const initialText = toggleButton.textContent;
     
     fireEvent.click(toggleButton);
