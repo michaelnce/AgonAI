@@ -34,7 +34,16 @@ async def test_node_execution():
     # Patch get_model to return our mock
     with patch("backend.graph.get_model", return_value=mock_llm):
         # Mock state
-        state = DebateState(messages=[], current_speaker="moderator", turn_count=0)
+        state = DebateState(
+            messages=[], 
+            current_speaker="moderator", 
+            turn_count=0,
+            topic="Test Topic",
+            proponent_profile="Rationalism",
+            proponent_tone="Assertive",
+            opponent_profile="Empiricism",
+            opponent_tone="Skeptical"
+        )
         
         # Test moderator node
         result = await moderator_node(state)
@@ -63,7 +72,16 @@ async def test_full_workflow():
         app = workflow.compile()
         
         # Initial state
-        initial_state = DebateState(messages=[], current_speaker="moderator", turn_count=0)
+        initial_state = DebateState(
+            messages=[], 
+            current_speaker="moderator", 
+            turn_count=0,
+            topic="Test Topic",
+            proponent_profile="Rationalism",
+            proponent_tone="Assertive",
+            opponent_profile="Empiricism",
+            opponent_tone="Skeptical"
+        )
         
         # Run the graph
         result = await app.ainvoke(initial_state)

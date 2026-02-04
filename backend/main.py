@@ -14,7 +14,14 @@ debate_workflow = create_debate_graph().compile()
 async def health_check():
     return {"status": "ok"}
 
-async def event_generator(topic: Optional[str] = "AI Safety", limit: Optional[int] = None):
+async def event_generator(
+    topic: str,
+    proponent_profile: str,
+    proponent_tone: str,
+    opponent_profile: str,
+    opponent_tone: str,
+    limit: Optional[int] = None
+):
     # Initial connection message
     yield f"data: {json.dumps({'type': 'system', 'content': 'connected'})}\n\n"
     
@@ -22,7 +29,11 @@ async def event_generator(topic: Optional[str] = "AI Safety", limit: Optional[in
         "messages": [], 
         "current_speaker": "moderator", 
         "turn_count": 0,
-        "topic": topic
+        "topic": topic,
+        "proponent_profile": proponent_profile,
+        "proponent_tone": proponent_tone,
+        "opponent_profile": opponent_profile,
+        "opponent_tone": opponent_tone
     }
     
     try:
@@ -51,5 +62,15 @@ async def event_generator(topic: Optional[str] = "AI Safety", limit: Optional[in
         yield f"data: {json.dumps({'type': 'error', 'content': str(e)})}\n\n"
 
 @app.get("/api/debate/stream")
-async def stream_debate(topic: Optional[str] = "AI Safety", limit: Optional[int] = None):
-    return StreamingResponse(event_generator(topic, limit), media_type="text/event-stream")
+async def stream_debate(
+    topic: str = "AI Safety",
+    proponent_profile: str = "Analytical Scholar",
+    proponent_tone: str = "Assertive",
+    opponent_profile: str = "Creative Disruptor",
+    opponent_tone: str = "Socratic",
+    limit: Optional[int] = None
+):
+    return StreamingResponse(
+        event_generator(topic, proponent_profile, proponent_tone, opponent_profile, opponent_tone, limit), 
+        media_type="text/event-stream"
+    )

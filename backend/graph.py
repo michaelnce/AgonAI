@@ -5,6 +5,8 @@ from langgraph.graph import StateGraph, END
 from langchain_ollama import ChatOllama
 from dotenv import load_dotenv
 
+import json
+
 load_dotenv()
 
 # Configuration
@@ -15,12 +17,35 @@ MODEL_MODERATOR = os.getenv("OLLAMA_MODEL_MODERATOR", "llama3")
 MAX_TURNS = int(os.getenv("MAX_TURNS", 6))
 WORD_LIMIT = int(os.getenv("WORD_LIMIT", 75))
 
+# Load Data
+def load_json_data(filename):
+    try:
+        with open(os.path.join("data", filename), "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
+
+PROFILES = load_json_data("profile.json")
+TONES = load_json_data("tones.json")
+
+def get_profile_def(name):
+    p = next((p for p in PROFILES if p["Movement"] == name), None)
+    return f"{p['Definition']} (Root Conflict: {p['RootConflict']})" if p else name
+
+def get_tone_desc(name):
+    t = next((t for t in TONES if t["tone"] == name), None)
+    return t["description"] if t else name
+
 # Define the State
 class DebateState(TypedDict):
     messages: Annotated[List[str], operator.add]
     current_speaker: str
     turn_count: int
     topic: str
+    proponent_profile: str
+    proponent_tone: str
+    opponent_profile: str
+    opponent_tone: str
 
 def get_model(model_name: str):
     return ChatOllama(base_url=OLLAMA_BASE_URL, model=model_name)
@@ -41,7 +66,17 @@ async def moderator_node(state: DebateState):
 async def proponent_node(state: DebateState):
     llm = get_model(MODEL_PROPONENT)
     messages = state["messages"]
-    prompt = f"You are the Proponent arguing FOR the topic. The debate history is: {messages}. Respond to the previous point. Keep your response under {WORD_LIMIT} words."
+    profile = state.get("proponent_profile", "Rationalism")
+    tone = state.get("proponent_tone", "Assertive")
+    
+    profile_def = get_profile_def(profile)
+    tone_desc = get_tone_desc(tone)
+    
+    prompt = f"""You are the Proponent arguing FOR the topic. 
+    Your philosophy is {profile}: {profile_def}. 
+    Your tone is {tone}: {tone_desc}.
+    The debate history is: {messages}. 
+    Respond to the previous point. Keep your response under {WORD_LIMIT} words."""
     
     response = await llm.ainvoke(prompt)
     return {"messages": [f"Proponent: {response.content}"], "current_speaker": "opponent", "turn_count": state["turn_count"] + 1}
@@ -49,7 +84,17 @@ async def proponent_node(state: DebateState):
 async def opponent_node(state: DebateState):
     llm = get_model(MODEL_OPPONENT)
     messages = state["messages"]
-    prompt = f"You are the Opponent arguing AGAINST the topic. The debate history is: {messages}. Respond to the previous point. Keep your response under {WORD_LIMIT} words."
+    profile = state.get("opponent_profile", "Empiricism")
+    tone = state.get("opponent_tone", "Skeptical")
+    
+    profile_def = get_profile_def(profile)
+    tone_desc = get_tone_desc(tone)
+    
+    prompt = f"""You are the Opponent arguing AGAINST the topic. 
+    Your philosophy is {profile}: {profile_def}. 
+    Your tone is {tone}: {tone_desc}.
+    The debate history is: {messages}. 
+    Respond to the previous point. Keep your response under {WORD_LIMIT} words."""
     
     response = await llm.ainvoke(prompt)
     return {"messages": [f"Opponent: {response.content}"], "current_speaker": "proponent", "turn_count": state["turn_count"] + 1}

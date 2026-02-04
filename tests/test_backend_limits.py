@@ -12,7 +12,16 @@ async def test_word_limit_in_prompt():
     mock_llm.ainvoke = AsyncMock(return_value=mock_response)
     
     with patch("backend.graph.get_model", return_value=mock_llm):
-        state = DebateState(messages=[], current_speaker="moderator", turn_count=0, topic="Test Topic")
+        state = DebateState(
+            messages=[], 
+            current_speaker="moderator", 
+            turn_count=0, 
+            topic="Test Topic",
+            proponent_profile="Rationalism",
+            proponent_tone="Assertive",
+            opponent_profile="Empiricism",
+            opponent_tone="Skeptical"
+        )
         
         await moderator_node(state)
         
