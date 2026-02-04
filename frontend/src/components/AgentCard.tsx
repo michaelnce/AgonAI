@@ -14,16 +14,25 @@ interface Tone {
   description: string;
 }
 
+interface Language {
+  code: string;
+  name: string;
+  flag: string;
+}
+
 interface AgentCardProps {
   name: string;
   role: 'Proponent' | 'Opponent';
   status: 'Speaking' | 'Waiting' | 'Leading' | 'Defending';
   profiles: Profile[];
   tones: Tone[];
+  languages: Language[];
   selectedProfile: string;
   selectedTone: string;
+  selectedLanguage: string;
   onProfileChange: (val: string) => void;
   onToneChange: (val: string) => void;
+  onLanguageChange: (val: string) => void;
   disabled?: boolean;
 }
 
@@ -32,10 +41,13 @@ export const AgentCard: React.FC<AgentCardProps> = ({
   status,
   profiles,
   tones,
+  languages,
   selectedProfile,
   selectedTone,
+  selectedLanguage,
   onProfileChange,
   onToneChange,
+  onLanguageChange,
   disabled
 }) => {
   const isProponent = role === 'Proponent';
@@ -60,7 +72,7 @@ export const AgentCard: React.FC<AgentCardProps> = ({
       </div>
 
       <div className="grid grid-cols-2 gap-4 mb-4">
-        <div>
+        <div className="col-span-2">
           <label className="block text-[10px] uppercase font-bold text-gray-500 mb-1">Profile</label>
           <select
             value={selectedProfile}
@@ -80,6 +92,17 @@ export const AgentCard: React.FC<AgentCardProps> = ({
             className="w-full bg-slate-50 dark:bg-[#0F172A] border border-gray-200 dark:border-gray-700 text-slate-900 dark:text-gray-300 text-sm rounded-lg p-2.5 appearance-none focus:border-blue-500 focus:outline-none disabled:opacity-50"
           >
             {tones.map(t => <option key={t.tone} value={t.tone}>{t.tone}</option>)}
+          </select>
+        </div>
+        <div>
+          <label className="block text-[10px] uppercase font-bold text-gray-500 mb-1">Language</label>
+          <select
+            value={selectedLanguage}
+            onChange={(e) => onLanguageChange(e.target.value)}
+            disabled={disabled}
+            className="w-full bg-slate-50 dark:bg-[#0F172A] border border-gray-200 dark:border-gray-700 text-slate-900 dark:text-gray-300 text-sm rounded-lg p-2.5 appearance-none focus:border-blue-500 focus:outline-none disabled:opacity-50"
+          >
+            {languages.map(l => <option key={l.name} value={l.name}>{l.flag} {l.name}</option>)}
           </select>
         </div>
       </div>

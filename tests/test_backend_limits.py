@@ -19,8 +19,10 @@ async def test_word_limit_in_prompt():
             topic="Test Topic",
             proponent_profile="Rationalism",
             proponent_tone="Assertive",
+            proponent_language="English",
             opponent_profile="Empiricism",
             opponent_tone="Skeptical",
+            opponent_language="English",
             verdict=None
         )
         

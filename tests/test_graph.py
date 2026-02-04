@@ -41,8 +41,10 @@ async def test_node_execution():
             topic="Test Topic",
             proponent_profile="Rationalism",
             proponent_tone="Assertive",
+            proponent_language="English",
             opponent_profile="Empiricism",
             opponent_tone="Skeptical",
+            opponent_language="English",
             verdict=None
         )
         
@@ -76,8 +78,10 @@ async def test_verdict_node():
             topic="Test Topic",
             proponent_profile="Rationalism",
             proponent_tone="Assertive",
+            proponent_language="English",
             opponent_profile="Empiricism",
             opponent_tone="Skeptical",
+            opponent_language="English",
             verdict=None
         )
         
@@ -108,8 +112,10 @@ async def test_full_workflow():
             topic="Test Topic",
             proponent_profile="Rationalism",
             proponent_tone="Assertive",
+            proponent_language="English",
             opponent_profile="Empiricism",
             opponent_tone="Skeptical",
+            opponent_language="English",
             verdict=None
         )
         

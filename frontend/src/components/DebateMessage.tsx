@@ -36,8 +36,8 @@ export const DebateMessage: React.FC<DebateMessageProps> = ({ speaker, content }
 
       {/* Bubble */}
       <div className={`max-w-[80%] p-5 rounded-2xl border text-sm leading-relaxed break-words ${isProponent
-          ? 'bg-slate-50 dark:bg-[#1E293B]/80 border-gray-200 dark:border-gray-700 text-slate-800 dark:text-gray-200 rounded-tl-sm'
-          : 'bg-white dark:bg-[#1E293B] border-gray-200 dark:border-gray-700 text-slate-800 dark:text-gray-200 rounded-tr-sm'
+        ? 'bg-slate-50 dark:bg-[#1E293B]/80 border-gray-200 dark:border-gray-700 text-blue-600 dark:text-blue-400 rounded-tl-sm'
+        : 'bg-white dark:bg-[#1E293B] border-gray-200 dark:border-gray-700 text-purple-600 dark:text-purple-400 rounded-tr-sm'
         }`}>
         {content}
       </div>

@@ -44,8 +44,10 @@ class DebateState(TypedDict):
     topic: str
     proponent_profile: str
     proponent_tone: str
+    proponent_language: str
     opponent_profile: str
     opponent_tone: str
+    opponent_language: str
     verdict: str
 
 def get_model(model_name: str):
@@ -56,6 +58,8 @@ async def moderator_node(state: DebateState):
     llm = get_model(MODEL_MODERATOR)
     messages = state["messages"]
     topic = state.get("topic", "AI Safety")
+    # Moderator language could be inferred or set. For now, defaulting to English instructions 
+    # but the moderator typically adapts or we could add a moderator_language field.
     
     prompt = f"You are the Moderator. The debate topic is '{topic}'. The debate history is: {messages}. Provide a brief introduction or steer the debate. Keep your response under {WORD_LIMIT} words."
     if not messages:
@@ -98,6 +102,7 @@ async def proponent_node(state: DebateState):
     messages = state["messages"]
     profile = state.get("proponent_profile", "Rationalism")
     tone = state.get("proponent_tone", "Assertive")
+    language = state.get("proponent_language", "English")
     
     profile_def = get_profile_def(profile)
     tone_desc = get_tone_desc(tone)
@@ -105,6 +110,7 @@ async def proponent_node(state: DebateState):
     prompt = f"""You are the Proponent arguing FOR the topic. 
     Your philosophy is {profile}: {profile_def}. 
     Your tone is {tone}: {tone_desc}.
+    You MUST speak in {language}.
     The debate history is: {messages}. 
     Respond to the previous point. Keep your response under {WORD_LIMIT} words."""
     
@@ -116,6 +122,7 @@ async def opponent_node(state: DebateState):
     messages = state["messages"]
     profile = state.get("opponent_profile", "Empiricism")
     tone = state.get("opponent_tone", "Skeptical")
+    language = state.get("opponent_language", "English")
     
     profile_def = get_profile_def(profile)
     tone_desc = get_tone_desc(tone)
@@ -123,6 +130,7 @@ async def opponent_node(state: DebateState):
     prompt = f"""You are the Opponent arguing AGAINST the topic. 
     Your philosophy is {profile}: {profile_def}. 
     Your tone is {tone}: {tone_desc}.
+    You MUST speak in {language}.
     The debate history is: {messages}. 
     Respond to the previous point. Keep your response under {WORD_LIMIT} words."""
     

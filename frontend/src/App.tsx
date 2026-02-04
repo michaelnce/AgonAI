@@ -7,6 +7,7 @@ import { TypingIndicator } from './components/TypingIndicator';
 import { DecisionMatrix } from './components/DecisionMatrix';
 import profilesData from './data/profiles.json';
 import tonesData from './data/tones.json';
+import languagesData from './data/languages.json';
 
 interface Message {
   speaker: string;
@@ -33,8 +34,11 @@ function App() {
   // Agent Configuration State
   const [proponentProfile, setProponentProfile] = useState(profilesData[0].Movement);
   const [proponentTone, setProponentTone] = useState(tonesData[0].tone);
+  const [proponentLanguage, setProponentLanguage] = useState(languagesData[0].name);
+
   const [opponentProfile, setOpponentProfile] = useState(profilesData[1].Movement);
   const [opponentTone, setOpponentTone] = useState(tonesData[1].tone);
+  const [opponentLanguage, setOpponentLanguage] = useState(languagesData[0].name);
 
   const eventSourceRef = useRef<EventSource | null>(null);
 
@@ -52,8 +56,10 @@ function App() {
       topic: topic,
       proponent_profile: proponentProfile,
       proponent_tone: proponentTone,
+      proponent_language: proponentLanguage,
       opponent_profile: opponentProfile,
-      opponent_tone: opponentTone
+      opponent_tone: opponentTone,
+      opponent_language: opponentLanguage
     });
 
     const url = `/api/debate/stream?${params.toString()}`;
@@ -156,31 +162,36 @@ function App() {
   
             {/* Agent Configuration */}
             <div className="flex gap-6 mb-8">
-              <AgentCard
-                name="Proponent"
-                role="Proponent"
-                status={status === 'debating' && pendingSpeaker === 'Proponent' ? 'Speaking' : 'Waiting'}
-                profiles={profilesData}
-                tones={tonesData}
-                selectedProfile={proponentProfile}
-                selectedTone={proponentTone}
-                onProfileChange={setProponentProfile}
-                onToneChange={setProponentTone}
-                disabled={status === 'debating'}
-              />
-              <AgentCard
-                name="Opponent"
-                role="Opponent"
-                status={status === 'debating' && pendingSpeaker === 'Opponent' ? 'Speaking' : 'Waiting'}
-                profiles={profilesData}
-                tones={tonesData}
-                selectedProfile={opponentProfile}
-                selectedTone={opponentTone}
-                onProfileChange={setOpponentProfile}
-                onToneChange={setOpponentTone}
-                disabled={status === 'debating'}
-              />
-            </div>
+                          <AgentCard
+                            name="Proponent"
+                            role="Proponent"
+                            status={status === 'debating' && pendingSpeaker === 'Proponent' ? 'Speaking' : 'Waiting'}
+                            profiles={profilesData}
+                            tones={tonesData}
+                            languages={languagesData}
+                            selectedProfile={proponentProfile}
+                            selectedTone={proponentTone}
+                            selectedLanguage={proponentLanguage}
+                            onProfileChange={setProponentProfile}
+                            onToneChange={setProponentTone}
+                            onLanguageChange={setProponentLanguage}
+                            disabled={status === 'debating'}
+                          />
+                          <AgentCard
+                            name="Opponent"
+                            role="Opponent"
+                            status={status === 'debating' && pendingSpeaker === 'Opponent' ? 'Speaking' : 'Waiting'}
+                            profiles={profilesData}
+                            tones={tonesData}
+                            languages={languagesData}
+                            selectedProfile={opponentProfile}
+                            selectedTone={opponentTone}
+                            selectedLanguage={opponentLanguage}
+                            onProfileChange={setOpponentProfile}
+                            onToneChange={setOpponentTone}
+                            onLanguageChange={setOpponentLanguage}
+                            disabled={status === 'debating'}
+                          />            </div>
   
             {/* Topic Configuration - Visible when idle */}
             {status === 'idle' && (
