@@ -13,12 +13,14 @@ MODEL_PROPONENT = os.getenv("OLLAMA_MODEL_PROPONENT", "llama3")
 MODEL_OPPONENT = os.getenv("OLLAMA_MODEL_OPPONENT", "llama3")
 MODEL_MODERATOR = os.getenv("OLLAMA_MODEL_MODERATOR", "llama3")
 MAX_TURNS = int(os.getenv("MAX_TURNS", 6))
+WORD_LIMIT = int(os.getenv("WORD_LIMIT", 75))
 
 # Define the State
 class DebateState(TypedDict):
     messages: Annotated[List[str], operator.add]
     current_speaker: str
     turn_count: int
+    topic: str
 
 def get_model(model_name: str):
     return ChatOllama(base_url=OLLAMA_BASE_URL, model=model_name)
@@ -26,11 +28,12 @@ def get_model(model_name: str):
 # Define Nodes
 async def moderator_node(state: DebateState):
     llm = get_model(MODEL_MODERATOR)
-    # Simple prompt construction
     messages = state["messages"]
-    prompt = f"You are the Moderator. The debate history is: {messages}. Provide a brief introduction or steer the debate."
+    topic = state.get("topic", "AI Safety")
+    
+    prompt = f"You are the Moderator. The debate topic is '{topic}'. The debate history is: {messages}. Provide a brief introduction or steer the debate. Keep your response under {WORD_LIMIT} words."
     if not messages:
-        prompt = "You are the Moderator. Introduce the topic 'AI Safety'."
+        prompt = f"You are the Moderator. Introduce the debate topic: '{topic}'. Keep your response under {WORD_LIMIT} words."
     
     response = await llm.ainvoke(prompt)
     return {"messages": [f"Moderator: {response.content}"], "current_speaker": "proponent", "turn_count": state["turn_count"] + 1}
@@ -38,7 +41,7 @@ async def moderator_node(state: DebateState):
 async def proponent_node(state: DebateState):
     llm = get_model(MODEL_PROPONENT)
     messages = state["messages"]
-    prompt = f"You are the Proponent arguing FOR the topic. The debate history is: {messages}. Respond to the previous point."
+    prompt = f"You are the Proponent arguing FOR the topic. The debate history is: {messages}. Respond to the previous point. Keep your response under {WORD_LIMIT} words."
     
     response = await llm.ainvoke(prompt)
     return {"messages": [f"Proponent: {response.content}"], "current_speaker": "opponent", "turn_count": state["turn_count"] + 1}
@@ -46,7 +49,7 @@ async def proponent_node(state: DebateState):
 async def opponent_node(state: DebateState):
     llm = get_model(MODEL_OPPONENT)
     messages = state["messages"]
-    prompt = f"You are the Opponent arguing AGAINST the topic. The debate history is: {messages}. Respond to the previous point."
+    prompt = f"You are the Opponent arguing AGAINST the topic. The debate history is: {messages}. Respond to the previous point. Keep your response under {WORD_LIMIT} words."
     
     response = await llm.ainvoke(prompt)
     return {"messages": [f"Opponent: {response.content}"], "current_speaker": "proponent", "turn_count": state["turn_count"] + 1}

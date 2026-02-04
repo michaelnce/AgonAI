@@ -18,9 +18,12 @@ async def event_generator(topic: Optional[str] = "AI Safety", limit: Optional[in
     # Initial connection message
     yield f"data: {json.dumps({'type': 'system', 'content': 'connected'})}\n\n"
     
-    inputs = {"messages": [], "current_speaker": "moderator", "turn_count": 0}
-    # In a real app, we might pass the topic to the state or moderator prompt
-    # For now, the moderator node prompt logic handles the "start" if messages are empty.
+    inputs = {
+        "messages": [], 
+        "current_speaker": "moderator", 
+        "turn_count": 0,
+        "topic": topic
+    }
     
     try:
         count = 0

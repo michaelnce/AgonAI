@@ -36,7 +36,7 @@ export const DebateMessage: React.FC<DebateMessageProps> = ({ speaker, content }
       </div>
 
       {/* Bubble */}
-      <div className={`max-w-[80%] p-5 rounded-2xl border text-sm leading-relaxed ${
+      <div className={`max-w-[80%] p-5 rounded-2xl border text-sm leading-relaxed break-words ${
         isProponent 
           ? 'bg-[#1E293B]/80 border-gray-700 text-gray-200 rounded-tl-sm' 
           : 'bg-[#1E293B] border-gray-700 text-gray-200 rounded-tr-sm'

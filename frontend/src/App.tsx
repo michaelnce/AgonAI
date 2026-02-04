@@ -108,6 +108,20 @@ function App() {
             <AgentCard name="Creative Disruptor" role="Opponent" status={status === 'debating' ? 'Waiting' : 'Speaking'} />
           </div>
 
+          {/* Topic Configuration - Visible when idle */}
+          {status === 'idle' && (
+            <div className="mb-8 bg-[#1E293B] border border-gray-700 rounded-xl p-6">
+               <label className="block text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide">Debate Topic</label>
+               <input 
+                  type="text" 
+                  value={topic}
+                  onChange={(e) => setTopic(e.target.value)}
+                  className="w-full bg-[#0F172A] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  placeholder="Enter a controversial topic for the agents to debate..."
+               />
+            </div>
+          )}
+
           {/* Chat Section */}
           <div className="flex-1 flex flex-col bg-[#020617] rounded-xl border border-gray-800 overflow-hidden relative">
             
