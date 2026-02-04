@@ -103,7 +103,13 @@ describe('App Component', () => {
     });
 
     expect(screen.getByText(/Final Judgment/i)).toBeInTheDocument();
-    expect(screen.getByText(/Proponent Wins/i)).toBeInTheDocument();
+    expect(screen.getByText(/Rationalism Wins/i)).toBeInTheDocument();
     expect(screen.getByText(/Proponent was more logical/i)).toBeInTheDocument();
+
+    // Test Reset
+    const resetButton = screen.getByRole('button', { name: /Reset Arena/i });
+    fireEvent.click(resetButton);
+    expect(screen.queryByText(/Final Judgment/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Hello World/i)).not.toBeInTheDocument();
   });
 });
