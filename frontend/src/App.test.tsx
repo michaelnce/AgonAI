@@ -10,8 +10,8 @@ describe('App Component', () => {
         <App />
       </ThemeProvider>
     );
-    expect(screen.getByText(/DebateAI/i)).toBeInTheDocument();
-    expect(screen.getByText(/Participants/i)).toBeInTheDocument();
+    expect(screen.getByText(/Debate Arena Dashboard/i)).toBeInTheDocument();
+    expect(screen.getByText(/Configure and monitor/i)).toBeInTheDocument();
   });
 
   it('toggles theme when button is clicked', () => {
@@ -21,6 +21,7 @@ describe('App Component', () => {
       </ThemeProvider>
     );
     
+    // TopNav has the theme toggle
     const toggleButton = screen.getByTitle(/Toggle Theme/i);
     const initialText = toggleButton.textContent;
     
@@ -37,9 +38,7 @@ describe('App Component', () => {
 
     const startButton = screen.getByRole('button', { name: /Start Debate/i });
     fireEvent.click(startButton);
-
-    expect(screen.getByText(/Connecting to arena/i)).toBeInTheDocument();
-
+    
     // Access the mocked instance
     const MockEventSource = (window as any).MockEventSource;
     
@@ -53,17 +52,19 @@ describe('App Component', () => {
       MockEventSource.lastInstance.emit({ type: 'system', content: 'connected' });
     });
 
+    // Now status should be active
+    expect(screen.getByText(/LIVE STATUS: ACTIVE/i)).toBeInTheDocument();
+
     // Emit a debate update
     await act(async () => {
       MockEventSource.lastInstance.emit({ 
         type: 'debate_update', 
-        speaker: 'Moderator', 
+        speaker: 'Proponent', 
         content: 'Hello World', 
         turn: 1 
       });
     });
 
     expect(screen.getByText(/Hello World/i)).toBeInTheDocument();
-    expect(screen.getByText(/Moderator is responding/i)).toBeInTheDocument();
   });
 });

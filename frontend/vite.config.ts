@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8000', // Default, but we should make this configurable
+        target: 'http://localhost:8090', // Updated to match your backend port
         changeOrigin: true,
       }
     }

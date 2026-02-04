@@ -2,37 +2,41 @@ import React from 'react';
 
 interface AgentCardProps {
   name: string;
-  role: 'Proponent' | 'Opponent' | 'Moderator';
-  status: 'Speaking' | 'Waiting' | 'Idle';
-  avatar?: string;
+  role: 'Proponent' | 'Opponent';
+  status: 'Speaking' | 'Waiting' | 'Leading' | 'Defending';
 }
 
 export const AgentCard: React.FC<AgentCardProps> = ({ name, role, status }) => {
-  const isActive = status === 'Speaking';
+  const isProponent = role === 'Proponent';
+  const badgeColor = isProponent ? 'bg-blue-500/20 text-blue-400' : 'bg-purple-500/20 text-purple-400';
+  const badgeText = isProponent ? 'LEADING' : 'DEFENDING';
 
   return (
-    <div className={`p-4 rounded-xl border transition-all duration-300 ${
-      isActive 
-        ? 'border-blue-500 bg-blue-50/50 dark:bg-blue-900/20 ring-1 ring-blue-500' 
-        : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800'
-    }`}>
-      <div className="flex items-center gap-4">
-        <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl ${
-          role === 'Proponent' ? 'bg-green-100 text-green-700' : 
-          role === 'Opponent' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'
-        }`}>
-          {name[0]}
+    <div className="bg-[#1E293B] border border-gray-700 rounded-xl p-5 flex-1 min-w-[300px]">
+      <div className="flex justify-between items-start mb-4">
+        <div className="flex items-center gap-3">
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isProponent ? 'bg-blue-500' : 'bg-purple-500'}`}>
+            <span className="text-white text-xs">✨</span>
+          </div>
+          <h3 className="font-bold text-white text-lg">{role} Agent</h3>
         </div>
-        <div className="flex-1">
-          <h3 className="font-bold text-sm">{name}</h3>
-          <p className="text-xs opacity-60">{role}</p>
+        <span className={`text-[10px] font-bold px-2 py-1 rounded-md uppercase ${badgeColor}`}>
+          {badgeText}
+        </span>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label className="block text-[10px] uppercase font-bold text-gray-500 mb-1">Profile</label>
+          <select className="w-full bg-[#0F172A] border border-gray-700 text-gray-300 text-sm rounded-lg p-2.5 appearance-none focus:border-blue-500 focus:outline-none">
+            <option>{name}</option>
+          </select>
         </div>
-        <div className="flex flex-col items-end">
-          <span className={`text-[10px] px-2 py-0.5 rounded-full uppercase font-bold ${
-            isActive ? 'bg-blue-500 text-white animate-pulse' : 'bg-gray-100 dark:bg-gray-700 text-gray-500'
-          }`}>
-            {status}
-          </span>
+        <div>
+          <label className="block text-[10px] uppercase font-bold text-gray-500 mb-1">Tone</label>
+          <select className="w-full bg-[#0F172A] border border-gray-700 text-gray-300 text-sm rounded-lg p-2.5 appearance-none focus:border-blue-500 focus:outline-none">
+            <option>{isProponent ? 'Assertive' : 'Socratic'}</option>
+          </select>
         </div>
       </div>
     </div>

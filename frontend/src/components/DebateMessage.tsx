@@ -6,24 +6,42 @@ interface DebateMessageProps {
   turn: number;
 }
 
-export const DebateMessage: React.FC<DebateMessageProps> = ({ speaker, content, turn }) => {
-  const isModerator = speaker.toLowerCase().includes('moderator');
+export const DebateMessage: React.FC<DebateMessageProps> = ({ speaker, content }) => {
   const isProponent = speaker.toLowerCase().includes('proponent');
+  const isOpponent = speaker.toLowerCase().includes('opponent');
+  const isModerator = speaker.toLowerCase().includes('moderator');
+
+  if (isModerator) {
+     // Moderator instructions often appear differently, maybe like a system message or a central block
+     return (
+       <div className="flex justify-center my-6">
+         <div className="bg-[#1E293B] text-gray-300 px-6 py-3 rounded-full text-sm border border-gray-700">
+           {content}
+         </div>
+       </div>
+     );
+  }
 
   return (
-    <div className={`flex flex-col mb-6 ${isModerator ? 'items-center' : isProponent ? 'items-start' : 'items-end'}`}>
-      <div className={`max-w-[80%] p-4 rounded-2xl shadow-sm ${
-        isModerator 
-          ? 'bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-center' 
-          : isProponent 
-            ? 'bg-green-50 dark:bg-green-900/30 border border-green-100 dark:border-green-800' 
-            : 'bg-purple-50 dark:bg-purple-900/30 border border-purple-100 dark:border-purple-800'
-      }`}>
-        <div className="flex items-center justify-between mb-2 gap-4">
-          <span className="font-bold text-sm uppercase tracking-wider opacity-70">{speaker}</span>
-          <span className="text-xs opacity-50">Turn {turn}</span>
+    <div className={`flex flex-col mb-8 ${isProponent ? 'items-start' : 'items-end'}`}>
+      {/* Header */}
+      <div className={`flex items-center gap-2 mb-2 ${isProponent ? 'flex-row' : 'flex-row-reverse'}`}>
+        <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
+          isProponent ? 'bg-blue-500' : 'bg-purple-500'
+        }`}>
+           <span className="text-white text-[10px]">⚡</span>
         </div>
-        <p className="leading-relaxed whitespace-pre-wrap">{content}</p>
+        <span className="font-bold text-white text-xs uppercase tracking-wide">{speaker}</span>
+        <span className="text-gray-500 text-[10px]">10:45 AM</span>
+      </div>
+
+      {/* Bubble */}
+      <div className={`max-w-[80%] p-5 rounded-2xl border text-sm leading-relaxed ${
+        isProponent 
+          ? 'bg-[#1E293B]/80 border-gray-700 text-gray-200 rounded-tl-sm' 
+          : 'bg-[#1E293B] border-gray-700 text-gray-200 rounded-tr-sm'
+      }`}>
+        {content}
       </div>
     </div>
   );
