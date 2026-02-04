@@ -8,9 +8,9 @@
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Environment & Project Setup' (Protocol in workflow.md)
 
 ## Phase 2: Backend Foundation (FastAPI & LangGraph)
-- [ ] Task: Setup FastAPI server with SSE support
-    - [ ] Write tests for health check and SSE streaming endpoint
-    - [ ] Implement FastAPI app and SSE logic
+- [x] Task: Setup FastAPI server with SSE support ba87d87
+    - [x] Write tests for health check and SSE streaming endpoint
+    - [x] Implement FastAPI app and SSE logic
 - [ ] Task: Implement LangGraph Debate Workflow
     - [ ] Write tests for State definition and node transitions
     - [ ] Implement Proponent, Opponent, and Moderator nodes using Ollama
