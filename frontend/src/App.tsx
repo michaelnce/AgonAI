@@ -600,6 +600,30 @@ function App() {
                   agentNames={agentNames}
                   factChecks={factChecks}
                   isFactChecking={isFactChecking}
+                  onRerunFactCheck={async (mode) => {
+                    setIsFactChecking(true);
+                    try {
+                      const response = await fetch('/api/debate/fact-check', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ messages }),
+                      });
+                      const data = await response.json();
+                      if (response.ok && data.fact_checks) {
+                        if (mode === 'replace') {
+                          setFactChecks(data.fact_checks);
+                        } else {
+                          setFactChecks(prev => [...(prev || []), ...data.fact_checks]);
+                        }
+                      } else {
+                        console.error('Fact-check failed:', data.detail);
+                      }
+                    } catch (e) {
+                      console.error('Fact-check request failed:', e);
+                    } finally {
+                      setIsFactChecking(false);
+                    }
+                  }}
                   onSave={saveDebate}
                   onRestart={() => {
                     setVerdict(null);

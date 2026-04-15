@@ -359,6 +359,62 @@ async def send_message(debate_id: str, request: MessageRequest):
         return {"status": "sent"}
     return {"status": "error", "message": "Debate ID not found or inactive"}
 
+class FactCheckRequest(BaseModel):
+    messages: List[Message]
+
+@app.post("/api/debate/fact-check")
+async def run_fact_check(request: FactCheckRequest):
+    """Run a standalone fact-check on debate messages."""
+    from backend.graph import LLM_PROVIDER
+    if LLM_PROVIDER != "claude":
+        raise HTTPException(status_code=400, detail="Fact-checking is only available with the Claude provider")
+
+    transcript = "\n\n".join(
+        f"{m.speaker}: {m.content}" for m in request.messages
+        if not m.content.startswith("The debate has concluded")
+    )
+    if not transcript.strip():
+        raise HTTPException(status_code=400, detail="No messages to fact-check")
+
+    fact_check_llm = get_model(MODEL_MODERATOR, label="fact-check-rerun")
+    fact_check_prompt = f"""You are a rigorous fact-checker reviewing a debate transcript. Your job is to identify EVERY specific factual claim — dates, statistics, quotes, book titles, historical events, attributions — and verify them.
+
+For each claim, determine:
+- VERIFIED: the claim is accurate
+- DISPUTED: the claim is partially true but misleading or imprecise
+- FALSE: the claim is factually wrong
+- UNVERIFIABLE: cannot be confirmed or denied with confidence
+
+Debate transcript:
+{transcript}
+
+Return a JSON array of claims. Each item:
+{{
+  "claim": "the specific factual statement",
+  "speaker": "Proponent" or "Opponent" or "Moderator",
+  "verdict": "VERIFIED" | "DISPUTED" | "FALSE" | "UNVERIFIABLE",
+  "explanation": "brief explanation of why"
+}}
+
+Only include SPECIFIC factual claims (dates, numbers, named works, quotes, events). Do NOT fact-check opinions or arguments.
+Return ONLY the JSON array, no other text."""
+
+    try:
+        response = await asyncio.wait_for(
+            fact_check_llm.ainvoke(fact_check_prompt),
+            timeout=90.0
+        )
+        raw = response.content.strip().replace("```json", "").replace("```", "").strip()
+        checks = json.loads(raw)
+        return {"status": "success", "fact_checks": checks}
+    except asyncio.TimeoutError:
+        raise HTTPException(status_code=504, detail="Fact-check timed out")
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=502, detail="Failed to parse fact-check response")
+    except Exception as e:
+        logger.error(f"Fact-check rerun failed: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
 class BestMatchRequest(BaseModel):
     topic: str
     resolve_proponent_profile: bool = False
