@@ -33,6 +33,8 @@ interface AgentCardProps {
   onProfileChange: (val: string) => void;
   onToneChange: (val: string) => void;
   onLanguageChange: (val: string) => void;
+  isExpanded: boolean;
+  onToggleExpand: () => void;
   disabled?: boolean;
 }
 
@@ -48,6 +50,8 @@ export const AgentCard: React.FC<AgentCardProps> = ({
   onProfileChange,
   onToneChange,
   onLanguageChange,
+  isExpanded,
+  onToggleExpand,
   disabled
 }) => {
   const isProponent = role === 'Proponent';
@@ -58,7 +62,7 @@ export const AgentCard: React.FC<AgentCardProps> = ({
   const activeTone = tones.find(t => t.tone === selectedTone);
 
   return (
-    <div className="bg-white dark:bg-[#1E293B] border border-gray-200 dark:border-gray-700 rounded-xl p-5 flex-1 min-w-[300px] flex flex-col">
+    <div className="bg-white dark:bg-[#1E293B] border border-gray-200 dark:border-gray-700 rounded-xl p-4 md:p-5 flex-1 min-w-0 flex flex-col">
       <div className="flex justify-between items-start mb-4">
         <div className="flex items-center gap-3">
           <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isProponent ? 'bg-blue-500' : 'bg-purple-500'}`}>
@@ -80,6 +84,9 @@ export const AgentCard: React.FC<AgentCardProps> = ({
             disabled={disabled}
             className="w-full bg-slate-50 dark:bg-[#0F172A] border border-gray-200 dark:border-gray-700 text-slate-900 dark:text-gray-300 text-sm rounded-lg p-2.5 appearance-none focus:border-blue-500 focus:outline-none disabled:opacity-50"
           >
+            <option value="__random__">🎲 Random</option>
+            <option value="__best_match__">🎯 Best Match</option>
+            <option disabled>──────────</option>
             {profiles.map(p => <option key={p.Movement} value={p.Movement}>{p.Movement}</option>)}
           </select>
         </div>
@@ -91,6 +98,9 @@ export const AgentCard: React.FC<AgentCardProps> = ({
             disabled={disabled}
             className="w-full bg-slate-50 dark:bg-[#0F172A] border border-gray-200 dark:border-gray-700 text-slate-900 dark:text-gray-300 text-sm rounded-lg p-2.5 appearance-none focus:border-blue-500 focus:outline-none disabled:opacity-50"
           >
+            <option value="__random__">🎲 Random</option>
+            <option value="__best_match__">🎯 Best Match</option>
+            <option disabled>──────────</option>
             {tones.map(t => <option key={t.tone} value={t.tone}>{t.tone}</option>)}
           </select>
         </div>
@@ -107,22 +117,34 @@ export const AgentCard: React.FC<AgentCardProps> = ({
         </div>
       </div>
 
-      {/* Info Card */}
-      <div className="mt-auto bg-slate-50 dark:bg-[#0F172A] rounded-lg p-3 text-xs space-y-2 border border-gray-200 dark:border-gray-800">
-        {activeProfile && (
-          <div>
-            <span className="font-bold text-gray-500 dark:text-gray-400 block mb-1">PROFILE</span>
-            <p className="text-slate-700 dark:text-gray-300 leading-relaxed">{activeProfile.Definition}</p>
-            <div className="mt-2 flex gap-2 text-[10px]">
-              <span className="text-gray-500">Root Conflict:</span>
-              <span className="text-slate-600 dark:text-gray-300 italic">{activeProfile.RootConflict}</span>
-            </div>
-          </div>
-        )}
-        {activeTone && (
-          <div className="pt-2 border-t border-gray-200 dark:border-gray-800">
-            <span className="font-bold text-gray-500 dark:text-gray-400 block mb-1">TONE</span>
-            <p className="text-slate-700 dark:text-gray-300">{activeTone.description}</p>
+      {/* Info Card Toggle */}
+      <div className="mt-auto">
+        <button
+          onClick={onToggleExpand}
+          className="w-full flex items-center justify-between text-xs font-bold text-gray-500 uppercase py-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+        >
+          <span>Agent Details</span>
+          <span>{isExpanded ? '−' : '+'}</span>
+        </button>
+
+        {isExpanded && (
+          <div className="bg-slate-50 dark:bg-[#0F172A] rounded-lg p-3 text-xs space-y-2 border border-gray-200 dark:border-gray-800 animate-in fade-in slide-in-from-top-1 duration-200">
+            {activeProfile && (
+              <div>
+                <span className="font-bold text-gray-500 dark:text-gray-400 block mb-1">PROFILE</span>
+                <p className="text-slate-700 dark:text-gray-300 leading-relaxed">{activeProfile.Definition}</p>
+                <div className="mt-2 flex gap-2 text-[10px]">
+                  <span className="text-gray-500">Root Conflict:</span>
+                  <span className="text-slate-600 dark:text-gray-300 italic">{activeProfile.RootConflict}</span>
+                </div>
+              </div>
+            )}
+            {activeTone && (
+              <div className="pt-2 border-t border-gray-200 dark:border-gray-800">
+                <span className="font-bold text-gray-500 dark:text-gray-400 block mb-1">TONE</span>
+                <p className="text-slate-700 dark:text-gray-300">{activeTone.description}</p>
+              </div>
+            )}
           </div>
         )}
       </div>

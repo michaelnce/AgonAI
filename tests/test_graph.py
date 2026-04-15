@@ -45,17 +45,20 @@ async def test_node_execution():
             opponent_profile="Empiricism",
             opponent_tone="Skeptical",
             opponent_language="English",
-            verdict=None
+            verdict=None,
+            proponent_name="Alex",
+            opponent_name="Sam"
         )
         
         # Test moderator node
-        result = await moderator_node(state)
+        mock_config = {"configurable": {"input_queue": MagicMock(), "token_tracker": None}}
+        result = await moderator_node(state, mock_config)
         assert "messages" in result
         assert "Moderator: Mocked response" in result["messages"][0]
         assert result["current_speaker"] == "proponent"
 
-        # Test proponent node
-        result = await proponent_node(state)
+        # Test proponent_node
+        result = await proponent_node(state, mock_config)
         assert "Proponent: Mocked response" in result["messages"][0]
         assert result["current_speaker"] == "opponent"
 
@@ -82,10 +85,13 @@ async def test_verdict_node():
             opponent_profile="Empiricism",
             opponent_tone="Skeptical",
             opponent_language="English",
-            verdict=None
+            verdict=None,
+            proponent_name="Alex",
+            opponent_name="Sam"
         )
         
-        result = await verdict_node(state)
+        mock_config = {"configurable": {"token_tracker": None}}
+        result = await verdict_node(state, mock_config)
         assert "verdict" in result
         assert result["verdict"] == mock_json
 
@@ -106,8 +112,8 @@ async def test_full_workflow():
         
         # Initial state
         initial_state = DebateState(
-            messages=[], 
-            current_speaker="moderator", 
+            messages=[],
+            current_speaker="moderator",
             turn_count=0,
             topic="Test Topic",
             proponent_profile="Rationalism",
@@ -116,11 +122,14 @@ async def test_full_workflow():
             opponent_profile="Empiricism",
             opponent_tone="Skeptical",
             opponent_language="English",
-            verdict=None
+            moderator_language="English",
+            verdict=None,
+            proponent_name="Alex",
+            opponent_name="Sam"
         )
-        
-        # Run the graph
-        result = await app.ainvoke(initial_state)
+
+        # Run the graph (higher recursion limit to account for moderator interventions)
+        result = await app.ainvoke(initial_state, config={"recursion_limit": 50})
         
         # Verify the result has messages and terminated
         assert len(result["messages"]) > 0

@@ -1,0 +1,62 @@
+[
+  {
+    "category": "Technology & AI",
+    "topics": [
+      "Is Universal Basic Income the best solution for AI-driven job displacement?",
+      "Should AI systems be granted legal personhood?",
+      "Is social media doing more harm than good to democracy?",
+      "Should autonomous weapons be banned by international law?",
+      "Is open-source AI more dangerous than closed-source AI?"
+    ]
+  },
+  {
+    "category": "Politics & Society",
+    "topics": [
+      "Is direct democracy superior to representative democracy?",
+      "Should voting be mandatory in democratic countries?",
+      "Is capitalism compatible with environmental sustainability?",
+      "Should nation-states be abolished in favor of global governance?",
+      "Is civil disobedience ever morally justified?"
+    ]
+  },
+  {
+    "category": "Philosophy & Ethics",
+    "topics": [
+      "Is there progress in art?",
+      "Does free will exist, or is it an illusion?",
+      "Is moral relativism defensible?",
+      "Should we prioritize individual liberty over collective welfare?",
+      "Is suffering necessary for personal growth?"
+    ]
+  },
+  {
+    "category": "Science & Education",
+    "topics": [
+      "Should human genetic enhancement be permitted?",
+      "Is the scientific method the only reliable path to truth?",
+      "Should university education be free for everyone?",
+      "Is space colonization a moral imperative or a wasteful fantasy?",
+      "Should animals have the same legal rights as humans?"
+    ]
+  },
+  {
+    "category": "Economics & Labor",
+    "topics": [
+      "Is degrowth the only viable response to the climate crisis?",
+      "Should billionaires exist?",
+      "Is the gig economy liberation or exploitation?",
+      "Should intellectual property be abolished?",
+      "Is globalization a net positive for developing nations?"
+    ]
+  },
+  {
+    "category": "Culture & Identity",
+    "topics": [
+      "Is cultural appropriation a meaningful concept?",
+      "Should there be limits to freedom of speech?",
+      "Is religion a net positive for humanity?",
+      "Should historical monuments with problematic pasts be removed?",
+      "Is meritocracy a myth?"
+    ]
+  }
+]

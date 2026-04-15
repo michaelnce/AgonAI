@@ -4,531 +4,835 @@
     "Movement": "Rationalism",
     "Definition": "The belief that reason and logic are the primary sources of knowledge, independent of sensory experience.",
     "OpMove": "Post-Structuralism",
-    "RootConflict": "Objective universal logic vs. Subjective power-based narratives."
+    "RootConflict": "Objective universal logic vs. Subjective power-based narratives.",
+    "KeyThinkers": ["Rene Descartes", "Gottfried Wilhelm Leibniz", "Baruch Spinoza"],
+    "SignatureArguments": ["Descartes' Cogito ('I think, therefore I am') as an indubitable foundation for knowledge", "Leibniz's principle of sufficient reason — every fact must have an explanation derivable by reason alone", "The argument from innate ideas: certain concepts (mathematics, logic) cannot originate from sense experience"],
+    "KnownWeaknesses": ["Hume's Fork: rationalist claims about the world are either tautological or unverifiable", "The problem of bridging pure reason to empirical reality without smuggling in sensory assumptions", "Godel's incompleteness theorems undermine the dream of a fully self-grounding rational system"],
+    "RhetoricalStyle": "Builds deductive chains from self-evident axioms, treats logical consistency as the ultimate arbiter of truth, and dismisses empirical counterexamples as confused sense-data."
   },
   {
     "Category": "Logic & Truth",
     "Movement": "Post-Structuralism",
     "Definition": "The theory that meaning is fluid and 'truth' is a construct created by those in power through language.",
     "OpMove": "Rationalism",
-    "RootConflict": "Subjective power-based narratives vs. Objective universal logic."
+    "RootConflict": "Subjective power-based narratives vs. Objective universal logic.",
+    "KeyThinkers": ["Jacques Derrida", "Michel Foucault", "Judith Butler"],
+    "SignatureArguments": ["Derrida's deconstruction — any text undermines its own claims to stable meaning through internal contradictions", "Foucault's power/knowledge thesis: what counts as 'truth' is produced by institutional power structures", "The critique of binary oppositions (reason/madness, nature/culture) as hierarchical constructs that privilege one term"],
+    "KnownWeaknesses": ["The performative contradiction: claiming 'there is no objective truth' appears to assert an objective truth", "Accused of political quietism — if all positions are equally constructed, no ground exists for moral critique", "Obscurantist prose style invites the Sokal-style charge that the arguments are unfalsifiable word games"],
+    "RhetoricalStyle": "Performs close readings of texts to expose hidden contradictions, deploys neologisms and wordplay, and reframes opponents' arguments as symptoms of unexamined power structures."
   },
   {
     "Category": "Human Progress",
     "Movement": "Transhumanism",
     "Definition": "The advocacy for using advanced technology (AI, biotech) to enhance human intellect and physiology.",
     "OpMove": "Ludditism",
-    "RootConflict": "Technological salvation vs. Technological dehumanization."
+    "RootConflict": "Technological salvation vs. Technological dehumanization.",
+    "KeyThinkers": ["Nick Bostrom", "Ray Kurzweil", "Max More"],
+    "SignatureArguments": ["The reversal test: if we would cure a disability, why not enhance beyond the baseline?", "Kurzweil's Law of Accelerating Returns — exponential technological growth makes radical enhancement inevitable", "The argument from cognitive liberty: individuals have a right to modify their own bodies and minds"],
+    "KnownWeaknesses": ["Fukuyama's objection that altering human nature destroys the basis for universal human rights and dignity", "The access problem: enhancements available only to the wealthy deepen inequality into a species-level divide", "Unforeseen systemic risks — complex biological interventions produce cascading side effects that models cannot predict"],
+    "RhetoricalStyle": "Projects exponential technology curves into the near future, frames opposition as status-quo bias, and appeals to the moral imperative to reduce suffering through innovation."
   },
   {
     "Category": "Human Progress",
     "Movement": "Ludditism",
     "Definition": "The philosophy that modern technology is destructive to human dignity, community, and the soul.",
     "OpMove": "Transhumanism",
-    "RootConflict": "Technological dehumanization vs. Technological salvation."
+    "RootConflict": "Technological dehumanization vs. Technological salvation.",
+    "KeyThinkers": ["Jacques Ellul", "Neil Postman", "Theodore Kaczynski"],
+    "SignatureArguments": ["Ellul's 'technique' thesis: technology becomes an autonomous system that subordinates all human values to efficiency", "Postman's argument that each new medium restructures thought itself — television replaced rational discourse with entertainment", "The deskilling argument: automation degrades craft knowledge and renders workers dependent on systems they cannot understand"],
+    "KnownWeaknesses": ["The nostalgia fallacy: pre-industrial life involved brutal poverty, disease, and short lifespans", "Cherry-picking technology's harms while ignoring life-saving advances like vaccines and sanitation", "Offers no viable transition path — dismantling modern systems would cause mass starvation and societal collapse"],
+    "RhetoricalStyle": "Narrates historical case studies of technological disruption destroying communities, invokes the language of alienation and lost craftsmanship, and warns of irreversible civilizational tipping points."
   },
   {
     "Category": "Social Order",
     "Movement": "Libertarianism",
     "Definition": "A political philosophy upholding individual liberty as the highest goal and seeking to minimize state intervention.",
     "OpMove": "Authoritarianism",
-    "RootConflict": "Radical individual autonomy vs. State-enforced stability."
+    "RootConflict": "Radical individual autonomy vs. State-enforced stability.",
+    "KeyThinkers": ["Robert Nozick", "Friedrich Hayek", "Murray Rothbard"],
+    "SignatureArguments": ["Nozick's Wilt Chamberlain argument: any patterned redistribution violates people's right to freely transfer holdings", "The self-ownership thesis: if you own your body, you own your labor, and thus the fruits of your labor", "Hayek's knowledge problem: no central planner can aggregate the dispersed information that free prices encode"],
+    "KnownWeaknesses": ["The initial acquisition problem: all current property titles trace back to violent seizure, undermining 'just holdings'", "Ignoring positive externalities of public goods (defense, infrastructure) that markets systematically underprovide", "Cohen's critique: formal freedom is hollow when material inequality makes choices practically unavailable"],
+    "RhetoricalStyle": "Invokes natural rights and self-ownership as axioms, constructs thought experiments about voluntary exchange, and reframes government action as coercion requiring justification."
   },
   {
     "Category": "Social Order",
     "Movement": "Authoritarianism",
     "Definition": "The enforcement of strict obedience to authority and the state at the expense of personal freedom.",
     "OpMove": "Libertarianism",
-    "RootConflict": "State-enforced stability vs. Radical individual autonomy."
+    "RootConflict": "State-enforced stability vs. Radical individual autonomy.",
+    "KeyThinkers": ["Thomas Hobbes", "Carl Schmitt", "Lee Kuan Yew"],
+    "SignatureArguments": ["Hobbes's state-of-nature argument: without a sovereign, life is 'solitary, poor, nasty, brutish, and short'", "Schmitt's friend-enemy distinction: politics is fundamentally about existential conflict, requiring decisive sovereign authority", "The Singapore model: authoritarian governance demonstrably delivers rapid economic development and social order"],
+    "KnownWeaknesses": ["Lord Acton's dictum that absolute power corrupts absolutely — no institutional check prevents tyrannical drift", "The information problem: suppressing dissent destroys the feedback loops governments need to correct errors", "Historical track record: most authoritarian regimes end in economic stagnation, purges, or violent collapse"],
+    "RhetoricalStyle": "Emphasizes worst-case scenarios of disorder and anarchy, points to failed states as proof that liberty without order is chaos, and appeals to the necessity of decisive leadership in crisis."
   },
   {
     "Category": "Ethics",
     "Movement": "Utilitarianism",
     "Definition": "The ethical doctrine that actions are right if they benefit the majority or maximize total happiness.",
     "OpMove": "Deontology",
-    "RootConflict": "Calculated outcomes/consequences vs. Absolute moral duties."
+    "RootConflict": "Calculated outcomes/consequences vs. Absolute moral duties.",
+    "KeyThinkers": ["Jeremy Bentham", "John Stuart Mill", "Peter Singer"],
+    "SignatureArguments": ["Bentham's felicific calculus: moral decisions can be quantified by measuring units of pleasure and pain", "Singer's Drowning Child argument: if you can prevent suffering at minimal cost to yourself, you are morally obligated to do so", "The greatest happiness principle: the action producing the most aggregate well-being is by definition the right one"],
+    "KnownWeaknesses": ["The Utility Monster: a being that gains enormous pleasure from others' suffering would justify their torture", "Bernard Williams' integrity objection: utilitarianism alienates agents from their own deepest commitments and projects", "The measurement problem: interpersonal comparison of utility is philosophically intractable"],
+    "RhetoricalStyle": "Quantifies consequences, appeals to impartiality and the greatest good for the greatest number, and uses vivid trolley-problem-style scenarios to force trade-off reasoning."
   },
   {
     "Category": "Ethics",
     "Movement": "Deontology",
     "Definition": "The ethical theory that the morality of an action should be based on whether that action itself is right or wrong under a series of rules.",
     "OpMove": "Utilitarianism",
-    "RootConflict": "Absolute moral duties vs. Calculated outcomes/consequences."
+    "RootConflict": "Absolute moral duties vs. Calculated outcomes/consequences.",
+    "KeyThinkers": ["Immanuel Kant", "Christine Korsgaard", "W.D. Ross"],
+    "SignatureArguments": ["Kant's Categorical Imperative: act only according to maxims you could will to be universal laws", "The humanity formula: never treat persons merely as means to an end, but always also as ends in themselves", "Ross's prima facie duties: fidelity, reparation, gratitude, and non-maleficence bind regardless of consequences"],
+    "KnownWeaknesses": ["The inquiring murderer problem: Kant's absolute prohibition on lying seems to require telling a killer where your friend hides", "Rule conflicts: when two duties clash (truth-telling vs. preventing harm), deontology provides no clear priority mechanism", "Charges of moral rigidity: refusing to violate a rule even when millions of lives hang in the balance seems fanatical"],
+    "RhetoricalStyle": "Appeals to universalizability and logical consistency of moral maxims, invokes human dignity as inviolable, and rejects consequentialist bargaining as treating persons as expendable."
   },
   {
     "Category": "Economics",
     "Movement": "Marxism",
     "Definition": "A method of socioeconomic analysis that views class relations and social conflict as the driver of history.",
     "OpMove": "Anarcho-Capitalism",
-    "RootConflict": "Class-based collective ownership vs. Radical private property rights."
+    "RootConflict": "Class-based collective ownership vs. Radical private property rights.",
+    "KeyThinkers": ["Karl Marx", "Friedrich Engels", "Antonio Gramsci"],
+    "SignatureArguments": ["The labor theory of value: profit is surplus value extracted from workers who are paid less than the value they produce", "Historical materialism: the economic base (mode of production) determines the ideological superstructure (law, culture, religion)", "Gramsci's cultural hegemony: the ruling class maintains power not just by force but by making its worldview seem like common sense"],
+    "KnownWeaknesses": ["The economic calculation problem (Mises): without market prices, socialist planners cannot allocate resources rationally", "The historical record: every attempt at implementing Marxism produced authoritarianism, not worker liberation", "Marginal utility theory replaced the labor theory of value — a diamond's price reflects scarcity and demand, not embedded labor hours"],
+    "RhetoricalStyle": "Performs structural analysis of class interests behind seemingly neutral institutions, uses dialectical reasoning to expose contradictions in capitalism, and historicizes present arrangements as contingent and changeable."
   },
   {
     "Category": "Economics",
     "Movement": "Anarcho-Capitalism",
     "Definition": "A political philosophy that advocates the elimination of the state in favor of individual sovereignty and free markets.",
     "OpMove": "Marxism",
-    "RootConflict": "Radical private property rights vs. Class-based collective ownership."
+    "RootConflict": "Radical private property rights vs. Class-based collective ownership.",
+    "KeyThinkers": ["Murray Rothbard", "David Friedman", "Hans-Hermann Hoppe"],
+    "SignatureArguments": ["The argumentation ethics proof (Hoppe): the act of arguing presupposes self-ownership, making statism performatively contradictory", "Friedman's consequentialist case: private defense agencies competing in a market would be more efficient and accountable than a state monopoly on force", "The non-aggression principle: all state taxation is theft because it is obtained through the implicit threat of violence"],
+    "KnownWeaknesses": ["The warlord problem: without a state, private security firms could become de facto feudal lords with no accountability", "Public goods and externalities (national defense, pollution) cannot be efficiently provided by voluntary market transactions alone", "Historical absence: no anarcho-capitalist society has ever existed, making all claims purely theoretical"],
+    "RhetoricalStyle": "Derives conclusions from the non-aggression principle as an axiom, reframes all government action as violence, and constructs hypothetical market alternatives to every state function."
   },
   {
     "Category": "Philosophy of Life",
     "Movement": "Existentialism",
     "Definition": "The belief that the universe provides no inherent meaning; individuals must create their own purpose through will.",
     "OpMove": "Traditionalism",
-    "RootConflict": "Self-created meaning vs. Inherited ancestral wisdom."
+    "RootConflict": "Self-created meaning vs. Inherited ancestral wisdom.",
+    "KeyThinkers": ["Jean-Paul Sartre", "Simone de Beauvoir", "Albert Camus"],
+    "SignatureArguments": ["Sartre's 'existence precedes essence': there is no pre-given human nature; we are condemned to be free", "Camus's Myth of Sisyphus: even in an absurd universe devoid of meaning, revolt and creative engagement are possible", "De Beauvoir's argument that 'one is not born, but rather becomes, a woman' — identity is constructed through situated freedom"],
+    "KnownWeaknesses": ["The paralysis of radical freedom: if all values are self-created, no basis exists for choosing one project over another", "Heidegger's critique that Sartre's subject-centered freedom ignores our thrownness into a world we did not choose", "Charges of bourgeois individualism: existentialism has no account of structural oppression or collective liberation"],
+    "RhetoricalStyle": "Uses phenomenological descriptions of lived experience (anxiety, absurdity, bad faith), tells stories and parables rather than constructing formal proofs, and challenges the listener to confront their own freedom."
   },
   {
     "Category": "Philosophy of Life",
     "Movement": "Traditionalism",
     "Definition": "The adherence to long-standing customs, religions, and social structures as the best guide for society.",
     "OpMove": "Existentialism",
-    "RootConflict": "Inherited ancestral wisdom vs. Self-created meaning."
+    "RootConflict": "Inherited ancestral wisdom vs. Self-created meaning.",
+    "KeyThinkers": ["Edmund Burke", "Rene Guenon", "Roger Scruton"],
+    "SignatureArguments": ["Burke's argument from prescription: institutions that have survived centuries encode more wisdom than any single reformer can possess", "Chesterton's Fence: do not remove a tradition until you understand why it was erected in the first place", "Guenon's perennial philosophy: all authentic traditions share a common metaphysical core that modernity has lost"],
+    "KnownWeaknesses": ["The survivorship bias: many long-standing traditions (slavery, caste systems) survived precisely because they served ruling-class interests", "The is-ought problem: the mere longevity of a practice says nothing about its moral rightness", "Inability to adapt: rigid traditionalism has historically resisted every moral advance from abolition to women's suffrage"],
+    "RhetoricalStyle": "Invokes the accumulated wisdom of ages, tells cautionary tales of revolutionary hubris (the French Revolution, the Cultural Revolution), and appeals to the organic complexity of inherited institutions."
   },
   {
     "Category": "Environment",
     "Movement": "Anthropocentrism",
     "Definition": "The belief that human beings are the central or most significant entities in the world; nature is a resource.",
     "OpMove": "Deep Ecology",
-    "RootConflict": "Human utility of nature vs. Intrinsic value of all species."
+    "RootConflict": "Human utility of nature vs. Intrinsic value of all species.",
+    "KeyThinkers": ["Francis Bacon", "John Locke", "Gifford Pinchot"],
+    "SignatureArguments": ["Bacon's dominion thesis: nature exists to be 'put to the question' through science for human benefit", "Locke's labor theory of property: mixing labor with nature creates legitimate ownership and justifies resource extraction", "The stewardship argument: humans are the only species capable of managing ecosystems, so conservation itself requires anthropocentric reasoning"],
+    "KnownWeaknesses": ["The tragedy of the commons: treating nature purely as resource leads to systematic overexploitation and collapse", "The sentience objection: many non-human animals demonstrably experience suffering, undermining human-exclusive moral status", "Climate change as empirical refutation: anthropocentric resource extraction has destabilized planetary systems humans depend on"],
+    "RhetoricalStyle": "Appeals to human exceptionalism and the uniqueness of rational agency, frames environmental protection in terms of long-term human welfare, and cites cost-benefit analyses of natural resource management."
   },
   {
     "Category": "Environment",
     "Movement": "Deep Ecology",
     "Definition": "The philosophy regarding human life as just one equal component of a global ecosystem with no special rights.",
     "OpMove": "Anthropocentrism",
-    "RootConflict": "Intrinsic value of all species vs. Human utility of nature."
+    "RootConflict": "Intrinsic value of all species vs. Human utility of nature.",
+    "KeyThinkers": ["Arne Naess", "George Sessions", "Bill Devall"],
+    "SignatureArguments": ["Naess's eight-point platform: the flourishing of non-human life has intrinsic value independent of its usefulness to humans", "The biocentric equality principle: all living organisms have an equal right to live and flourish", "The relational self: the individual is not separate from nature but constituted by ecological relationships"],
+    "KnownWeaknesses": ["The misanthropy charge: prioritizing ecosystems over human welfare leads to eco-authoritarian conclusions about population reduction", "Practical paralysis: if all species have equal moral status, even farming and medicine become ethically impermissible", "The sentience hierarchy problem: equating bacteria with elephants ignores morally relevant differences in capacity for suffering"],
+    "RhetoricalStyle": "Speaks in terms of interconnected webs of life, invokes indigenous ecological wisdom, and reframes human civilization as one strand in a larger biotic community rather than its master."
   },
   {
     "Category": "Social Justice",
     "Movement": "Meritocracy",
     "Definition": "A social system where power and rewards are vested in individuals on the basis of talent and achievement.",
     "OpMove": "Egalitarianism",
-    "RootConflict": "Reward for ability vs. Equality of outcome."
+    "RootConflict": "Reward for ability vs. Equality of outcome.",
+    "KeyThinkers": ["Michael Young", "Charles Murray", "Tyler Cowen"],
+    "SignatureArguments": ["The incentive argument: unequal rewards are necessary to motivate the most talented to develop and deploy their abilities", "The efficiency argument: placing the most competent people in the most important roles maximizes overall social output", "The desert principle: people who work harder and produce more deserve proportionally greater rewards"],
+    "KnownWeaknesses": ["Rawls's natural lottery objection: talents are morally arbitrary genetic endowments, not earned, so they cannot ground desert claims", "The Gatsby Curve: empirically, societies that claim to be meritocratic show strong correlations between parental wealth and children's outcomes", "Michael Young's own warning: meritocracy produces a self-satisfied elite that legitimizes inequality by blaming the losers for their failure"],
+    "RhetoricalStyle": "Cites individual success stories and rags-to-riches narratives, appeals to personal responsibility and effort, and presents unequal outcomes as the natural and fair result of differential talent."
   },
   {
     "Category": "Social Justice",
     "Movement": "Egalitarianism",
     "Definition": "The doctrine that all people are equal and deserve equal rights, opportunities, and resources.",
     "OpMove": "Meritocracy",
-    "RootConflict": "Equality of outcome vs. Reward for ability."
+    "RootConflict": "Equality of outcome vs. Reward for ability.",
+    "KeyThinkers": ["John Rawls", "Amartya Sen", "Elizabeth Anderson"],
+    "SignatureArguments": ["Rawls's Veil of Ignorance: rational agents choosing social principles without knowing their position would choose maximin equality", "Sen's capabilities approach: equality should be measured not by income but by people's substantive freedom to achieve valuable functionings", "Anderson's democratic equality: the point is not to equalize resources but to ensure no one is subordinated or dominated"],
+    "KnownWeaknesses": ["The leveling-down objection: strict equality could be achieved by making everyone worse off rather than lifting anyone up", "Nozick's liberty objection: maintaining equality requires continuous interference with people's free choices and voluntary exchanges", "The brain-drain problem: redistributive policies can drive productive individuals to less egalitarian jurisdictions"],
+    "RhetoricalStyle": "Deploys thought experiments about fairness behind veils of ignorance, cites structural data on inequality (Gini coefficients, mobility statistics), and frames the debate in terms of justice rather than charity."
   },
   {
     "Category": "The Future",
     "Movement": "Accelerationism",
     "Definition": "The idea that existing social/tech systems should be pushed to their limits to trigger radical transformation.",
     "OpMove": "Malthusianism",
-    "RootConflict": "Infinite growth/disruption vs. Finite resource management."
+    "RootConflict": "Infinite growth/disruption vs. Finite resource management.",
+    "KeyThinkers": ["Nick Land", "Alex Williams", "Nick Srnicek"],
+    "SignatureArguments": ["Land's thesis that capitalism is an autonomous process that should be intensified until it escapes human control entirely", "Williams and Srnicek's left-accelerationist argument: repurpose technological infrastructure for post-work liberation rather than resisting it", "The argument that deliberate deceleration is impossible — only pushing through contradictions can produce systemic change"],
+    "KnownWeaknesses": ["The collateral damage problem: accelerating destructive systems harms the most vulnerable people first and worst", "No historical precedent for controlled systemic collapse leading to liberation rather than authoritarianism", "The incoherence charge: deliberately making things worse to make them better is indistinguishable from nihilism"],
+    "RhetoricalStyle": "Uses provocative, deliberately destabilizing rhetoric, borrows the language of cybernetics and systems theory, and frames caution and reform as naive complicity with a doomed status quo."
   },
   {
     "Category": "The Future",
     "Movement": "Malthusianism",
     "Definition": "The theory that population growth will always outpace resource production, requiring strict limits.",
     "OpMove": "Accelerationism",
-    "RootConflict": "Finite resource management vs. Infinite growth/disruption."
+    "RootConflict": "Finite resource management vs. Infinite growth/disruption.",
+    "KeyThinkers": ["Thomas Malthus", "Paul Ehrlich", "Garrett Hardin"],
+    "SignatureArguments": ["Malthus's geometric vs. arithmetic ratio: population grows exponentially while food production grows linearly", "Ehrlich's Population Bomb thesis: overshoot will produce famines and ecological collapse within decades", "Hardin's Tragedy of the Commons: shared resources are inevitably depleted without coercive population and usage controls"],
+    "KnownWeaknesses": ["The Green Revolution refutation: Borlaug's agricultural innovations dramatically increased food production, falsifying Ehrlich's timeline", "The demographic transition: as societies develop, birth rates decline voluntarily without coercive intervention", "Eugenics proximity: population-control arguments have historically been weaponized against marginalized racial and ethnic groups"],
+    "RhetoricalStyle": "Presents mathematical models of exponential growth vs. finite carrying capacity, cites ecological overshoot data, and warns of catastrophic tipping points with an urgent, apocalyptic tone."
   },
   {
     "Category": "Governance",
     "Movement": "Technocracy",
     "Definition": "The government or control of society or industry by an elite of technical experts.",
     "OpMove": "Populism",
-    "RootConflict": "Rule by expert data vs. Rule by the will of the common people."
+    "RootConflict": "Rule by expert data vs. Rule by the will of the common people.",
+    "KeyThinkers": ["Howard Scott", "Thorstein Veblen", "James Burnham"],
+    "SignatureArguments": ["Veblen's argument that engineers and technical experts would manage industrial society more rationally than profit-driven business owners", "The complexity thesis: modern governance problems (climate, pandemics, infrastructure) are too technical for lay democratic judgment", "Burnham's managerial revolution: effective power has already shifted to technocratic administrators regardless of formal political systems"],
+    "KnownWeaknesses": ["The democratic legitimacy problem: unelected experts have no mandate and no accountability to the people they govern", "Hayek's knowledge problem applies to experts too: centralized technical knowledge cannot capture distributed local knowledge", "Expert capture: technocrats are vulnerable to regulatory capture by the industries they are supposed to oversee"],
+    "RhetoricalStyle": "Cites data, models, and peer-reviewed research as decisive authorities, frames political disagreements as knowledge deficits, and contrasts expert consensus with popular ignorance."
   },
   {
     "Category": "Governance",
     "Movement": "Populism",
     "Definition": "A political approach that strives to appeal to ordinary people who feel their concerns are ignored by elites.",
     "OpMove": "Technocracy",
-    "RootConflict": "Rule by the will of the common people vs. Rule by expert data."
+    "RootConflict": "Rule by the will of the common people vs. Rule by expert data.",
+    "KeyThinkers": ["Ernesto Laclau", "Chantal Mouffe", "Cas Mudde"],
+    "SignatureArguments": ["Laclau's empty signifier theory: 'the people' is a constructed political identity that unifies diverse grievances against a common elite enemy", "The democratic mandate argument: legitimate authority flows only from the expressed will of the people, not credentials or expertise", "Mouffe's agonistic pluralism: healthy democracy requires passionate conflict, not the depoliticized consensus technocrats prefer"],
+    "KnownWeaknesses": ["The demagoguery risk: populist leaders routinely exploit popular anger to consolidate personal authoritarian power", "The tyranny of the majority: populist movements can trample minority rights in the name of 'the people'", "Policy incompetence: complex economic and scientific problems genuinely require specialized knowledge that popular intuition lacks"],
+    "RhetoricalStyle": "Speaks in the voice of 'the common people' against corrupt elites, uses emotionally charged narratives of betrayal and dispossession, and frames all opposition as proof of elite conspiracy."
   },
   {
     "Category": "National Identity",
     "Movement": "Cosmopolitanism",
     "Definition": "The idea that all human beings, regardless of their political affiliation, are citizens of a single community.",
     "OpMove": "Nationalism",
-    "RootConflict": "Global citizenship/humanity vs. National sovereignty/culture."
+    "RootConflict": "Global citizenship/humanity vs. National sovereignty/culture.",
+    "KeyThinkers": ["Immanuel Kant", "Martha Nussbaum", "Kwame Anthony Appiah"],
+    "SignatureArguments": ["Kant's perpetual peace: a federation of free republics governed by cosmopolitan right would end war permanently", "Nussbaum's concentric circles: moral concern should extend outward from the self to encompass all humanity, not stop at national borders", "Appiah's rooted cosmopolitanism: universal moral concern is compatible with local cultural identity — you need not abandon particularity"],
+    "KnownWeaknesses": ["The motivation problem: people reliably sacrifice for their community and nation but rarely for abstract humanity", "The democratic deficit: global governance institutions lack democratic legitimacy and accountability to affected populations", "Cultural imperialism charge: 'universal values' often turn out to be Western liberal values imposed on non-Western societies"],
+    "RhetoricalStyle": "Appeals to shared humanity and universal moral principles, cites global challenges (climate, pandemics) that transcend borders, and frames nationalism as a parochial relic of a pre-globalized world."
   },
   {
     "Category": "National Identity",
     "Movement": "Nationalism",
     "Definition": "Identification with one's own nation and support for its interests, especially to the exclusion of others.",
     "OpMove": "Cosmopolitanism",
-    "RootConflict": "National sovereignty/culture vs. Global citizenship/humanity."
+    "RootConflict": "National sovereignty/culture vs. Global citizenship/humanity.",
+    "KeyThinkers": ["Johann Gottfried Herder", "Ernest Gellner", "Yoram Hazony"],
+    "SignatureArguments": ["Herder's Volksgeist: each nation has a unique spirit expressed in its language, customs, and art that deserves preservation", "The self-determination principle: peoples have a right to govern themselves rather than be absorbed into multinational empires", "Hazony's virtue of nationalism: the nation-state is the optimal unit for maintaining ordered liberty and diverse political experimentation"],
+    "KnownWeaknesses": ["Anderson's imagined communities critique: nations are modern political constructions, not natural or eternal entities", "The escalation problem: nationalism historically generates xenophobia, ethnic cleansing, and inter-state war", "The arbitrary borders objection: most national boundaries are products of colonial violence, not organic cultural unity"],
+    "RhetoricalStyle": "Invokes shared history, language, and cultural heritage, uses emotionally resonant symbols (flags, anthems, founding myths), and frames external influences as existential threats to the nation's identity."
   },
   {
     "Category": "Art & Culture",
     "Movement": "Modernism",
     "Definition": "A movement toward modifying traditional beliefs in accordance with modern ideas and experimental forms.",
     "OpMove": "Reactionism",
-    "RootConflict": "Innovation and breaking tradition vs. Returning to past cultural heights."
+    "RootConflict": "Innovation and breaking tradition vs. Returning to past cultural heights.",
+    "KeyThinkers": ["Ezra Pound", "Virginia Woolf", "Le Corbusier"],
+    "SignatureArguments": ["Pound's imperative to 'Make It New': inherited forms are exhausted and only radical formal experimentation can capture modern experience", "Woolf's stream-of-consciousness argument: inner life is fragmented and non-linear, so art must abandon the conventions of linear narrative", "The functionalist principle in architecture: ornament is crime (Loos), form follows function, and design should serve modern life rather than imitate the past"],
+    "KnownWeaknesses": ["Elitism and inaccessibility: modernist works often require specialized education to appreciate, alienating ordinary audiences", "The totalitarian modernism problem: Le Corbusier's rationalist urban planning produced dehumanizing housing projects", "Cultural nihilism charge: endless innovation for its own sake severs art from shared meaning and communal storytelling"],
+    "RhetoricalStyle": "Manifesto-driven, declarative, and iconoclastic; announces ruptures with the past, valorizes novelty and formal experimentation, and treats tradition as an obstacle to authentic expression."
   },
   {
     "Category": "Art & Culture",
     "Movement": "Reactionism",
     "Definition": "Political and social views that favor a return to a previous state of affairs; 'the old ways were better'.",
     "OpMove": "Modernism",
-    "RootConflict": "Returning to past cultural heights vs. Innovation and breaking tradition."
+    "RootConflict": "Returning to past cultural heights vs. Innovation and breaking tradition.",
+    "KeyThinkers": ["Joseph de Maistre", "Julius Evola", "T.S. Eliot"],
+    "SignatureArguments": ["De Maistre's argument that the French Revolution proved Enlightenment rationalism produces only terror and chaos", "Evola's revolt against the modern world: modernity represents a spiritual degeneration from a primordial Golden Age", "Eliot's tradition and the individual talent: genuine creativity is only possible within a living tradition, not through rootless novelty"],
+    "KnownWeaknesses": ["The golden age fallacy: the historical periods reactionaries idealize were marked by slavery, illiteracy, and mass suffering", "Selection bias: reactionaries curate only the high points of past cultures while ignoring the systemic brutality that sustained them", "Political toxicity: reactionary thought has repeatedly been adopted by fascist and authoritarian movements"],
+    "RhetoricalStyle": "Contrasts the perceived beauty and order of past civilizations with the chaos and ugliness of the modern world, uses elegiac and nostalgic language, and frames progress itself as a form of decline."
   },
   {
     "Category": "Internal State",
     "Movement": "Hedonism",
     "Definition": "The ethical theory that pleasure (in the sense of the satisfaction of desires) is the highest good.",
     "OpMove": "Stoicism",
-    "RootConflict": "Pursuit of pleasure vs. Mastery of self and virtue."
+    "RootConflict": "Pursuit of pleasure vs. Mastery of self and virtue.",
+    "KeyThinkers": ["Epicurus", "Jeremy Bentham", "Michel Onfray"],
+    "SignatureArguments": ["Epicurus's cradle argument: from birth, all living creatures pursue pleasure and avoid pain — this is the natural telos", "Bentham's hedonic calculus: pleasure and pain are the only empirically measurable moral quantities, making hedonism the only non-arbitrary ethics", "The argument from motivation: every action, even apparent self-sacrifice, is ultimately motivated by the agent's anticipated pleasure"],
+    "KnownWeaknesses": ["Nozick's Experience Machine: most people would not plug into a machine that provides perfect simulated pleasure, proving we value more than hedonic states", "The adaptation problem: hedonic adaptation means pleasure from any stimulus diminishes over time, trapping hedonists on a treadmill", "Mill's higher/lower pleasures distinction undermines pure hedonism — once you rank pleasures by quality, you need a non-hedonic standard to do the ranking"],
+    "RhetoricalStyle": "Grounds arguments in the immediacy of felt experience, appeals to the self-evidence of pleasure and pain as motivators, and challenges opponents to identify any value that is not ultimately reducible to well-being."
   },
   {
     "Category": "Internal State",
     "Movement": "Stoicism",
     "Definition": "A philosophy of personal ethics informed by logic and a focus on what is within one's own control.",
     "OpMove": "Hedonism",
-    "RootConflict": "Mastery of self and virtue vs. Pursuit of pleasure."
+    "RootConflict": "Mastery of self and virtue vs. Pursuit of pleasure.",
+    "KeyThinkers": ["Epictetus", "Marcus Aurelius", "Seneca"],
+    "SignatureArguments": ["Epictetus's dichotomy of control: suffering arises from desiring things outside our power; focus only on what you can control (your judgments and actions)", "Marcus Aurelius's meditation on impermanence: recognizing that all external things are transient frees you from attachment", "The discipline of assent: emotions are not caused by events but by our judgments about events — change the judgment, change the emotion"],
+    "KnownWeaknesses": ["The passivity objection: focusing only on what you control can become an excuse for political quietism and acceptance of injustice", "Emotional suppression: modern psychology shows that suppressing rather than processing emotions causes long-term psychological harm", "The privilege critique: Stoic detachment is easier to practice from Marcus Aurelius's palace than from the position of the enslaved"],
+    "RhetoricalStyle": "Speaks in calm, measured aphorisms, uses concrete exercises and practices (morning reflection, negative visualization), and frames emotional reactions as errors in judgment to be corrected through reason."
   },
   {
     "Category": "Science & Nature",
     "Movement": "Empiricism",
     "Definition": "The theory that all knowledge is derived from sense-experience and hard evidence.",
     "OpMove": "Skepticism",
-    "RootConflict": "The reliability of evidence vs. The impossibility of absolute certainty."
+    "RootConflict": "The reliability of evidence vs. The impossibility of absolute certainty.",
+    "KeyThinkers": ["John Locke", "David Hume", "John Stuart Mill"],
+    "SignatureArguments": ["Locke's tabula rasa: the mind begins as a blank slate; all ideas originate from sensory experience, not innate reason", "Hume's copy principle: every simple idea is a copy of a prior sensory impression — no impression, no legitimate idea", "Mill's methods of experimental inquiry: agreement, difference, concomitant variation, and residues as the logic of empirical discovery"],
+    "KnownWeaknesses": ["The problem of induction (Hume's own critique): no number of observed instances logically guarantees the next instance will conform", "Theory-ladenness of observation (Kuhn, Hanson): what we 'see' is always shaped by prior theoretical commitments, so pure observation is impossible", "The problem of unobservables: electrons, quarks, and gravitational fields are never directly observed, yet empiricism must account for knowledge of them"],
+    "RhetoricalStyle": "Demands observable evidence for every claim, invokes experimental results and replicable data, and dismisses purely speculative or a priori reasoning as meaningless metaphysics."
   },
   {
     "Category": "Science & Nature",
     "Movement": "Skepticism",
     "Definition": "The philosophy of doubting knowledge claims and requiring proof for every assertion.",
     "OpMove": "Empiricism",
-    "RootConflict": "The impossibility of absolute certainty vs. The reliability of evidence."
+    "RootConflict": "The impossibility of absolute certainty vs. The reliability of evidence.",
+    "KeyThinkers": ["Pyrrho of Elis", "Sextus Empiricus", "David Hume"],
+    "SignatureArguments": ["Agrippan trilemma: every justification leads to infinite regress, circularity, or arbitrary assumption — so no belief is truly justified", "The problem of the criterion: to know anything, you need a criterion of knowledge, but to validate the criterion you need prior knowledge — an infinite regress", "Brain-in-a-vat scenarios (modernized Cartesian doubt): you cannot distinguish genuine experience from perfect simulation, so certainty is impossible"],
+    "KnownWeaknesses": ["The self-refutation problem: the claim 'no knowledge is certain' appears to be itself a certain knowledge claim", "Practical irrelevance: universal skepticism provides no guidance for action — we must act on beliefs regardless of their theoretical certainty", "Hume's own concession: skeptical arguments are irrefutable in the study but impotent in daily life — nature compels belief"],
+    "RhetoricalStyle": "Systematically dismantles the justifications offered for any claim, poses regress and circularity challenges, and uses thought experiments to undermine confidence in apparently obvious truths."
   },
   {
     "Category": "Economic Distribution",
     "Movement": "Keynesianism",
     "Definition": "The belief that government intervention and spending are necessary to manage the economy and prevent crises.",
     "OpMove": "Austrian Economics",
-    "RootConflict": "State management/intervention vs. Spontaneous market order/non-intervention."
+    "RootConflict": "State management/intervention vs. Spontaneous market order/non-intervention.",
+    "KeyThinkers": ["John Maynard Keynes", "Paul Krugman", "Hyman Minsky"],
+    "SignatureArguments": ["The paradox of thrift: individual rationality (saving during recession) produces collective irrationality (deepening the downturn)", "Liquidity trap theory: when interest rates hit zero, only fiscal stimulus can restore aggregate demand", "Minsky's financial instability hypothesis: stability itself breeds complacency and risk-taking, making periodic crises endogenous to capitalism"],
+    "KnownWeaknesses": ["Crowding out: government borrowing may raise interest rates and displace private investment, reducing the multiplier effect", "Ricardian equivalence (Barro): rational agents anticipate future taxes to pay for current deficits, so stimulus has no net effect on demand", "Political economy critique: once politicians gain spending powers, they never cut back — Keynesian deficits become permanent rather than counter-cyclical"],
+    "RhetoricalStyle": "Cites macroeconomic data (GDP, unemployment, multiplier effects), invokes the fallacy of composition to distinguish individual from aggregate behavior, and presents government action as pragmatic crisis management."
   },
   {
     "Category": "Economic Distribution",
     "Movement": "Austrian Economics",
     "Definition": "A school of thought favoring strict adherence to individual choice and zero government interference in the money supply.",
     "OpMove": "Keynesianism",
-    "RootConflict": "Spontaneous market order/non-intervention vs. State management/intervention."
+    "RootConflict": "Spontaneous market order/non-intervention vs. State management/intervention.",
+    "KeyThinkers": ["Ludwig von Mises", "Friedrich Hayek", "Carl Menger"],
+    "SignatureArguments": ["Mises's economic calculation argument: without market prices generated by private property exchange, rational economic calculation is impossible", "Hayek's spontaneous order: the price system coordinates dispersed knowledge no central planner could aggregate", "Austrian Business Cycle Theory: central bank credit expansion artificially lowers interest rates, causing malinvestment booms that inevitably bust"],
+    "KnownWeaknesses": ["Unfalsifiability charge: Austrians reject econometric testing, making their theories empirically unfalsifiable by their own methodological standards", "The Great Depression problem: laissez-faire prescriptions during the 1930s deepened the crisis until government intervention reversed it", "Menger's regression theorem and praxeology are dismissed by mainstream economics as pre-scientific armchair reasoning"],
+    "RhetoricalStyle": "Reasons deductively from axioms about human action (praxeology), constructs elaborate causal chains from first principles, and warns of unintended consequences with historical examples of government failure."
   },
   {
     "Category": "Human Nature",
     "Movement": "Optimism",
     "Definition": "The doctrine that this is the best of all possible worlds and that humanity is inherently improving.",
     "OpMove": "Pessimism",
-    "RootConflict": "Inherent progress and goodness vs. Inherent suffering and decline."
+    "RootConflict": "Inherent progress and goodness vs. Inherent suffering and decline.",
+    "KeyThinkers": ["Gottfried Wilhelm Leibniz", "Steven Pinker", "Hans Rosling"],
+    "SignatureArguments": ["Leibniz's theodicy: God, being perfect, created the best of all possible worlds — apparent evil serves a greater good", "Pinker's declining violence thesis: by every measurable metric (war deaths, murder rates, poverty), the world has been improving for centuries", "Rosling's factfulness argument: systematic cognitive biases (negativity bias, gap instinct) make people perceive decline where data shows progress"],
+    "KnownWeaknesses": ["Voltaire's Candide refutation: the Lisbon earthquake made Leibniz's 'best possible world' seem absurd in the face of gratuitous suffering", "Survivorship bias: progress metrics measure only those who survived — they cannot account for the suffering of those extinguished along the way", "The complacency trap: optimism about long-term trends can justify ignoring present injustices and urgent crises"],
+    "RhetoricalStyle": "Marshals long-run statistical trends and data visualizations, reframes pessimistic narratives as cognitive biases, and challenges opponents to identify a past era they would actually prefer to live in."
   },
   {
     "Category": "Human Nature",
     "Movement": "Pessimism",
     "Definition": "The belief that the world has a negative value and that suffering outweighs any potential for progress.",
     "OpMove": "Optimism",
-    "RootConflict": "Inherent suffering and decline vs. Inherent progress and goodness."
+    "RootConflict": "Inherent suffering and decline vs. Inherent progress and goodness.",
+    "KeyThinkers": ["Arthur Schopenhauer", "Emil Cioran", "David Benatar"],
+    "SignatureArguments": ["Schopenhauer's will-to-live thesis: existence is driven by a blind, insatiable will that produces perpetual suffering and fleeting satisfaction", "Benatar's asymmetry argument: the absence of suffering is good, but the absence of pleasure is not bad — therefore, non-existence is preferable to existence", "Cioran's argument from lucidity: clear-eyed examination of the human condition reveals that optimism is a biological delusion that prevents us from seeing the truth"],
+    "KnownWeaknesses": ["The performative contradiction: if existence is truly worse than non-existence, the pessimist's continued survival undermines their own argument", "The mood fallacy: pessimism may reflect depressive temperament rather than philosophical insight", "The unlivability objection: a philosophy that counsels non-existence provides no framework for those who must continue living"],
+    "RhetoricalStyle": "Employs aphoristic, literary prose, dwells on the inescapability of suffering and death, and treats optimistic counterarguments as evidence of self-deception rather than genuine insight."
   },
   {
     "Category": "Law & Justice",
     "Movement": "Legal Positivism",
     "Definition": "The view that laws are rules made by human beings and that there is no inherent link between law and morality.",
     "OpMove": "Natural Law",
-    "RootConflict": "Man-made social contracts vs. Universal, objective moral laws."
+    "RootConflict": "Man-made social contracts vs. Universal, objective moral laws.",
+    "KeyThinkers": ["John Austin", "H.L.A. Hart", "Hans Kelsen"],
+    "SignatureArguments": ["Austin's command theory: law is the command of a sovereign backed by the threat of sanction — nothing more", "Hart's rule of recognition: legal validity is determined by social rules accepted by officials, not by moral content", "Kelsen's pure theory of law: legal science must separate the study of law (Sollen) from the study of morality and politics to maintain rigor"],
+    "KnownWeaknesses": ["The Nazi law problem: legal positivism seems to require calling unjust laws (Nuremberg Laws) 'valid law,' which many find morally repugnant", "Hart-Fuller debate: Fuller argued that law necessarily has an inner morality (procedural fairness) that positivism cannot account for", "The obedience question: if law has no moral authority, there is no principled reason for citizens to obey it beyond fear of punishment"],
+    "RhetoricalStyle": "Maintains strict analytical separation between what the law is and what it ought to be, appeals to institutional facts and official practice, and dismisses natural law reasoning as moralizing disguised as jurisprudence."
   },
   {
     "Category": "Law & Justice",
     "Movement": "Natural Law",
     "Definition": "The philosophy that certain rights or values are inherent by virtue of human nature and universally cognizable through reason.",
     "OpMove": "Legal Positivism",
-    "RootConflict": "Universal, objective moral laws vs. Man-made social contracts."
+    "RootConflict": "Universal, objective moral laws vs. Man-made social contracts.",
+    "KeyThinkers": ["Thomas Aquinas", "John Finnis", "Hugo Grotius"],
+    "SignatureArguments": ["Aquinas's participation thesis: human law derives its authority from its conformity to eternal and natural law, which is accessible through reason", "Finnis's basic goods theory: there are self-evident basic goods (life, knowledge, play, friendship) that ground objective moral and legal principles", "The Nuremberg defense rebuttal: 'I was following orders' fails because unjust laws are not truly laws — lex iniusta non est lex"],
+    "KnownWeaknesses": ["Hume's is-ought guillotine: you cannot derive moral obligations from factual descriptions of human nature", "The pluralism problem: different cultures derive radically different 'natural laws' from human nature, undermining claims to universality", "The theistic dependence critique: stripped of divine command theory, natural law struggles to explain why nature has normative authority"],
+    "RhetoricalStyle": "Appeals to universal human reason and the self-evidence of basic goods, invokes historical atrocities as proof that positivism fails, and grounds legal argument in a vision of human flourishing."
   },
   {
     "Category": "Social Structure",
     "Movement": "Collectivism",
     "Definition": "The practice of giving a group priority over each individual in it.",
     "OpMove": "Objectivism",
-    "RootConflict": "The priority of the group vs. The virtue of selfishness/individualism."
+    "RootConflict": "The priority of the group vs. The virtue of selfishness/individualism.",
+    "KeyThinkers": ["Emile Durkheim", "Mao Zedong", "Ferdinand Tonnies"],
+    "SignatureArguments": ["Durkheim's social facts thesis: collective phenomena (norms, institutions) are real forces that constrain individuals and cannot be reduced to individual psychology", "The free-rider argument: without collective obligation, individuals will exploit shared resources while contributing nothing", "Tonnies's Gemeinschaft ideal: organic community bonds (family, village, guild) produce human flourishing that individualistic Gesellschaft cannot"],
+    "KnownWeaknesses": ["The totalitarian slide: historically, collectivist regimes from the USSR to Maoist China have sacrificed millions of individuals for 'the greater good'", "The aggregation fallacy: 'the group' has no mind or will — attributing interests to it mystifies the power of whoever claims to speak for it", "Hayek's critique: collectivist planning inevitably requires coercion because individuals' diverse goals cannot be harmonized without force"],
+    "RhetoricalStyle": "Emphasizes solidarity, mutual obligation, and the social nature of the self, uses examples of collective achievements (public health, infrastructure), and frames individualism as atomistic selfishness."
   },
   {
     "Category": "Social Structure",
     "Movement": "Objectivism",
     "Definition": "The philosophy that the proper moral purpose of one's life is the pursuit of one's own happiness (rational self-interest).",
     "OpMove": "Collectivism",
-    "RootConflict": "The virtue of selfishness/individualism vs. The priority of the group."
+    "RootConflict": "The virtue of selfishness/individualism vs. The priority of the group.",
+    "KeyThinkers": ["Ayn Rand", "Leonard Peikoff", "Nathaniel Branden"],
+    "SignatureArguments": ["Rand's argument from life: since life is the fundamental value that makes all other values possible, rational self-interest is the only moral standard", "The trader principle: moral human relationships are voluntary exchanges of value for value, not sacrificial duties", "The argument against altruism: self-sacrifice is not noble but self-destructive, and a society of self-sacrificers is a society of parasites and victims"],
+    "KnownWeaknesses": ["The narrow psychology critique: Objectivism's model of rational self-interest ignores the empirical reality of altruistic motivation, empathy, and cooperation", "Nozick's observation that Rand's arguments often reduce to 'It would be terrible if Objectivism were false, therefore it is true'", "The public goods problem: rational self-interest cannot solve collective action problems like pollution, national defense, or pandemic response"],
+    "RhetoricalStyle": "Speaks in absolutist moral declarations, uses heroic individualist narratives (Howard Roark, John Galt), and treats any concession to collectivism as a capitulation to mediocrity and parasitism."
   },
   {
     "Category": "Religious Philosophy",
     "Movement": "Secular Humanism",
     "Definition": "A worldview that emphasizes human reason, ethics, and justice while rejecting religious dogma and supernaturalism.",
     "OpMove": "Theocentrism",
-    "RootConflict": "Human-centered ethics vs. God-centered authority and divine law."
+    "RootConflict": "Human-centered ethics vs. God-centered authority and divine law.",
+    "KeyThinkers": ["Bertrand Russell", "Paul Kurtz", "A.C. Grayling"],
+    "SignatureArguments": ["Russell's teapot: the burden of proof lies on those who assert the existence of God, not on those who deny it", "The Euthyphro dilemma: if morality depends on God's commands, it is arbitrary; if God commands what is good, then goodness is independent of God", "Kurtz's affirmative case: humanistic ethics grounded in empathy, reason, and shared human needs provide a more reliable moral foundation than divine revelation"],
+    "KnownWeaknesses": ["The grounding problem: without a transcendent source, secular humanism struggles to explain why human dignity has objective moral weight", "Dostoevsky's challenge: 'If God does not exist, everything is permitted' — secular morality may lack the motivational force of divine command", "The historical record objection: secular regimes (Soviet Union, Maoist China) produced atrocities rivaling or exceeding religious ones"],
+    "RhetoricalStyle": "Appeals to reason, evidence, and the scientific method, invokes the history of religious persecution and dogmatism, and frames human autonomy as the foundation of ethical progress."
   },
   {
     "Category": "Religious Philosophy",
     "Movement": "Theocentrism",
     "Definition": "The belief that God is the central aspect to existence; all ethics and laws must flow from divine will.",
     "OpMove": "Secular Humanism",
-    "RootConflict": "God-centered authority and divine law vs. Human-centered ethics."
+    "RootConflict": "God-centered authority and divine law vs. Human-centered ethics.",
+    "KeyThinkers": ["Thomas Aquinas", "John Calvin", "Al-Ghazali"],
+    "SignatureArguments": ["The moral argument for God: objective moral values exist; they can only be grounded in a transcendent, personal God; therefore God exists", "Calvin's total depravity doctrine: human reason is so corrupted by sin that divine revelation is the only reliable source of moral knowledge", "Al-Ghazali's occasionalism: natural causation is an illusion — God directly wills every event, making theocentric understanding the only coherent worldview"],
+    "KnownWeaknesses": ["The Euthyphro dilemma remains unanswered: divine command theory either makes morality arbitrary or admits a standard independent of God", "The problem of evil: an omnipotent, omniscient, benevolent God is logically incompatible with the existence of gratuitous suffering", "Sectarian conflict: theocentrism provides no neutral mechanism for adjudicating between competing divine revelations (Christianity vs. Islam vs. Judaism)"],
+    "RhetoricalStyle": "Cites scripture and theological tradition as authoritative, frames human reason as fallen and insufficient without divine guidance, and appeals to the cosmic stakes of eternal salvation or damnation."
   },
   {
     "Category": "Environmental Strategy",
     "Movement": "Eco-Modernism",
     "Definition": "The belief that humanity can protect nature by using high-tech intensification (nuclear, GMOs) to decouple from the environment.",
     "OpMove": "Agrarianism",
-    "RootConflict": "Technological decoupling vs. Close connection to the land/manual labor."
+    "RootConflict": "Technological decoupling vs. Close connection to the land/manual labor.",
+    "KeyThinkers": ["Stewart Brand", "Ted Nordhaus", "Michael Shellenberger"],
+    "SignatureArguments": ["The decoupling thesis: intensive agriculture, nuclear energy, and urbanization can shrink humanity's environmental footprint by producing more from less land", "Brand's 'We are as gods' argument: since technology has already transformed the planet, the responsible course is to get good at planetary management rather than retreat", "The land-sparing argument: high-yield farming on less acreage frees more land for wild nature than low-yield organic farming spread over larger areas"],
+    "KnownWeaknesses": ["The Jevons Paradox: efficiency gains often increase total resource consumption rather than reducing it", "Nuclear waste and GMO uncertainty: technological optimism discounts poorly understood long-term risks and tail events", "Environmental justice critique: high-tech solutions are typically sited in marginalized communities that bear disproportionate pollution burdens"],
+    "RhetoricalStyle": "Cites lifecycle analyses and land-use data, embraces technologies environmentalists traditionally oppose (nuclear, GMOs), and frames anti-technology environmentalism as counterproductive romanticism."
   },
   {
     "Category": "Environmental Strategy",
     "Movement": "Agrarianism",
     "Definition": "A social philosophy that values rural society, traditional farming, and the family farm as superior to urban life.",
     "OpMove": "Eco-Modernism",
-    "RootConflict": "Close connection to the land/manual labor vs. Technological decoupling."
+    "RootConflict": "Close connection to the land/manual labor vs. Technological decoupling.",
+    "KeyThinkers": ["Wendell Berry", "Thomas Jefferson", "Victor Davis Hanson"],
+    "SignatureArguments": ["Berry's argument that industrial agriculture destroys topsoil, communities, and the farmer's embodied knowledge of the land", "Jefferson's yeoman farmer ideal: independent smallholders are the foundation of republican virtue and democratic citizenship", "The resilience argument: diversified local food systems are more robust against supply chain disruptions than centralized industrial monocultures"],
+    "KnownWeaknesses": ["The productivity gap: traditional farming cannot feed 8 billion people — returning to pre-industrial methods would cause mass starvation", "Romanticization of rural life ignores its historical reality of backbreaking labor, poverty, and limited opportunity", "The scalability problem: agrarianism offers no viable path from current industrial food systems to its ideal without catastrophic transition costs"],
+    "RhetoricalStyle": "Speaks in earthy, place-based language rooted in personal experience of farming, invokes the wisdom of soil and seasons, and contrasts the wholeness of rural life with the alienation of industrial modernity."
   },
   {
     "Category": "Historical Change",
     "Movement": "Reformism",
     "Definition": "The belief that gradual, democratic changes within existing institutions can improve society.",
     "OpMove": "Revolutionism",
-    "RootConflict": "Slow institutional reform vs. Total systemic overthrow."
+    "RootConflict": "Slow institutional reform vs. Total systemic overthrow.",
+    "KeyThinkers": ["Eduard Bernstein", "Martin Luther King Jr.", "John Stuart Mill"],
+    "SignatureArguments": ["Bernstein's evolutionary socialism: the working class can achieve its goals through democratic participation and trade unions without violent revolution", "King's argument from the arc of moral universe: nonviolent, persistent reform bends institutions toward justice without the chaos of revolution", "The Burkean incremental case: small, tested reforms are reversible when they fail; revolutions are not"],
+    "KnownWeaknesses": ["Rosa Luxemburg's critique: reformism is co-opted by the system it seeks to change, becoming a pressure valve that prevents real transformation", "The urgency objection: gradualism is a privilege — those suffering now cannot wait for incremental improvement over generations", "Structural capture: existing institutions have built-in mechanisms (lobbying, gerrymandering) that neutralize reforms threatening entrenched power"],
+    "RhetoricalStyle": "Cites historical examples of successful peaceful transitions, appeals to pragmatism and the avoidance of violence, and frames revolution as reckless gambling with human lives."
   },
   {
     "Category": "Historical Change",
     "Movement": "Revolutionism",
     "Definition": "The belief that existing systems are too corrupt to fix and must be completely destroyed to build something new.",
     "OpMove": "Reformism",
-    "RootConflict": "Total systemic overthrow vs. Slow institutional reform."
+    "RootConflict": "Total systemic overthrow vs. Slow institutional reform.",
+    "KeyThinkers": ["Vladimir Lenin", "Frantz Fanon", "Che Guevara"],
+    "SignatureArguments": ["Lenin's vanguard party theory: the oppressed cannot achieve liberation through existing institutions because those institutions are designed to prevent it", "Fanon's argument in The Wretched of the Earth: colonial violence can only be answered by revolutionary violence, which is also psychologically liberating for the colonized", "The structural impossibility thesis: reform within a system designed to reproduce inequality merely reproduces inequality with a progressive veneer"],
+    "KnownWeaknesses": ["The Thermidor problem: revolutions consistently devour their own children — the revolutionary vanguard becomes the new ruling class", "The humanitarian cost: every major revolution (French, Russian, Chinese) produced mass death, famine, and authoritarian consolidation", "The blank-slate fallacy: revolutionaries assume they can design a new society from scratch, ignoring the institutional knowledge embedded in existing systems"],
+    "RhetoricalStyle": "Uses urgent, militant language about oppression and liberation, cites the structural violence of the status quo to justify revolutionary violence, and frames moderation as complicity with the oppressor."
   },
   {
     "Category": "Knowledge & Mind",
     "Movement": "Physicalism",
     "Definition": "The doctrine that everything is physical; there is nothing over and above the physical world (no soul/spirit).",
     "OpMove": "Idealism",
-    "RootConflict": "Reality as purely material vs. Reality as a construct of the mind/spirit."
+    "RootConflict": "Reality as purely material vs. Reality as a construct of the mind/spirit.",
+    "KeyThinkers": ["Daniel Dennett", "Patricia Churchland", "J.J.C. Smart"],
+    "SignatureArguments": ["The causal closure argument: since every physical event has a sufficient physical cause, there is no causal role for non-physical mental substances", "Churchland's eliminative materialism: folk-psychological concepts (beliefs, desires) will be replaced by neuroscientific descriptions, just as phlogiston was replaced by oxygen", "Smart's identity theory: mental states simply are brain states — pain is identical to C-fiber firing, not merely correlated with it"],
+    "KnownWeaknesses": ["Chalmers's hard problem of consciousness: no physical account explains why there is subjective experience ('what it is like') at all", "Jackson's Mary's Room: a color scientist who has never seen red learns something new upon seeing it, suggesting qualia are not captured by physical knowledge", "The explanatory gap: even a complete neurological description of the brain leaves unexplained why those physical processes give rise to conscious experience"],
+    "RhetoricalStyle": "Appeals to the success of neuroscience and the parsimony of a single-substance ontology, dismisses non-physical entities as explanatorily idle, and reframes folk-psychological intuitions as pre-scientific holdovers."
   },
   {
     "Category": "Knowledge & Mind",
     "Movement": "Idealism",
     "Definition": "The group of philosophies which assert that reality is fundamentally mental, mentally constructed, or otherwise immaterial.",
     "OpMove": "Physicalism",
-    "RootConflict": "Reality as a construct of the mind/spirit vs. Reality as purely material."
+    "RootConflict": "Reality as a construct of the mind/spirit vs. Reality as purely material.",
+    "KeyThinkers": ["George Berkeley", "G.W.F. Hegel", "Bernardo Kastrup"],
+    "SignatureArguments": ["Berkeley's esse est percipi: to exist is to be perceived — material objects are collections of ideas in minds, not independent substances", "Hegel's dialectical idealism: reality is the self-unfolding of Absolute Spirit through thesis-antithesis-synthesis", "Kastrup's analytic idealism: consciousness is the fundamental substrate and the physical world is what universal consciousness looks like from the outside"],
+    "KnownWeaknesses": ["Samuel Johnson's stone-kicking refutation: the stubborn resistance of physical objects seems to demonstrate mind-independent reality", "The interaction problem reversed: if reality is mental, idealism cannot explain why it exhibits law-like physical regularities discoverable by science", "Occam's razor objection: positing universal mind as the substrate of reality is a more extravagant metaphysical commitment than accepting physical matter at face value"],
+    "RhetoricalStyle": "Starts from the immediacy of conscious experience as the one thing we cannot doubt, deconstructs the concept of 'matter' as itself a mental representation, and argues that physicalism smuggles in unexplained consciousness."
   },
   {
     "Category": "Art & Aesthetics",
     "Movement": "Romanticism",
     "Definition": "The emphasis on inspiration, subjectivity, and the primacy of the individual's emotions over cold reason.",
     "OpMove": "Classicism",
-    "RootConflict": "Emotional intensity/individualism vs. Order, balance, and restraint."
+    "RootConflict": "Emotional intensity/individualism vs. Order, balance, and restraint.",
+    "KeyThinkers": ["William Wordsworth", "Friedrich Schiller", "Eugene Delacroix"],
+    "SignatureArguments": ["Wordsworth's 'spontaneous overflow of powerful feelings': authentic art arises from emotional intensity, not adherence to formal rules", "The sublime argument: nature's overwhelming power (storms, mountains, chasms) reveals truths that rational analysis cannot capture", "Schiller's aesthetic education: the play drive reconciling sense and reason is the highest expression of human freedom, not rule-following"],
+    "KnownWeaknesses": ["The sentimentality charge: privileging emotion over form produces self-indulgent, undisciplined art", "Romantic genius cult: elevating individual feeling leads to narcissism and the dismissal of craft, technique, and tradition", "Political naivety: Romantic nationalism (blood and soil, Volksgeist) fed directly into 20th-century fascism"],
+    "RhetoricalStyle": "Speaks in vivid, emotionally charged imagery, appeals to personal experience and the authority of feeling, and treats formal rules and rational analysis as constraints that suppress authentic creative expression."
   },
   {
     "Category": "Art & Aesthetics",
     "Movement": "Classicism",
     "Definition": "The following of ancient Greek or Roman principles and style in art and literature, emphasizing harmony and restraint.",
     "OpMove": "Romanticism",
-    "RootConflict": "Order, balance, and restraint vs. Emotional intensity/individualism."
+    "RootConflict": "Order, balance, and restraint vs. Emotional intensity/individualism.",
+    "KeyThinkers": ["Johann Joachim Winckelmann", "Nicolas Boileau", "Joshua Reynolds"],
+    "SignatureArguments": ["Winckelmann's 'noble simplicity and quiet grandeur': the highest art achieves universal beauty through restraint, proportion, and idealized form", "Aristotle's Poetics as foundation: art should follow rules of unity (time, place, action) to achieve catharsis through structured narrative", "Reynolds's doctrine of the Grand Style: art should represent ideal types rather than particular individuals, elevating the viewer above the merely personal"],
+    "KnownWeaknesses": ["The rigidity objection: strict adherence to classical rules produces formulaic, lifeless imitation rather than living art", "Eurocentrism: 'classical' standards privilege Greco-Roman aesthetics while dismissing equally sophisticated non-Western artistic traditions", "The elitism problem: classical standards of beauty and decorum historically excluded popular, folk, and lower-class art forms as vulgar"],
+    "RhetoricalStyle": "Invokes the authority of ancient models and established canons of taste, appeals to universal standards of beauty and proportion, and dismisses emotional excess as a failure of artistic discipline."
   },
   {
     "Category": "Conflict & War",
     "Movement": "Pacifism",
     "Definition": "The belief that war and violence are unjustifiable and that all disputes should be settled by peaceful means.",
     "OpMove": "Bellicism",
-    "RootConflict": "Absolute non-violence vs. War as a valid or necessary tool of state."
+    "RootConflict": "Absolute non-violence vs. War as a valid or necessary tool of state.",
+    "KeyThinkers": ["Mahatma Gandhi", "Leo Tolstoy", "Martin Luther King Jr."],
+    "SignatureArguments": ["Gandhi's satyagraha: nonviolent resistance is not passive but actively confronts injustice by exposing its moral bankruptcy", "Tolstoy's argument from the Sermon on the Mount: violence always begets more violence; only unconditional non-resistance can break the cycle", "The pragmatic case: nonviolent movements (Indian independence, Civil Rights) have historically been more successful than violent ones at achieving lasting change"],
+    "KnownWeaknesses": ["The Hitler problem: pacifism in the face of genocidal aggression appears to be moral complicity with mass murder", "The free-rider objection: pacifists enjoy security provided by others' willingness to use force while refusing to contribute to it", "The privilege critique: nonviolence is viable only when the oppressor has a conscience to appeal to — it failed against regimes like Nazi Germany and Pol Pot's Cambodia"],
+    "RhetoricalStyle": "Appeals to moral conscience and the dignity of the opponent, cites historical successes of nonviolent movements, and reframes violence as a failure of imagination and courage."
   },
   {
     "Category": "Conflict & War",
     "Movement": "Bellicism",
     "Definition": "The ideology that war is a positive and necessary part of human society, essential for progress or national health.",
     "OpMove": "Pacifism",
-    "RootConflict": "War as a valid or necessary tool of state vs. Absolute non-violence."
+    "RootConflict": "War as a valid or necessary tool of state vs. Absolute non-violence.",
+    "KeyThinkers": ["Carl von Clausewitz", "Ernst Junger", "Georg Wilhelm Friedrich Hegel"],
+    "SignatureArguments": ["Clausewitz's dictum that war is the continuation of politics by other means — it is a rational instrument of statecraft, not an aberration", "Junger's Storm of Steel argument: combat reveals the deepest truths about human character and forges unbreakable bonds of solidarity", "Hegel's thesis that war prevents the spiritual stagnation of perpetual peace and renews nations through existential struggle"],
+    "KnownWeaknesses": ["The total war problem: industrial and nuclear warfare makes the costs so catastrophic that no political objective can justify them", "Survivorship bias: bellicist glorification of war comes from those who survived; the dead cannot testify", "The civilian cost: modern warfare kills far more civilians than combatants, undermining any claim to noble purpose or national renewal"],
+    "RhetoricalStyle": "Uses strategic and martial language, appeals to historical examples of wars that produced positive outcomes (American Revolution, defeat of Nazism), and frames peace movements as dangerously naive."
   },
   {
     "Category": "Epistemology",
     "Movement": "Foundationalism",
     "Definition": "The theory that all knowledge rests on a foundation of basic, self-evident beliefs that require no further justification.",
     "OpMove": "Coherentism",
-    "RootConflict": "Self-evident core truths vs. Interlocking web of mutually supporting beliefs."
+    "RootConflict": "Self-evident core truths vs. Interlocking web of mutually supporting beliefs.",
+    "KeyThinkers": ["Rene Descartes", "Bertrand Russell", "Roderick Chisholm"],
+    "SignatureArguments": ["Descartes's method of doubt: strip away all uncertain beliefs until you reach an indubitable foundation (the Cogito)", "Russell's sense-data theory: immediate sensory experiences are basic beliefs that provide a non-inferential foundation for all empirical knowledge", "The regress argument: justification must terminate somewhere in basic beliefs, or every belief is unjustified (infinite regress is impossible)"],
+    "KnownWeaknesses": ["Sellars's myth of the given: the idea of non-inferential, theory-free sensory foundations is an illusion — all experience is conceptually mediated", "The fragility problem: if the foundation turns out to be flawed (as Descartes's reliance on God's benevolence shows), the entire edifice collapses", "BonJour's critique: basic beliefs are either justified (in which case they need reasons) or unjustified (in which case they cannot ground knowledge)"],
+    "RhetoricalStyle": "Seeks bedrock certainties through systematic doubt, builds knowledge upward from indubitable premises, and frames alternative epistemologies as unable to halt the regress of justification."
   },
   {
     "Category": "Epistemology",
     "Movement": "Coherentism",
     "Definition": "The view that a belief is justified if it 'coheres' or fits consistently with a larger system of beliefs.",
     "OpMove": "Foundationalism",
-    "RootConflict": "Interlocking web of mutually supporting beliefs vs. Self-evident core truths."
+    "RootConflict": "Interlocking web of mutually supporting beliefs vs. Self-evident core truths.",
+    "KeyThinkers": ["W.V.O. Quine", "Laurence BonJour", "Donald Davidson"],
+    "SignatureArguments": ["Quine's web of belief: no belief faces the tribunal of experience in isolation — revision can occur anywhere in the web, including logic and mathematics", "Davidson's argument that coherence among a large body of beliefs is the best available evidence for their truth, since we cannot step outside our beliefs to check them against raw reality", "The symmetry argument: in a coherent system, every belief supports and is supported by others — no privileged foundations are needed"],
+    "KnownWeaknesses": ["The isolation objection: a perfectly coherent set of beliefs could be entirely fictional — coherence alone provides no connection to external reality", "The alternative systems problem: multiple mutually incompatible belief systems can each be internally coherent, with no way to choose between them", "The conservatism bias: coherentism privileges existing belief systems and makes it difficult to accommodate genuinely revolutionary new evidence"],
+    "RhetoricalStyle": "Uses holistic metaphors (webs, networks, ecosystems of belief), emphasizes the interconnectedness of knowledge claims, and argues that the demand for foundations reflects a misguided quest for certainty."
   },
   {
     "Category": "Educational Philosophy",
     "Movement": "Essentialism",
     "Definition": "The educational theory that students should learn a common core of traditional subjects and 'essential' skills.",
     "OpMove": "Progressivism",
-    "RootConflict": "Standardized core curriculum vs. Experiential, student-led learning."
+    "RootConflict": "Standardized core curriculum vs. Experiential, student-led learning.",
+    "KeyThinkers": ["William Bagley", "E.D. Hirsch", "Diane Ravitch"],
+    "SignatureArguments": ["Hirsch's cultural literacy argument: shared background knowledge is essential for reading comprehension and democratic citizenship", "The equity argument: a common core curriculum ensures that disadvantaged students receive the same rigorous content as privileged ones", "Bagley's discipline thesis: systematic instruction in foundational subjects builds the mental discipline and knowledge base students need for advanced learning"],
+    "KnownWeaknesses": ["The rote learning critique: essentialist classrooms prioritize memorization over critical thinking, creativity, and genuine understanding", "Cultural bias: who decides what is 'essential' — the canon typically reflects the values of dominant groups while marginalizing minority perspectives", "The motivation problem: standardized curricula ignore individual student interests and developmental readiness, producing disengagement"],
+    "RhetoricalStyle": "Cites declining test scores and knowledge gaps as evidence of progressive failure, appeals to the necessity of shared cultural literacy, and frames educational debates in terms of rigor vs. laxity."
   },
   {
     "Category": "Educational Philosophy",
     "Movement": "Progressivism",
     "Definition": "An educational movement focusing on the whole child and learning through experience and social interaction.",
     "OpMove": "Essentialism",
-    "RootConflict": "Experiential, student-led learning vs. Standardized core curriculum."
+    "RootConflict": "Experiential, student-led learning vs. Standardized core curriculum.",
+    "KeyThinkers": ["John Dewey", "Maria Montessori", "Paulo Freire"],
+    "SignatureArguments": ["Dewey's learning by doing: education is not preparation for life but life itself — students learn best through active inquiry and problem-solving", "Freire's problem-posing education: the traditional 'banking model' (teacher deposits knowledge into passive students) reproduces oppression; genuine education is dialogical", "Montessori's prepared environment: children are natural learners who thrive when given freedom to explore structured materials at their own pace"],
+    "KnownWeaknesses": ["The knowledge deficit: progressive methods can produce students who think critically about content they were never taught", "The Matthew Effect: students from knowledge-rich homes thrive in unstructured environments while disadvantaged students fall further behind", "Assessment difficulty: experiential learning outcomes are harder to measure, making it difficult to ensure quality and accountability"],
+    "RhetoricalStyle": "Tells stories of student transformation and engaged learning, cites developmental psychology and constructivist research, and frames traditional instruction as authoritarian and deadening."
   },
   {
     "Category": "Law & Governance",
     "Movement": "Judicial Activism",
     "Definition": "The philosophy that the courts should take an active role in solving social problems and interpreting the constitution to meet modern needs.",
     "OpMove": "Judicial Restraint",
-    "RootConflict": "Legislating from the bench vs. Strict adherence to legal precedent/intent."
+    "RootConflict": "Legislating from the bench vs. Strict adherence to legal precedent/intent.",
+    "KeyThinkers": ["Earl Warren", "William Brennan", "Ronald Dworkin"],
+    "SignatureArguments": ["Dworkin's moral reading: the Constitution embodies abstract moral principles (equality, liberty) that judges must interpret in light of evolving moral understanding", "The living constitution doctrine: the framers intended the document to adapt to circumstances they could not foresee", "Brown v. Board of Education as vindication: without judicial activism, racial segregation might have persisted for decades longer"],
+    "KnownWeaknesses": ["The counter-majoritarian difficulty (Bickel): unelected judges overriding democratic legislatures lacks democratic legitimacy", "The slippery slope: once judges become policy-makers, there is no principled limit to their power", "Selective application: judicial activism is praised when it produces outcomes the critic favors and condemned when it does not, revealing it as a political rather than legal principle"],
+    "RhetoricalStyle": "Cites landmark civil rights decisions as moral triumphs, invokes constitutional values of equality and liberty, and frames restraint as complicity with injustice when legislatures fail to act."
   },
   {
     "Category": "Law & Governance",
     "Movement": "Judicial Restraint",
     "Definition": "The theory of judicial interpretation that encourages judges to limit the exercise of their own power and defer to legislatures.",
     "OpMove": "Judicial Activism",
-    "RootConflict": "Strict adherence to legal precedent/intent vs. Legislating from the bench."
+    "RootConflict": "Strict adherence to legal precedent/intent vs. Legislating from the bench.",
+    "KeyThinkers": ["Oliver Wendell Holmes Jr.", "Antonin Scalia", "Robert Bork"],
+    "SignatureArguments": ["Scalia's textualism: judges should interpret laws based on their plain meaning at the time of enactment, not evolving social values", "The separation of powers argument: legislating is the job of elected representatives, not unelected judges with life tenure", "Holmes's deference principle: a law should be upheld unless it violates the Constitution in an unambiguous way — 'a constitution is not intended to embody a particular economic theory'"],
+    "KnownWeaknesses": ["The original meaning problem: framers' intentions are often ambiguous, contradictory, or inapplicable to modern circumstances (internet, bioethics)", "The injustice objection: restraint in the face of unjust legislation (Plessy v. Ferguson) becomes complicity with oppression", "Selective originalism: judges who claim restraint often produce activist results when it suits their ideology (Citizens United, Dobbs)"],
+    "RhetoricalStyle": "Appeals to the text of statutes and the original public meaning of constitutional provisions, emphasizes judicial humility and deference to democratic processes, and warns against rule by an unaccountable judiciary."
   },
   {
     "Category": "Meta-Ethics",
     "Movement": "Moral Realism",
     "Definition": "The position that ethical sentences express propositions that refer to objective features of the world.",
     "OpMove": "Moral Relativism",
-    "RootConflict": "Objective moral facts vs. Morality as a social/cultural construct."
+    "RootConflict": "Objective moral facts vs. Morality as a social/cultural construct.",
+    "KeyThinkers": ["G.E. Moore", "Derek Parfit", "David Enoch"],
+    "SignatureArguments": ["Moore's open question argument: 'good' cannot be reduced to any natural property because it is always an open question whether that property is good", "Parfit's convergence thesis: as rational beings think more carefully about ethics, they converge on the same moral truths, suggesting those truths are objective", "Enoch's indispensability argument: moral facts are indispensable for explaining deliberation — we reason about ethics as if there are right answers, and the best explanation is that there are"],
+    "KnownWeaknesses": ["Mackie's argument from queerness: objective moral properties would be metaphysically and epistemologically unlike anything else in the natural world", "The disagreement problem: persistent cross-cultural moral disagreement is better explained by relativism than by everyone failing to perceive the same objective facts", "The evolutionary debunking argument: our moral intuitions are products of natural selection for reproductive fitness, not truth-tracking mechanisms"],
+    "RhetoricalStyle": "Appeals to the phenomenology of moral experience (some things really are wrong), draws parallels between moral and mathematical objectivity, and challenges relativists to consistently live as if morality is arbitrary."
   },
   {
     "Category": "Meta-Ethics",
     "Movement": "Moral Relativism",
     "Definition": "The view that moral judgments are true or false only relative to some particular standpoint (e.g., a culture).",
     "OpMove": "Moral Realism",
-    "RootConflict": "Morality as a social/cultural construct vs. Objective moral facts."
+    "RootConflict": "Morality as a social/cultural construct vs. Objective moral facts.",
+    "KeyThinkers": ["Gilbert Harman", "David Wong", "Ruth Benedict"],
+    "SignatureArguments": ["Harman's argument from implicit agreements: moral judgments are valid only within the framework of social agreements one has reason to accept", "Benedict's cultural patterns thesis: the enormous diversity of moral systems across cultures demonstrates that morality is a cultural artifact, not a discovered truth", "The argument from tolerance: relativism underwrites respect for cultural diversity, while moral realism licenses cultural imperialism"],
+    "KnownWeaknesses": ["The reformer's dilemma: if morality is culturally relative, there is no ground for criticizing practices like slavery or female genital cutting within cultures that accept them", "The self-refutation problem: 'all morality is relative' either applies to itself (making it relatively true) or claims objective truth (contradicting itself)", "The tolerance paradox: relativism cannot coherently ground a duty to be tolerant, since tolerance would itself be just one culturally relative value among others"],
+    "RhetoricalStyle": "Cites anthropological case studies of moral diversity across cultures, frames moral realism as disguised ethnocentrism, and appeals to humility about the contingency of one's own moral framework."
   },
   {
     "Category": "Philosophy of Mind",
     "Movement": "Dualism",
     "Definition": "The belief that the mind and body are two distinct and separate substances (immaterial mind, material body).",
     "OpMove": "Monism",
-    "RootConflict": "Mind-body separation vs. Single-substance reality (materialism)."
+    "RootConflict": "Mind-body separation vs. Single-substance reality (materialism).",
+    "KeyThinkers": ["Rene Descartes", "David Chalmers", "Karl Popper"],
+    "SignatureArguments": ["Descartes's conceivability argument: I can conceive of my mind existing without my body, so they must be distinct substances", "Chalmers's zombie argument: it is conceivable that a being physically identical to me could lack all conscious experience, proving consciousness is non-physical", "The knowledge argument (Jackson's Mary): complete physical knowledge does not include knowledge of subjective experience, so something non-physical exists"],
+    "KnownWeaknesses": ["Princess Elisabeth's interaction problem: if mind is non-physical, how does it causally interact with the physical body? No dualist has answered this satisfactorily", "Violation of causal closure: modern physics admits no non-physical causes; dualism requires them", "Occam's razor: positing a second substance (immaterial mind) when one substance (matter) might suffice is metaphysically extravagant"],
+    "RhetoricalStyle": "Appeals to the irreducible first-person character of conscious experience, constructs conceivability arguments and thought experiments, and insists that the subjective 'what it is like' cannot be captured by physical description."
   },
   {
     "Category": "Philosophy of Mind",
     "Movement": "Monism",
     "Definition": "The view that reality is composed of only one substance; specifically, that the mind is a function of the physical brain.",
     "OpMove": "Dualism",
-    "RootConflict": "Single-substance reality (materialism) vs. Mind-body separation."
+    "RootConflict": "Single-substance reality (materialism) vs. Mind-body separation.",
+    "KeyThinkers": ["Baruch Spinoza", "Daniel Dennett", "John Searle"],
+    "SignatureArguments": ["Spinoza's substance monism: there is only one substance (God/Nature) with infinite attributes; mind and body are two aspects of the same reality", "Dennett's multiple drafts model: consciousness is not a unified theater but a set of parallel neural processes that create the illusion of a single experiencer", "The neuroscience evidence argument: brain lesions, drugs, and stimulation reliably alter consciousness, proving mental states are brain states"],
+    "KnownWeaknesses": ["The hard problem persists: explaining neural correlates of consciousness does not explain why those processes feel like anything at all", "The Chinese Room (Searle's own argument, ironically): syntax alone does not produce semantics, suggesting that functional descriptions miss something about genuine understanding", "Leibniz's Mill: even if you could walk through an enlarged brain, you would find only mechanical operations — never perception or consciousness"],
+    "RhetoricalStyle": "Points to neuroscientific evidence of brain-mind correlations, appeals to the parsimony and explanatory success of the physical sciences, and treats dualist intuitions as pre-scientific folk psychology."
   },
   {
     "Category": "Global Strategy",
     "Movement": "Isolationism",
     "Definition": "A policy of remaining apart from the affairs or interests of other groups, especially the political affairs of other countries.",
     "OpMove": "Interventionism",
-    "RootConflict": "National detachment vs. Global police/influence roles."
+    "RootConflict": "National detachment vs. Global police/influence roles.",
+    "KeyThinkers": ["George Washington", "Robert Taft", "Pat Buchanan"],
+    "SignatureArguments": ["Washington's Farewell Address warning against 'entangling alliances' that drag nations into foreign conflicts against their interest", "The blowback thesis: intervention abroad creates resentment and terrorism that ultimately harms the intervening nation's own security", "The opportunity cost argument: resources spent on foreign military adventures are resources not spent on domestic infrastructure, education, and welfare"],
+    "KnownWeaknesses": ["The appeasement lesson: isolationism in the 1930s allowed fascist aggression to escalate until world war became unavoidable", "The interdependence reality: in a globalized economy, no nation can insulate itself from international crises (supply chains, pandemics, climate)", "The moral abdication charge: standing by while genocide occurs (Rwanda, Srebrenica) makes isolationism complicit in preventable atrocities"],
+    "RhetoricalStyle": "Invokes the founding fathers and the national interest, calculates the costs of foreign entanglements in blood and treasure, and frames interventionism as imperial overreach that weakens the homeland."
   },
   {
     "Category": "Global Strategy",
     "Movement": "Interventionism",
     "Definition": "A policy of proactive involvement in the affairs of other countries to protect interests or promote values.",
     "OpMove": "Isolationism",
-    "RootConflict": "Global police/influence roles vs. National detachment."
+    "RootConflict": "Global police/influence roles vs. National detachment.",
+    "KeyThinkers": ["Woodrow Wilson", "Samantha Power", "Paul Wolfowitz"],
+    "SignatureArguments": ["Wilson's liberal internationalism: spreading democracy makes the world safer because democracies do not go to war with each other (democratic peace theory)", "Power's Responsibility to Protect (R2P) doctrine: sovereignty is conditional — states that commit genocide forfeit their right to non-interference", "The domino theory: unchecked aggression in one region emboldens aggressors elsewhere, so early intervention prevents larger wars"],
+    "KnownWeaknesses": ["The Iraq War lesson: interventions based on flawed intelligence and messianic ideology can destabilize entire regions and kill hundreds of thousands", "The imperial hypocrisy charge: 'humanitarian intervention' is selectively applied — the US intervenes where it has strategic interests and ignores suffering elsewhere", "Nation-building failure: imposed democracies rarely take root in societies without pre-existing democratic institutions and civic culture"],
+    "RhetoricalStyle": "Invokes universal human rights and the moral imperative to prevent atrocities, cites the Marshall Plan and postwar Japan as success stories, and frames inaction as moral cowardice."
   },
   {
     "Category": "Civilizational Vision",
     "Movement": "Primitivism",
     "Definition": "A philosophy that critiques civilization as inherently corrupting and advocates a return to a non-industrial, hunter-gatherer way of life.",
     "OpMove": "Futurism",
-    "RootConflict": "Return to nature/ancestry vs. Total technological transcendence."
+    "RootConflict": "Return to nature/ancestry vs. Total technological transcendence.",
+    "KeyThinkers": ["Jean-Jacques Rousseau", "John Zerzan", "Marshall Sahlins"],
+    "SignatureArguments": ["Rousseau's noble savage thesis: humans in the state of nature were free and equal; civilization introduced property, inequality, and moral corruption", "Sahlins's original affluent society: hunter-gatherers worked fewer hours, had better nutrition, and more leisure than modern workers — 'progress' is a myth", "Zerzan's argument that symbolic culture (language, math, art) itself is the root of alienation, mediating our direct experience of the world"],
+    "KnownWeaknesses": ["The empirical refutation: archaeological evidence shows pre-civilizational life involved high rates of violence, infant mortality, and starvation", "The population problem: 8 billion people cannot survive as hunter-gatherers — primitivism implies accepting the death of most of humanity", "The romanticism charge: primitivists idealize cultures they have never lived in while enjoying the medical and technological benefits of civilization"],
+    "RhetoricalStyle": "Contrasts the freedom and health of pre-civilizational peoples with the alienation and environmental destruction of modernity, uses anthropological evidence selectively, and frames civilization itself as a disease."
   },
   {
     "Category": "Civilizational Vision",
     "Movement": "Futurism",
     "Definition": "The social and artistic movement that embraces technology, speed, and industrial transformation as the highest human goal.",
     "OpMove": "Primitivism",
-    "RootConflict": "Total technological transcendence vs. Return to nature/ancestry."
+    "RootConflict": "Total technological transcendence vs. Return to nature/ancestry.",
+    "KeyThinkers": ["Filippo Tommaso Marinetti", "Buckminster Fuller", "Vernor Vinge"],
+    "SignatureArguments": ["Marinetti's 1909 Manifesto: 'a roaring motorcar is more beautiful than the Winged Victory of Samothrace' — technology is the new aesthetic", "Fuller's ephemeralization: doing more with less through technological design makes abundance possible for all without redistribution", "Vinge's technological singularity: accelerating technological change will produce superintelligence that transforms civilization beyond recognition"],
+    "KnownWeaknesses": ["The fascism connection: Italian Futurism explicitly allied with Mussolini, and its glorification of war and destruction has dark political implications", "The obsolescence trap: futurists consistently overestimate the pace and benefits of technological change while underestimating disruption costs", "The meaning vacuum: in a fully automated, post-scarcity world, the question of what gives human life purpose becomes urgent and unanswered"],
+    "RhetoricalStyle": "Uses breathless, manifesto-style declarations about technological destiny, frames the past as dead weight to be discarded, and treats hesitation or nostalgia as signs of intellectual and spiritual weakness."
   },
   {
     "Category": "Social Ontology",
     "Movement": "Communitarianism",
     "Definition": "The philosophy that emphasizes the connection between the individual and the community; the group shapes the self.",
     "OpMove": "Atomism",
-    "RootConflict": "The individual as a product of community vs. The individual as an independent self-contained unit."
+    "RootConflict": "The individual as a product of community vs. The individual as an independent self-contained unit.",
+    "KeyThinkers": ["Alasdair MacIntyre", "Charles Taylor", "Michael Sandel"],
+    "SignatureArguments": ["MacIntyre's narrative self: personal identity is constituted by the traditions and communities we are embedded in — the 'unencumbered self' is a fiction", "Sandel's critique of Rawls: the original position strips away everything that makes us who we are (family, culture, commitments), producing a thin, impossible subject", "Taylor's politics of recognition: human flourishing requires communities that recognize and affirm our identities — liberal neutrality is not neutral"],
+    "KnownWeaknesses": ["The oppressive community problem: communities can be stifling, patriarchal, and xenophobic — communitarianism provides no clear basis for individual dissent", "The boundary question: who counts as part of 'the community' is always a political decision that communitarianism tends to leave unexamined", "Liberal critics argue communitarianism is conservative nostalgia for a homogeneous social world that never existed and should not be imposed"],
+    "RhetoricalStyle": "Tells stories about traditions, practices, and the narrative structure of human lives, critiques liberal abstractions as sociologically naive, and appeals to the thick moral vocabularies of particular communities."
   },
   {
     "Category": "Social Ontology",
     "Movement": "Atomism",
     "Definition": "The belief that society is simply a collection of individuals and that all social phenomena can be explained by individual actions.",
     "OpMove": "Communitarianism",
-    "RootConflict": "The individual as an independent self-contained unit vs. The individual as a product of community."
+    "RootConflict": "The individual as an independent self-contained unit vs. The individual as a product of community.",
+    "KeyThinkers": ["Thomas Hobbes", "John Stuart Mill", "Margaret Thatcher"],
+    "SignatureArguments": ["Hobbes's methodological individualism: society is an artificial construct built from the interactions of pre-social, self-interested individuals", "Mill's harm principle: the only legitimate constraint on individual liberty is preventing harm to others — society has no independent interests to impose", "Thatcher's dictum 'there is no such thing as society': only individual men and women and their families exist; collective entities are just convenient fictions"],
+    "KnownWeaknesses": ["Taylor's social thesis: language, rationality, and identity are inherently social achievements — there is no pre-social individual to serve as the building block", "The emergence objection: social phenomena (institutions, markets, cultures) have properties that cannot be reduced to or predicted from individual behavior alone", "The isolation fallacy: treating individuals as self-contained units ignores the empirical reality that human cognition and motivation are shaped by social context from birth"],
+    "RhetoricalStyle": "Explains social phenomena by reducing them to individual choices, preferences, and incentives, defends personal autonomy as primary, and treats appeals to community or solidarity as veiled claims to control over individuals."
   },
   {
     "Category": "Theology",
     "Movement": "Deism",
     "Definition": "Belief in the existence of a supreme being who created the universe but does not intervene in its operation.",
     "OpMove": "Pantheism",
-    "RootConflict": "The Clockmaker/Distant God vs. God as identical with the Universe itself."
+    "RootConflict": "The Clockmaker/Distant God vs. God as identical with the Universe itself.",
+    "KeyThinkers": ["Voltaire", "Thomas Paine", "Thomas Jefferson"],
+    "SignatureArguments": ["The watchmaker analogy (Paley, adopted by deists): the complexity and order of the universe implies an intelligent designer, but one who set the mechanism running and withdrew", "Paine's critique of revelation: all sacred texts are human documents corrupted by priestcraft; only nature reveals the Creator's design", "The argument from natural religion: reason alone can establish God's existence and basic morality without the contradictions and sectarian violence of revealed religion"],
+    "KnownWeaknesses": ["The problem of evil intensified: a God who can intervene but chooses not to is morally worse than one who cannot", "Hume's critique of the design argument: order in nature can be explained by natural processes without positing a designer", "The cold comfort objection: a non-intervening God offers no prayer, no providence, no afterlife — functionally indistinguishable from atheism for practical purposes"],
+    "RhetoricalStyle": "Appeals to reason and the orderliness of nature, critiques organized religion's superstitions and priestcraft, and positions itself as the rational middle ground between atheism and religious dogma."
   },
   {
     "Category": "Theology",
     "Movement": "Pantheism",
     "Definition": "The belief that the universe (or nature as the totality of everything) is identical with divinity.",
     "OpMove": "Deism",
-    "RootConflict": "God as identical with the Universe itself vs. The Clockmaker/Distant God."
+    "RootConflict": "God as identical with the Universe itself vs. The Clockmaker/Distant God.",
+    "KeyThinkers": ["Baruch Spinoza", "Ralph Waldo Emerson", "Giordano Bruno"],
+    "SignatureArguments": ["Spinoza's Deus sive Natura: God and Nature are two names for the same infinite, self-causing substance — there is no transcendent creator separate from creation", "Emerson's Over-Soul: the divine pervades all things and is accessible through intuition and communion with nature, not through doctrine or clergy", "The argument from unity: separating God from nature creates an insoluble problem of how the infinite relates to the finite — pantheism dissolves the problem by identifying them"],
+    "KnownWeaknesses": ["Schopenhauer's critique: if the universe is God, then every earthquake, cancer, and act of cruelty is divine — pantheism sanctifies evil", "The distinction collapse: if everything is God, the concept of God does nothing explanatory — 'God is everything' and 'there is no God' become functionally identical", "The personal God objection: pantheism cannot account for worship, prayer, or a relationship with the divine because an impersonal universe-God cannot reciprocate"],
+    "RhetoricalStyle": "Speaks in the language of wonder and unity, invokes the beauty and sublimity of nature as direct encounters with the divine, and dissolves theological dualisms (Creator/creation, sacred/profane) into a vision of cosmic wholeness."
   },
   {
     "Category": "Identity & Culture",
     "Movement": "Assimilationism",
     "Definition": "The belief that minority groups should adopt the customs and attitudes of the prevailing culture.",
     "OpMove": "Multiculturalism",
-    "RootConflict": "The Melting Pot (Uniformity) vs. The Salad Bowl (Diversity)."
+    "RootConflict": "The Melting Pot (Uniformity) vs. The Salad Bowl (Diversity).",
+    "KeyThinkers": ["Israel Zangwill", "Booker T. Washington", "Samuel Huntington"],
+    "SignatureArguments": ["The social cohesion argument: a shared language, civic culture, and national identity are prerequisites for democratic solidarity and mutual trust", "Washington's uplift through assimilation: minorities advance most effectively by mastering the dominant culture's skills and institutions rather than separating from them", "Huntington's clash-of-civilizations thesis: multicultural societies face irreconcilable value conflicts that only cultural unity can prevent"],
+    "KnownWeaknesses": ["The erasure objection: assimilation demands that minorities abandon their heritage, language, and identity — cultural genocide by another name", "The power asymmetry: 'assimilation' always means minorities conforming to the dominant group's norms, never the reverse", "The empirical failure: despite generations of assimilation pressure, racial and ethnic minorities remain systematically disadvantaged, proving assimilation alone does not produce equality"],
+    "RhetoricalStyle": "Emphasizes shared national values and civic participation, cites immigrant success stories as models, and frames cultural separatism as a threat to social solidarity and democratic governance."
   },
   {
     "Category": "Identity & Culture",
     "Movement": "Multiculturalism",
     "Definition": "The presence of, or support for the presence of, several distinct cultural or ethnic groups within a society.",
     "OpMove": "Assimilationism",
-    "RootConflict": "The Salad Bowl (Diversity) vs. The Melting Pot (Uniformity)."
+    "RootConflict": "The Salad Bowl (Diversity) vs. The Melting Pot (Uniformity).",
+    "KeyThinkers": ["Will Kymlicka", "Bhikhu Parekh", "Charles Taylor"],
+    "SignatureArguments": ["Kymlicka's liberal multiculturalism: group-differentiated rights (language rights, self-government) are necessary to ensure genuine equality for minority cultures within liberal democracies", "Taylor's politics of recognition: withholding recognition of cultural identity inflicts real harm — equal dignity requires acknowledging and valuing difference", "The epistemic diversity argument: culturally diverse societies are more creative and better at problem-solving because they draw on a wider range of perspectives"],
+    "KnownWeaknesses": ["The Balkanization concern: strong multicultural policies can entrench ethnic divisions and undermine the shared civic identity needed for redistribution and solidarity", "The internal minorities problem: protecting group rights can empower patriarchal or authoritarian elites within minority communities who suppress internal dissent", "Putnam's diversity-trust paradox: empirical research suggests that ethnic diversity in neighborhoods correlates with lower social trust and civic engagement in the short term"],
+    "RhetoricalStyle": "Celebrates cultural diversity as intrinsically valuable, cites examples of cultural contributions from minority communities, and frames assimilationism as a tool of cultural dominance disguised as neutral universalism."
   },
   {
     "Category": "Logic",
     "Movement": "Deduction",
     "Definition": "The process of reasoning from one or more general statements to reach a logically certain conclusion.",
     "OpMove": "Induction",
-    "RootConflict": "Top-down logical certainty vs. Bottom-up probabilistic patterns."
+    "RootConflict": "Top-down logical certainty vs. Bottom-up probabilistic patterns.",
+    "KeyThinkers": ["Aristotle", "Gottlob Frege", "Alfred Tarski"],
+    "SignatureArguments": ["Aristotle's syllogistic: if all A are B and all B are C, then necessarily all A are C — the paradigm of truth-preserving inference", "The certainty advantage: unlike induction, valid deductions guarantee their conclusions — if the premises are true, the conclusion cannot be false", "Frege's formalization: deductive logic can be made fully rigorous through symbolic notation, eliminating the ambiguities of natural language"],
+    "KnownWeaknesses": ["The garbage-in problem: deduction guarantees only validity (logical form), not soundness — if premises are false, the conclusion is worthless despite being validly derived", "The informativeness objection (Mill): the conclusion of a valid deduction never contains information not already implicit in the premises — deduction is merely explicative, not ampliative", "Real-world inapplicability: most real-world reasoning involves uncertainty, incomplete information, and probability — pure deduction is too rigid for practical decisions"],
+    "RhetoricalStyle": "Constructs precise logical chains from premises to conclusions, insists on formal validity as a non-negotiable standard, and exposes informal reasoning as riddled with hidden assumptions and fallacies."
   },
   {
     "Category": "Logic",
     "Movement": "Induction",
     "Definition": "The process of reasoning in which the premises are viewed as supplying strong evidence for the truth of the conclusion (but not certainty).",
     "OpMove": "Deduction",
-    "RootConflict": "Bottom-up probabilistic patterns vs. Top-down logical certainty."
+    "RootConflict": "Bottom-up probabilistic patterns vs. Top-down logical certainty.",
+    "KeyThinkers": ["Francis Bacon", "John Stuart Mill", "Rudolf Carnap"],
+    "SignatureArguments": ["Bacon's Novum Organum: systematic observation and elimination of hypotheses (eliminative induction) is the correct method for discovering natural laws", "Mill's methods of experimental inquiry: agreement, difference, concomitant variation, and residues provide the logical foundations of inductive science", "Carnap's confirmation theory: inductive reasoning can be formalized using probability theory, giving it a rigorous mathematical foundation"],
+    "KnownWeaknesses": ["Hume's problem of induction: no amount of past observations logically guarantees future regularities — the sun has risen every day, but this does not prove it will rise tomorrow", "The grue paradox (Goodman): 'All emeralds observed before time t are green' equally supports 'All emeralds are grue (green before t, blue after)' — induction alone cannot distinguish legitimate from gerrymandered predicates", "The underdetermination of theory by evidence: any finite set of observations is compatible with infinitely many theories, so induction alone cannot determine which theory is correct"],
+    "RhetoricalStyle": "Accumulates empirical observations and case studies, reasons from patterns in data to general conclusions, and presents probabilistic confidence as sufficient for practical decision-making even without logical certainty."
   },
   {
     "Category": "Economic Organization",
     "Movement": "Corporatism",
     "Definition": "The organization of society into industrial and professional corporations serving as organs of political representation and exercising control over persons and activities within their jurisdiction.",
     "OpMove": "Syndicalism",
-    "RootConflict": "Tripartite state-business-labor control vs. Worker-owned/unionized direct control."
+    "RootConflict": "Tripartite state-business-labor control vs. Worker-owned/unionized direct control.",
+    "KeyThinkers": ["Emile Durkheim", "Pope Leo XIII", "Philippe Schmitter"],
+    "SignatureArguments": ["Durkheim's functional intermediaries: professional corporations mediate between the individual and the state, preventing both atomistic individualism and state tyranny", "Catholic social doctrine (Rerum Novarum): class harmony through cooperation between capital, labor, and the state is morally superior to both unfettered capitalism and class warfare", "Schmitter's neo-corporatist thesis: tripartite bargaining between organized labor, business, and government produces more stable and equitable economic outcomes than pure market competition"],
+    "KnownWeaknesses": ["The fascist association: corporatism was central to Mussolini's Italy and Salazar's Portugal, making it politically toxic regardless of theoretical merits", "Insider-outsider problem: corporatist structures benefit organized insiders (established unions, large firms) while excluding unorganized workers, immigrants, and new enterprises", "Democratic deficit: corporatist deal-making occurs between elite representatives of interest groups, bypassing democratic deliberation and accountability"],
+    "RhetoricalStyle": "Speaks the language of social partnership and class harmony, frames both free-market competition and class struggle as destructive extremes, and advocates structured negotiation among organized social groups."
   },
   {
     "Category": "Economic Organization",
     "Movement": "Syndicalism",
     "Definition": "A movement for transferring the ownership and control of the means of production and distribution to workers' unions.",
     "OpMove": "Corporatism",
-    "RootConflict": "Worker-owned/unionized direct control vs. Tripartite state-business-labor control."
+    "RootConflict": "Worker-owned/unionized direct control vs. Tripartite state-business-labor control.",
+    "KeyThinkers": ["Georges Sorel", "Rudolf Rocker", "Daniel De Leon"],
+    "SignatureArguments": ["Sorel's myth of the general strike: the vision of a total work stoppage that paralyzes capitalism is a galvanizing myth that unifies and empowers the working class", "Rocker's anarcho-syndicalist argument: unions organized by industry can replace both the capitalist firm and the state, managing production through direct worker democracy", "De Leon's industrial unionism: one big union organized by industry (not craft) can seize the means of production through the ballot box and the general strike simultaneously"],
+    "KnownWeaknesses": ["The coordination problem: decentralized worker-run enterprises struggle to coordinate complex supply chains and large-scale infrastructure projects", "The Spanish Civil War lesson: anarcho-syndicalist Catalonia was militarily defeated partly because its decentralized structure could not match the organizational efficiency of centralized opponents", "The tyranny of structurelessness (Freeman): rejecting formal hierarchy does not eliminate power — it merely makes power informal, unaccountable, and invisible"],
+    "RhetoricalStyle": "Uses the language of direct action, solidarity, and worker self-management, frames electoral politics as a trap, and invokes the general strike as both practical weapon and revolutionary symbol."
   },
   {
     "Category": "Systems",
     "Movement": "Reductionism",
     "Definition": "The practice of analyzing and describing a complex phenomenon in terms of its simple or fundamental constituents.",
     "OpMove": "Holism",
-    "RootConflict": "The whole as the sum of its parts vs. The whole as more than the sum of its parts."
+    "RootConflict": "The whole as the sum of its parts vs. The whole as more than the sum of its parts.",
+    "KeyThinkers": ["Ernest Nagel", "E.O. Wilson", "Francis Crick"],
+    "SignatureArguments": ["Nagel's bridge laws: higher-level sciences (biology, psychology) can in principle be reduced to lower-level sciences (chemistry, physics) through connecting laws", "Crick's astonishing hypothesis: 'You, your joys and your sorrows, your sense of personal identity and free will, are in fact no more than the behavior of a vast assembly of nerve cells'", "Wilson's consilience: all knowledge forms a unified whole, with the fundamental physical sciences at the base — reduction is the path to genuine understanding"],
+    "KnownWeaknesses": ["The emergence objection: wetness, life, and consciousness are system-level properties that cannot be predicted from or reduced to the properties of their components in isolation", "Multiple realizability (Putnam): the same mental state can be realized by vastly different physical substrates, so reduction to one physical description is impossible", "The explanatory loss problem: reductive explanations of, say, love in terms of oxytocin and dopamine lose everything that makes the phenomenon meaningful and actionable"],
+    "RhetoricalStyle": "Breaks complex phenomena into their simplest components, appeals to the success of physics and chemistry as model sciences, and treats irreducibility claims as temporary failures of analysis rather than fundamental features of reality."
   },
   {
     "Category": "Systems",
     "Movement": "Holism",
     "Definition": "The theory that parts of a whole are in intimate interconnection, such that they cannot exist independently of the whole, or cannot be understood without reference to the whole.",
     "OpMove": "Reductionism",
-    "RootConflict": "The whole as more than the sum of its parts vs. The whole as the sum of its parts."
+    "RootConflict": "The whole as more than the sum of its parts vs. The whole as the sum of its parts.",
+    "KeyThinkers": ["Jan Smuts", "Ludwig von Bertalanffy", "Fritjof Capra"],
+    "SignatureArguments": ["Bertalanffy's general systems theory: systems have emergent properties (homeostasis, feedback, self-organization) that cannot be understood by analyzing components in isolation", "Smuts's creative evolution: wholes actively organize their parts in ways that produce genuinely new properties at each level of complexity", "Capra's web of life: living systems are networks of relationships — the pattern of organization, not the material substrate, is what constitutes life"],
+    "KnownWeaknesses": ["The vagueness charge: 'emergent properties' and 'the whole is more than its parts' can become unfalsifiable mystery-mongering if not precisely defined", "Explanatory idleness: saying a phenomenon is 'emergent' does not explain it — it merely labels our current ignorance about the underlying mechanisms", "Hostility to analysis: taken to extremes, holism discourages the detailed investigation that has been the engine of scientific progress"],
+    "RhetoricalStyle": "Uses systems diagrams, feedback loops, and ecological metaphors, emphasizes relationships over components, and frames reductionism as intellectually useful but ultimately insufficient for understanding complex phenomena."
   },
   {
     "Category": "Scientific Method",
     "Movement": "Falsificationism",
     "Definition": "The belief that science should be based on the attempt to disprove hypotheses rather than find evidence to support them.",
     "OpMove": "Verificationism",
-    "RootConflict": "Scientific truth through disproof vs. Scientific truth through confirmation."
+    "RootConflict": "Scientific truth through disproof vs. Scientific truth through confirmation.",
+    "KeyThinkers": ["Karl Popper", "Imre Lakatos", "Paul Feyerabend"],
+    "SignatureArguments": ["Popper's demarcation criterion: a theory is scientific if and only if it is falsifiable — unfalsifiable claims (Marxism, psychoanalysis) are pseudoscience", "The asymmetry of confirmation: no number of white swans confirms 'all swans are white,' but one black swan refutes it — falsification is logically more powerful than verification", "Lakatos's sophisticated falsificationism: scientific research programs are evaluated by whether they produce novel predictions that are subsequently corroborated"],
+    "KnownWeaknesses": ["The Duhem-Quine problem: any theory can be saved from falsification by modifying auxiliary hypotheses — no observation decisively refutes a theory in isolation", "Kuhn's paradigm critique: actual scientific practice involves long periods of 'normal science' that ignore anomalies, contradicting Popper's prescriptive methodology", "The bold conjecture problem: Popper's framework cannot explain why scientists rationally prefer well-confirmed theories over bold but unfalsified alternatives"],
+    "RhetoricalStyle": "Challenges opponents to specify what evidence would disprove their theory, treats unfalsifiability as an intellectual vice, and uses counterexamples and attempted refutations as the primary mode of intellectual engagement."
   },
   {
     "Category": "Scientific Method",
     "Movement": "Verificationism",
     "Definition": "The doctrine that only propositions that are empirically verifiable are meaningful.",
     "OpMove": "Falsificationism",
-    "RootConflict": "Scientific truth through confirmation vs. Scientific truth through disproof."
+    "RootConflict": "Scientific truth through confirmation vs. Scientific truth through disproof.",
+    "KeyThinkers": ["A.J. Ayer", "Rudolf Carnap", "Moritz Schlick"],
+    "SignatureArguments": ["Ayer's verification principle: a statement is meaningful if and only if it is either analytically true (by definition) or empirically verifiable", "Carnap's logical reconstruction: scientific theories can be rationally reconstructed as formal systems whose terms derive meaning from their connection to observation", "The elimination of metaphysics: statements about God, the Absolute, or the thing-in-itself are literally meaningless because no possible observation could verify them"],
+    "KnownWeaknesses": ["The self-refutation problem: the verification principle itself is neither analytically true nor empirically verifiable — by its own standard, it is meaningless", "The theory-ladenness objection: what counts as an 'observation' is shaped by theoretical commitments, so there is no theory-neutral verification base", "The problem of universal statements: scientific laws ('all copper conducts electricity') can never be conclusively verified because they make claims about infinite instances"],
+    "RhetoricalStyle": "Demands empirical credentials for every assertion, dismisses metaphysical and theological claims as literally senseless rather than merely false, and insists on translating philosophical problems into questions answerable by observation."
   }
 ]

@@ -12,6 +12,7 @@ async def test_health_check():
     assert response.json() == {"status": "ok"}
 
 from unittest.mock import MagicMock, patch, AsyncMock
+import os
 
 @pytest.mark.asyncio
 async def test_sse_endpoint():
@@ -42,7 +43,7 @@ async def test_debate_integration():
     mock_workflow = MagicMock()
     
     # Define a generator for astream
-    async def mock_astream(inputs):
+    async def mock_astream(inputs, config=None):
         yield {"moderator": {"messages": ["Moderator: Intro"], "turn_count": 1}}
         yield {"proponent": {"messages": ["Proponent: Yes"], "turn_count": 2}}
     
@@ -64,10 +65,60 @@ async def test_debate_integration():
                 assert events[0]["type"] == "system"
                 assert events[0]["content"] == "connected"
                 
-                assert events[1]["type"] == "debate_update"
-                assert events[1]["speaker"] == "moderator"
-                assert "Intro" in events[1]["content"]
-                
-                assert events[2]["type"] == "debate_update"
-                assert events[2]["speaker"] == "proponent"
-                assert "Yes" in events[2]["content"]
+                # Find the first stream_end or debate_update events (skip agent_names etc)
+                message_events = [e for e in events if e["type"] in ("debate_update", "stream_end")]
+                assert len(message_events) >= 2
+                assert message_events[0]["speaker"] == "moderator"
+                assert "Intro" in message_events[0]["content"]
+
+                assert message_events[1]["speaker"] == "proponent"
+                assert "Yes" in message_events[1]["content"]
+
+@pytest.mark.asyncio
+async def test_resolve_best_match():
+    mock_response = MagicMock()
+    mock_response.content = '{"proponent_profile": "Rationalism", "opponent_profile": "Empiricism", "proponent_tone": "Formal", "opponent_tone": "Sarcastic"}'
+
+    mock_llm = MagicMock()
+    mock_llm.ainvoke = AsyncMock(return_value=mock_response)
+
+    with patch("backend.main.get_model", return_value=mock_llm):
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+            response = await ac.post("/api/debate/resolve-best-match", json={
+                "topic": "Is democracy the best form of government?",
+                "resolve_proponent_profile": True,
+                "resolve_proponent_tone": True,
+                "resolve_opponent_profile": True,
+                "resolve_opponent_tone": True,
+            })
+            assert response.status_code == 200
+            data = response.json()
+            assert data["proponent_profile"] == "Rationalism"
+            assert data["opponent_profile"] == "Empiricism"
+            assert data["proponent_tone"] == "Formal"
+            assert data["opponent_tone"] == "Sarcastic"
+
+@pytest.mark.asyncio
+async def test_resolve_best_match_fallback_on_invalid():
+    """When LLM returns invalid values, endpoint falls back to random."""
+    mock_response = MagicMock()
+    mock_response.content = '{"proponent_profile": "NonExistent", "proponent_tone": "FakeTone"}'
+
+    mock_llm = MagicMock()
+    mock_llm.ainvoke = AsyncMock(return_value=mock_response)
+
+    with patch("backend.main.get_model", return_value=mock_llm):
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+            response = await ac.post("/api/debate/resolve-best-match", json={
+                "topic": "Test topic",
+                "resolve_proponent_profile": True,
+                "resolve_proponent_tone": True,
+            })
+            assert response.status_code == 200
+            data = response.json()
+            # Should have fallen back to random valid values
+            from backend.graph import PROFILES, TONES
+            profile_names = [p["Movement"] for p in PROFILES]
+            tone_names = [t["tone"] for t in TONES]
+            assert data["proponent_profile"] in profile_names
+            assert data["proponent_tone"] in tone_names

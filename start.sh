@@ -12,29 +12,29 @@ echo "Starting Multi-Agent Debater..."
 
 # Start Backend
 echo "Starting Backend on port $BACKEND_PORT..."
-# Note: We assume the backend module is 'backend.main' or similar. 
-# Adjusting PYTHONPATH to include current directory
 export PYTHONPATH=$PYTHONPATH:.
-python3 -m uvicorn backend.main:app --port $BACKEND_PORT --reload &
+nohup python3 -m uvicorn backend.main:app --host 0.0.0.0 --port $BACKEND_PORT --reload > backend.log 2>&1 &
 BACKEND_PID=$!
+disown $BACKEND_PID
 
 # Start Frontend
 echo "Starting Frontend on port $FRONTEND_PORT..."
 if [ -d "frontend" ]; then
     cd frontend
-    npm run dev -- --port $FRONTEND_PORT &
+    nohup npm run dev -- --host 0.0.0.0 --port $FRONTEND_PORT > ../frontend.log 2>&1 &
     FRONTEND_PID=$!
+    disown $FRONTEND_PID
     cd ..
 else
     echo "Frontend directory not found. Skipping frontend start."
 fi
 
-echo "Backend PID: $BACKEND_PID"
+echo ""
+echo "Backend:  http://localhost:$BACKEND_PORT  (PID: $BACKEND_PID, log: backend.log)"
 if [ ! -z "$FRONTEND_PID" ]; then
-    echo "Frontend PID: $FRONTEND_PID"
+    echo "Frontend: http://localhost:$FRONTEND_PORT  (PID: $FRONTEND_PID, log: frontend.log)"
 fi
 
-
+echo ""
 echo "Services started in background."
 echo "To stop them, run: ./stop.sh"
-exit 0

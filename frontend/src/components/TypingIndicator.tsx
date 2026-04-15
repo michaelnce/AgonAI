@@ -15,7 +15,7 @@ export const TypingIndicator: React.FC<TypingIndicatorProps> = ({ speaker }) => 
           }`}>
           <span className="text-white text-[10px]">⚡</span>
         </div>
-        <span className="font-bold text-white text-xs uppercase tracking-wide">{speaker}</span>
+        <span className="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wide">{speaker}</span>
         <span className="text-blue-400 text-[10px] animate-pulse">thinking...</span>
       </div>
 

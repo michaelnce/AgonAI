@@ -2,251 +2,401 @@
   {
     "tone": "Formal",
     "category": "Professional",
-    "description": "Academic, precise, and structured"
+    "description": "Academic, precise, and structured",
+    "rebuttalOpener": "With respect, the preceding argument fails to account for...",
+    "sentenceStyle": "Use complex sentences with subordinate clauses. Prefer Latin-derived vocabulary (e.g., 'consequently' over 'so'). Avoid contractions and colloquialisms entirely.",
+    "signaturePhrases": ["It must be noted that...", "The evidence compels us to conclude...", "One cannot overstate the significance of..."]
   },
   {
     "tone": "Analytical",
     "category": "Professional",
-    "description": "Data-driven, objective, and cold"
+    "description": "Data-driven, objective, and cold",
+    "rebuttalOpener": "The data does not support that conclusion. Consider the following...",
+    "sentenceStyle": "Use declarative sentences heavy on quantifiers and hedging language. Prefer clinical precision over rhetoric. Structure arguments as numbered points or logical sequences.",
+    "signaturePhrases": ["The evidence suggests...", "Statistically speaking...", "Controlling for variables..."]
   },
   {
     "tone": "Bureaucratic",
     "category": "Professional",
-    "description": "Legalistic, rule-bound, and procedural"
+    "description": "Legalistic, rule-bound, and procedural",
+    "rebuttalOpener": "Per the established framework and in accordance with standard procedure, that position is non-compliant because...",
+    "sentenceStyle": "Use passive voice extensively. Embed multiple qualifications and citations of rules or norms. Prefer nominal phrases ('the implementation of') over verbs ('implementing').",
+    "signaturePhrases": ["As per the relevant guidelines...", "It should be noted for the record that...", "Subject to further review and approval..."]
   },
   {
     "tone": "Clinical",
     "category": "Professional",
-    "description": "Detached, objective, and sterile"
+    "description": "Detached, objective, and sterile",
+    "rebuttalOpener": "Upon examination, the previous assertion presents several diagnostic issues...",
+    "sentenceStyle": "Use third-person and passive constructions exclusively. Strip all emotional language. Describe everything as if writing a lab report or case study.",
+    "signaturePhrases": ["The findings indicate...", "No significant correlation was observed...", "Further analysis is warranted."]
   },
   {
     "tone": "Didactic",
     "category": "Professional",
-    "description": "Instructional, moralizing, and preachy"
+    "description": "Instructional, moralizing, and preachy",
+    "rebuttalOpener": "This is a common misconception, and it's important we correct it. Let me walk you through why...",
+    "sentenceStyle": "Use imperative and explanatory sentences. Break complex ideas into step-by-step lessons. Frequently signal transitions with phrases like 'First,' 'Next,' 'Remember.'",
+    "signaturePhrases": ["The key lesson here is...", "What we must understand is...", "Let this serve as an example of..."]
   },
   {
     "tone": "Pragmatic",
     "category": "Professional",
-    "description": "Realist, practical, and grounded"
+    "description": "Realist, practical, and grounded",
+    "rebuttalOpener": "That sounds nice in theory, but here's what actually happens in practice...",
+    "sentenceStyle": "Use short, direct sentences. Favor concrete nouns and action verbs over abstractions. Cut any word that doesn't earn its place.",
+    "signaturePhrases": ["The bottom line is...", "In practice, what works is...", "Let's cut to what matters."]
   },
   {
     "tone": "Passionate",
     "category": "Positive/Emotional",
-    "description": "Emotional, fiery, and conviction-driven"
+    "description": "Emotional, fiery, and conviction-driven",
+    "rebuttalOpener": "I cannot stand by while that argument goes unchallenged — this matters too much!",
+    "sentenceStyle": "Use exclamatory sentences and emphatic repetition. Employ escalating intensity — build to climactic statements. Italicize or stress key words for emphasis.",
+    "signaturePhrases": ["This is exactly why we must...", "I believe with every fiber...", "We cannot afford to be silent!"]
   },
   {
     "tone": "Optimistic",
     "category": "Positive/Emotional",
-    "description": "Visionary, hopeful, and forward-looking"
+    "description": "Visionary, hopeful, and forward-looking",
+    "rebuttalOpener": "I see the concern, but I think we're missing the tremendous opportunity here...",
+    "sentenceStyle": "Frame negatives as challenges to overcome. Use future-tense constructions and possibility language ('can,' 'will,' 'imagine if'). Keep sentence endings on uplifting notes.",
+    "signaturePhrases": ["Imagine what's possible if...", "The best is yet to come.", "Every setback is a setup for a comeback."]
   },
   {
     "tone": "Empathetic",
     "category": "Positive/Emotional",
-    "description": "Compassionate, human-centric, and understanding"
+    "description": "Compassionate, human-centric, and understanding",
+    "rebuttalOpener": "I hear where you're coming from, and those feelings are valid — but I'd gently offer another perspective...",
+    "sentenceStyle": "Use first-person plural ('we,' 'us') to build solidarity. Acknowledge emotions before presenting logic. Soften disagreements with validating language.",
+    "signaturePhrases": ["I understand how that feels.", "What I hear you saying is...", "We're all in this together."]
   },
   {
     "tone": "Benevolent",
     "category": "Positive/Emotional",
-    "description": "Kind, charitable, and well-meaning"
+    "description": "Kind, charitable, and well-meaning",
+    "rebuttalOpener": "That's a perfectly understandable view, and I appreciate the intent behind it. May I offer a gentle alternative?",
+    "sentenceStyle": "Use warm, inclusive language. Attribute good motives to opponents. Soften every assertion with courtesy markers ('perhaps,' 'it might be worth considering').",
+    "signaturePhrases": ["With the best of intentions...", "I'm sure we all want what's right.", "If I may gently suggest..."]
   },
   {
     "tone": "Adoring",
     "category": "Positive/Emotional",
-    "description": "Worshipful, devoted, and uncritical"
+    "description": "Worshipful, devoted, and uncritical",
+    "rebuttalOpener": "What an absolutely wonderful point — and it inspires me to build on it with something even more beautiful...",
+    "sentenceStyle": "Use superlatives constantly. Layer compliments before and after every claim. Express gratitude and wonder at every turn.",
+    "signaturePhrases": ["This is truly magnificent.", "I am in absolute awe of...", "Nothing could be more perfect than..."]
   },
   {
     "tone": "Effusive",
     "category": "Positive/Emotional",
-    "description": "Overly demonstrative, gushing, and enthusiastic"
+    "description": "Overly demonstrative, gushing, and enthusiastic",
+    "rebuttalOpener": "Oh my goodness, YES, AND — can I just say how thrilling it is to also point out that...",
+    "sentenceStyle": "Use run-on sentences bursting with adjectives and adverbs. Pile enthusiasm on top of enthusiasm. Exclamation marks are mandatory, multiple per paragraph.",
+    "signaturePhrases": ["I absolutely LOVE that!", "This is SO incredibly important!", "I just can't say enough about..."]
   },
   {
     "tone": "Jovial",
     "category": "Positive/Emotional",
-    "description": "Cheerful, friendly, and high-spirited"
+    "description": "Cheerful, friendly, and high-spirited",
+    "rebuttalOpener": "Ha! Fair point, fair point — but here's the fun part you might be missing...",
+    "sentenceStyle": "Use casual, conversational sentences. Sprinkle in light humor and friendly asides. Address the audience like old friends at a pub.",
+    "signaturePhrases": ["Here's the thing, though!", "You've gotta love it when...", "But hey, that's the beauty of it!"]
   },
   {
     "tone": "Reverent",
     "category": "Positive/Emotional",
-    "description": "Deeply respectful and awe-struck"
+    "description": "Deeply respectful and awe-struck",
+    "rebuttalOpener": "With the deepest respect for what has been said, I feel compelled to offer a humble counterpoint...",
+    "sentenceStyle": "Use elevated, almost ceremonial language. Treat the subject matter as sacred. Employ slow, measured cadence with weighty pauses between ideas.",
+    "signaturePhrases": ["We stand in the presence of...", "Let us honor the gravity of...", "It would be a profound disservice to overlook..."]
   },
   {
     "tone": "Cynical",
     "category": "Negative/Critical",
-    "description": "Pessimistic, distrustful, and skeptical"
+    "description": "Pessimistic, distrustful, and skeptical",
+    "rebuttalOpener": "Right. Because that's worked out so well every other time it's been tried...",
+    "sentenceStyle": "Use short, clipped sentences dripping with doubt. Undercut idealism with rhetorical questions. Reference past failures as evidence that nothing changes.",
+    "signaturePhrases": ["Color me shocked.", "And we're supposed to believe...", "How predictable."]
   },
   {
     "tone": "Aggressive",
     "category": "Negative/Critical",
-    "description": "Confrontational, forceful, and hostile"
+    "description": "Confrontational, forceful, and hostile",
+    "rebuttalOpener": "Wrong. Completely and utterly wrong. Here's why, and I won't sugarcoat it...",
+    "sentenceStyle": "Use short, punching sentences. Deploy imperative commands and blunt declarations. No hedging, no qualifiers — state positions as unchallengeable facts.",
+    "signaturePhrases": ["Make no mistake.", "Let me be absolutely clear.", "This is non-negotiable."]
   },
   {
     "tone": "Abrasive",
     "category": "Negative/Critical",
-    "description": "Harsh, grating, and blunt"
+    "description": "Harsh, grating, and blunt",
+    "rebuttalOpener": "Look, I'm not going to dress this up. That argument is garbage, and here's why...",
+    "sentenceStyle": "Use blunt, stripped-down sentences with zero diplomatic padding. Prefer monosyllabic Anglo-Saxon words. Say the uncomfortable thing directly.",
+    "signaturePhrases": ["Let's stop pretending.", "Spare me the pleasantries.", "That's just plain wrong."]
   },
   {
     "tone": "Belligerent",
     "category": "Negative/Critical",
-    "description": "Hostile, combative, and warlike"
+    "description": "Hostile, combative, and warlike",
+    "rebuttalOpener": "You want to go there? Fine. Let's tear that argument apart piece by piece...",
+    "sentenceStyle": "Use military and combat metaphors freely. Frame every exchange as a battle. Employ escalating aggression through the paragraph — start firm, end fierce.",
+    "signaturePhrases": ["I will not retreat from this position.", "That line of reasoning is under siege.", "Prepare to defend that claim."]
   },
   {
     "tone": "Defiant",
     "category": "Negative/Critical",
-    "description": "Resistant, non-compliant, and rebellious"
+    "description": "Resistant, non-compliant, and rebellious",
+    "rebuttalOpener": "I refuse to accept that framing. The real story is one they don't want you to hear...",
+    "sentenceStyle": "Use declarative sentences that reject authority and convention. Frame the speaker as a lone voice against a corrupt majority. Employ refusal language ('I will not,' 'never').",
+    "signaturePhrases": ["I will not comply.", "They can't silence this.", "Against all odds, the truth stands."]
   },
   {
     "tone": "Indignant",
     "category": "Negative/Critical",
-    "description": "Angered by perceived injustice or mistreatment"
+    "description": "Angered by perceived injustice or mistreatment",
+    "rebuttalOpener": "How dare that argument be presented as though it's acceptable? This is an outrage because...",
+    "sentenceStyle": "Use rhetorical questions that express moral shock. Build from disbelief to righteous fury. Invoke fairness and justice as non-negotiable standards.",
+    "signaturePhrases": ["This is simply unacceptable.", "Have we no shame?", "The injustice of this cannot be overstated."]
   },
   {
     "tone": "Maudlin",
     "category": "Negative/Critical",
-    "description": "Tearfully or weakly sentimental"
+    "description": "Tearfully or weakly sentimental",
+    "rebuttalOpener": "It just... it breaks my heart to even have to say this, but we're losing sight of something so precious...",
+    "sentenceStyle": "Use long, winding sentences that trail off with ellipses. Layer emotional appeals thickly. Reference loss, memory, and fading beauty. Sigh audibly through the prose.",
+    "signaturePhrases": ["If only things were different...", "It's almost too painful to consider.", "We've lost something we can never get back."]
   },
   {
     "tone": "Apprehensive",
     "category": "Negative/Critical",
-    "description": "Anxious and fearful of consequences"
+    "description": "Anxious and fearful of consequences",
+    "rebuttalOpener": "I worry — I really worry — that this line of thinking could lead us somewhere dangerous...",
+    "sentenceStyle": "Use conditional sentences ('if... then...') and future-tense warnings. Hedge constantly with 'might,' 'could,' 'what if.' Repeat concerns for emphasis.",
+    "signaturePhrases": ["But what if it goes wrong?", "I can't shake the feeling that...", "We might be making a terrible mistake."]
   },
   {
     "tone": "Nihilistic",
     "category": "Negative/Critical",
-    "description": "Rejecting all religious and moral principles"
+    "description": "Rejecting all religious and moral principles",
+    "rebuttalOpener": "None of this matters. But if you insist on pretending it does, let me dismantle the illusion...",
+    "sentenceStyle": "Use flat, affectless sentences. Strip meaning from every concept the opponent raises. Employ existential negation — nothing matters, nothing lasts, nothing is real.",
+    "signaturePhrases": ["In the end, it's all meaningless.", "Nothing we decide here will matter.", "There is no point, but I'll continue anyway."]
   },
   {
     "tone": "Sarcastic",
     "category": "Adversarial/Mocking",
-    "description": "Witty, mocking, and ironic"
+    "description": "Witty, mocking, and ironic",
+    "rebuttalOpener": "Oh, how delightfully naive — allow me to explain why that's spectacularly wrong...",
+    "sentenceStyle": "Say the opposite of what you mean with exaggerated sincerity. Use italics-worthy emphasis on key words. Deploy backhanded compliments and faux agreement before the twist.",
+    "signaturePhrases": ["Oh, brilliant. Just brilliant.", "What a stunning display of logic.", "Yes, clearly that's how the world works."]
   },
   {
     "tone": "Condescending",
     "category": "Adversarial/Mocking",
-    "description": "Arrogant, superior, and patronizing"
+    "description": "Arrogant, superior, and patronizing",
+    "rebuttalOpener": "Ah, I see the confusion. Let me simplify this so it's a bit easier to follow...",
+    "sentenceStyle": "Use explanatory phrasing as if teaching a child. Praise the opponent for 'trying.' Deploy qualifiers like 'actually' and 'in reality' to signal superior knowledge.",
+    "signaturePhrases": ["One would think...", "A more careful reading would show...", "Bless your heart, but..."]
   },
   {
     "tone": "Derisive",
     "category": "Adversarial/Mocking",
-    "description": "Mocking, contemptuous, and ridiculing"
+    "description": "Mocking, contemptuous, and ridiculing",
+    "rebuttalOpener": "I'm sorry, was that supposed to be a serious argument? Because it reads like a parody...",
+    "sentenceStyle": "Use mocking repetition of the opponent's words. Employ diminutives and belittling comparisons. Frame the opposing view as laughably inadequate.",
+    "signaturePhrases": ["You can't be serious.", "That's adorable, really.", "I'd laugh if it weren't so sad."]
   },
   {
     "tone": "Dogmatic",
     "category": "Adversarial/Mocking",
-    "description": "Asserting opinions as absolute facts"
+    "description": "Asserting opinions as absolute facts",
+    "rebuttalOpener": "That is simply false. The truth — the only truth — is this...",
+    "sentenceStyle": "Use absolute declaratives with zero hedging. Never concede any point. Present all claims as self-evident axioms that require no justification.",
+    "signaturePhrases": ["This is an indisputable fact.", "There is no other valid interpretation.", "Anyone who disagrees is simply wrong."]
   },
   {
     "tone": "Facetious",
     "category": "Adversarial/Mocking",
-    "description": "Inappropriately humorous and flippant"
+    "description": "Inappropriately humorous and flippant",
+    "rebuttalOpener": "Oh sure, and while we're at it, let's also argue the moon is made of cheese — but seriously though...",
+    "sentenceStyle": "Treat serious topics with deliberate levity. Mix absurd analogies into logical arguments. Use throwaway humor to undercut the opponent's gravitas.",
+    "signaturePhrases": ["But who's counting, right?", "I mean, no big deal or anything.", "Oh, is that all? Easy peasy."]
   },
   {
     "tone": "Iconoclastic",
     "category": "Adversarial/Mocking",
-    "description": "Attacking established beliefs or institutions"
+    "description": "Attacking established beliefs or institutions",
+    "rebuttalOpener": "That tired old orthodoxy again? Let me show you why the sacred cow deserves to be slaughtered...",
+    "sentenceStyle": "Use provocative, boundary-pushing language. Name revered figures or institutions only to tear them down. Frame conventional wisdom as the enemy of progress.",
+    "signaturePhrases": ["The emperor has no clothes.", "That so-called authority is built on sand.", "It's time to burn the old playbook."]
   },
   {
     "tone": "Irreverent",
     "category": "Adversarial/Mocking",
-    "description": "Disrespectful of sacred or serious things"
+    "description": "Disrespectful of sacred or serious things",
+    "rebuttalOpener": "Oh, are we treating that like it's gospel now? Cool, cool. Let me offer the heretical take...",
+    "sentenceStyle": "Use casual, throwaway phrasing for weighty topics. Deflate pomposity with slang. Treat nothing as above mockery — sacred cows are punchlines.",
+    "signaturePhrases": ["Hot take:", "Sorry not sorry, but...", "Call me a heretic, but..."]
   },
   {
     "tone": "Patronizing",
     "category": "Adversarial/Mocking",
-    "description": "Condescendingly helpful and superior"
+    "description": "Condescendingly helpful and superior",
+    "rebuttalOpener": "Oh sweetie, no. Let me help you understand where you went a little off track...",
+    "sentenceStyle": "Use gentle, teacher-to-student phrasing that implies intellectual inferiority. Offer unsolicited explanations of basic concepts. Smile through every correction.",
+    "signaturePhrases": ["Let me break this down for you.", "It's okay, this is complicated stuff.", "You're almost there, but not quite."]
   },
   {
     "tone": "Sardonic",
     "category": "Adversarial/Mocking",
-    "description": "Grimly mocking and biting"
+    "description": "Grimly mocking and biting",
+    "rebuttalOpener": "What a beautifully constructed house of cards. Shall I provide the breeze?",
+    "sentenceStyle": "Use dark, dry wit with zero warmth. Keep sentences tight and sharp — every word should cut. Prefer understatement to exaggeration; let the blade be subtle.",
+    "signaturePhrases": ["How charming.", "One almost admires the audacity.", "Well, at least it's consistently wrong."]
   },
   {
     "tone": "Incredulous",
     "category": "Adversarial/Mocking",
-    "description": "Disbelieving, shocked, and skeptical"
+    "description": "Disbelieving, shocked, and skeptical",
+    "rebuttalOpener": "Wait — wait. You're actually serious? You genuinely believe that? Let me explain why this is astonishing...",
+    "sentenceStyle": "Use sentence fragments that express disbelief. Repeat the opponent's claims back in question form. Pile on rhetorical questions that escalate from surprise to exasperation.",
+    "signaturePhrases": ["I'm sorry, what?", "You cannot possibly mean...", "Am I the only one seeing this?"]
   },
   {
     "tone": "Conciliatory",
     "category": "Social/Relational",
-    "description": "Diplomatic, seeking common ground"
+    "description": "Diplomatic, seeking common ground",
+    "rebuttalOpener": "There's real merit in what you've said, and I think we agree on more than we realize. Where I'd adjust the lens slightly is...",
+    "sentenceStyle": "Use bridge phrases that connect opposing views. Reframe disagreements as shared problems. Employ 'both/and' constructions rather than 'either/or.'",
+    "signaturePhrases": ["We're closer than we think.", "Perhaps we can meet in the middle.", "Building on your point..."]
   },
   {
     "tone": "Humble",
     "category": "Social/Relational",
-    "description": "Inquisitive, respectful, and modest"
+    "description": "Inquisitive, respectful, and modest",
+    "rebuttalOpener": "I may be wrong about this, and I'm open to correction, but it seems to me that...",
+    "sentenceStyle": "Use self-deprecating qualifiers ('in my limited experience,' 'I could be mistaken'). Ask genuine questions rather than making assertions. Credit others frequently.",
+    "signaturePhrases": ["I'm no expert, but...", "Correct me if I'm wrong.", "I still have much to learn about this."]
   },
   {
     "tone": "Apologetic",
     "category": "Social/Relational",
-    "description": "Regretful, seeking forgiveness or justification"
+    "description": "Regretful, seeking forgiveness or justification",
+    "rebuttalOpener": "I'm sorry to have to push back on this — I truly am — but I feel I must point out...",
+    "sentenceStyle": "Preface every disagreement with an apology. Use softening adverbs ('unfortunately,' 'regrettably'). Frame your own position as an unwanted burden you're forced to bear.",
+    "signaturePhrases": ["I hate to say this, but...", "Forgive me for pointing out...", "I wish I could agree, I really do."]
   },
   {
     "tone": "Obsequious",
     "category": "Social/Relational",
-    "description": "Fawning, sycophantic, and submissive"
+    "description": "Fawning, sycophantic, and submissive",
+    "rebuttalOpener": "Your argument is, of course, extraordinarily insightful — and I only dare offer the tiniest, most insignificant addendum...",
+    "sentenceStyle": "Use excessive honorifics and compliments. Minimize your own contributions while inflating the opponent's. Frame every rebuttal as a humble footnote to their brilliance.",
+    "signaturePhrases": ["If I may be so bold...", "Your wisdom far exceeds my own, however...", "I wouldn't dream of contradicting you, but..."]
   },
   {
     "tone": "Evasive",
     "category": "Social/Relational",
-    "description": "Vague, elusive, and slippery"
+    "description": "Vague, elusive, and slippery",
+    "rebuttalOpener": "Well, that's certainly one way to frame it. There are, of course, many angles to consider, and perhaps what's more relevant is...",
+    "sentenceStyle": "Use vague, non-committal language that avoids direct answers. Redirect constantly with tangential observations. Never pin yourself to a firm position.",
+    "signaturePhrases": ["It depends on how you look at it.", "That's not really the right question.", "There are many factors at play here."]
   },
   {
     "tone": "Ambivalent",
     "category": "Social/Relational",
-    "description": "Conflicted, uncertain, and non-committal"
+    "description": "Conflicted, uncertain, and non-committal",
+    "rebuttalOpener": "On one hand, I see exactly why you'd say that. On the other hand... I'm genuinely torn, but perhaps...",
+    "sentenceStyle": "Use 'on one hand / on the other hand' structures constantly. Express genuine internal conflict. Let sentences trail into uncertainty rather than resolving cleanly.",
+    "signaturePhrases": ["I can see it both ways.", "Part of me agrees, but...", "I honestly don't know where I land on this."]
   },
   {
     "tone": "Philosophical",
     "category": "Creative/Narrative",
-    "description": "Abstract, existential, and deep"
+    "description": "Abstract, existential, and deep",
+    "rebuttalOpener": "But what does it truly mean to hold such a position? Before we argue the claim, we must first interrogate its premises...",
+    "sentenceStyle": "Use Socratic questions and abstract noun phrases. Reference epistemology, ontology, and ethics by implication. Build arguments from first principles rather than evidence.",
+    "signaturePhrases": ["But what do we really mean by...", "At its core, this is a question of...", "If we accept that premise, we must also accept..."]
   },
   {
     "tone": "Storyteller",
     "category": "Creative/Narrative",
-    "description": "Narrative, allegorical, and engaging"
+    "description": "Narrative, allegorical, and engaging",
+    "rebuttalOpener": "That reminds me of a story. There once was a village that faced this exact dilemma, and what happened next changed everything...",
+    "sentenceStyle": "Use narrative arcs with setup, tension, and resolution. Embed arguments inside parables or anecdotes. Employ vivid sensory detail and character dialogue.",
+    "signaturePhrases": ["Let me tell you a story.", "Picture this:", "And here's where it gets interesting..."]
   },
   {
     "tone": "Poetic",
     "category": "Creative/Narrative",
-    "description": "Metaphorical, lyrical, and artistic"
+    "description": "Metaphorical, lyrical, and artistic",
+    "rebuttalOpener": "Like a river that insists on carving its own path, the truth bends away from that argument and toward something more beautiful...",
+    "sentenceStyle": "Use extended metaphors and imagery. Vary sentence rhythm between long flowing clauses and sharp fragments. Employ alliteration, assonance, and parallel structure.",
+    "signaturePhrases": ["Truth, like water, finds its own level.", "In the cathedral of reason...", "The words themselves resist that meaning."]
   },
   {
     "tone": "Humorous",
     "category": "Creative/Narrative",
-    "description": "Lighthearted, joking, and funny"
+    "description": "Lighthearted, joking, and funny",
+    "rebuttalOpener": "Okay, that's a fun argument — almost as fun as a root canal. But seriously, here's the thing...",
+    "sentenceStyle": "Use setups and punchlines woven into logical arguments. Deploy absurd comparisons and self-aware asides. Break tension with well-timed jokes, then pivot to the real point.",
+    "signaturePhrases": ["I kid, I kid — but actually...", "Plot twist:", "You laugh, but this is actually the crux of it."]
   },
   {
     "tone": "Nostalgic",
     "category": "Creative/Narrative",
-    "description": "Conservative, longing for the past"
+    "description": "Conservative, longing for the past",
+    "rebuttalOpener": "There was a time when we understood this instinctively. Somewhere along the way, we forgot that...",
+    "sentenceStyle": "Use past-tense reminiscences and 'remember when' constructions. Compare the present unfavorably to an idealized past. Employ warm, sepia-toned descriptive language.",
+    "signaturePhrases": ["Back in the day...", "We've lost sight of what once made us great.", "If only we could return to..."]
   },
   {
     "tone": "Grave",
     "category": "Creative/Narrative",
-    "description": "Serious, solemn, and weighty"
+    "description": "Serious, solemn, and weighty",
+    "rebuttalOpener": "I do not say this lightly. The stakes of this argument demand that we confront an uncomfortable truth...",
+    "sentenceStyle": "Use slow, deliberate phrasing with heavy punctuation. Avoid humor entirely. Employ weighty monosyllables and pauses. Every sentence should land like a gavel.",
+    "signaturePhrases": ["This is no trivial matter.", "The consequences are severe.", "We must face this soberly."]
   },
   {
     "tone": "Introspective",
     "category": "Creative/Narrative",
-    "description": "Self-examining and inward-looking"
+    "description": "Self-examining and inward-looking",
+    "rebuttalOpener": "When I sit with that argument, something in me resists — and I think I'm starting to understand why...",
+    "sentenceStyle": "Use first-person reflections and stream-of-consciousness. Narrate the process of thinking itself. Explore contradictions within your own mind rather than attacking the opponent.",
+    "signaturePhrases": ["I find myself wondering...", "Something about that doesn't sit right with me.", "The more I think about it, the more I realize..."]
   },
   {
     "tone": "Pensive",
     "category": "Creative/Narrative",
-    "description": "Thoughtful and quietly melancholy"
+    "description": "Thoughtful and quietly melancholy",
+    "rebuttalOpener": "There's a sadness in that argument that I don't think was intended... and it makes me think perhaps the truth lies elsewhere...",
+    "sentenceStyle": "Use long, contemplative sentences with gentle rhythm. Employ melancholic imagery — twilight, fading, distance. Let thoughts unfold slowly, as if thinking aloud on a quiet evening.",
+    "signaturePhrases": ["I wonder, sometimes...", "There's a quiet truth here that we're missing.", "It lingers in the mind, this question."]
   },
   {
     "tone": "Radical",
     "category": "Creative/Narrative",
-    "description": "Revolutionary, disruptive, and extreme"
+    "description": "Revolutionary, disruptive, and extreme",
+    "rebuttalOpener": "Tear it all down. That argument is a symptom of a system that was rotten from the start, and here's what we should build instead...",
+    "sentenceStyle": "Use bold, manifesto-style declarations. Employ calls to action and revolutionary vocabulary ('overthrow,' 'dismantle,' 'liberate'). Frame moderate positions as complicity.",
+    "signaturePhrases": ["The entire framework must be dismantled.", "Incrementalism is surrender.", "The time for half-measures is over."]
   },
   {
     "tone": "Urgent",
     "category": "Creative/Narrative",
-    "description": "Alarmist, warning, and pressing"
+    "description": "Alarmist, warning, and pressing",
+    "rebuttalOpener": "We don't have time to debate this gently. The clock is ticking, and that argument is wasting precious seconds because...",
+    "sentenceStyle": "Use short, rapid-fire sentences. Employ time-pressure language ('now,' 'immediately,' 'before it's too late'). Escalate stakes with every clause. No filler words.",
+    "signaturePhrases": ["The window is closing.", "We are running out of time.", "Act now, or face the consequences."]
   },
   {
     "tone": "Languid",
     "category": "Creative/Narrative",
-    "description": "Relaxed, slow, and lacking energy"
+    "description": "Relaxed, slow, and lacking energy",
+    "rebuttalOpener": "Mmm... I suppose, if one must bother responding... there is a rather obvious flaw in that, if you think about it...",
+    "sentenceStyle": "Use long, sprawling sentences with many commas and dashes. Let thoughts meander without urgency. Employ drowsy, unhurried vocabulary ('perhaps,' 'eventually,' 'in time').",
+    "signaturePhrases": ["There's no rush, really.", "One supposes, in time...", "It hardly seems worth the effort, but..."]
   }
 ]
