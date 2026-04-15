@@ -408,7 +408,7 @@ export const DecisionMatrix: React.FC<DecisionMatrixProps> = ({
         )}
 
         {/* Fact-Check Section */}
-        {(factChecks || isFactChecking) && (
+        {(factChecks || isFactChecking || onRerunFactCheck) && (
           <div className="px-6 pb-6">
             <div className="bg-[#1E293B]/50 rounded-xl p-4 border border-gray-800">
               <div className="flex items-center justify-between mb-3">
@@ -416,23 +416,38 @@ export const DecisionMatrix: React.FC<DecisionMatrixProps> = ({
                   Fact-Check Report
                   {isFactChecking && <span className="ml-2 text-gray-500 animate-pulse">Analyzing claims...</span>}
                 </h4>
-                {onRerunFactCheck && !isFactChecking && factChecks && (
+                {onRerunFactCheck && !isFactChecking && (
                   <div className="flex gap-2">
-                    <button
-                      onClick={() => onRerunFactCheck('replace')}
-                      className="text-[10px] font-bold text-orange-400 hover:text-orange-300 bg-orange-500/10 hover:bg-orange-500/20 px-2.5 py-1 rounded-md transition-colors"
-                    >
-                      Re-run (Replace)
-                    </button>
-                    <button
-                      onClick={() => onRerunFactCheck('append')}
-                      className="text-[10px] font-bold text-gray-400 hover:text-gray-300 bg-gray-500/10 hover:bg-gray-500/20 px-2.5 py-1 rounded-md transition-colors"
-                    >
-                      Re-run (Keep Both)
-                    </button>
+                    {!factChecks && (
+                      <button
+                        onClick={() => onRerunFactCheck('replace')}
+                        className="text-[10px] font-bold text-orange-400 hover:text-orange-300 bg-orange-500/10 hover:bg-orange-500/20 px-2.5 py-1 rounded-md transition-colors"
+                      >
+                        Run Fact Check
+                      </button>
+                    )}
+                    {factChecks && (
+                      <>
+                        <button
+                          onClick={() => onRerunFactCheck('replace')}
+                          className="text-[10px] font-bold text-orange-400 hover:text-orange-300 bg-orange-500/10 hover:bg-orange-500/20 px-2.5 py-1 rounded-md transition-colors"
+                        >
+                          Re-run (Replace)
+                        </button>
+                        <button
+                          onClick={() => onRerunFactCheck('append')}
+                          className="text-[10px] font-bold text-gray-400 hover:text-gray-300 bg-gray-500/10 hover:bg-gray-500/20 px-2.5 py-1 rounded-md transition-colors"
+                        >
+                          Re-run (Keep Both)
+                        </button>
+                      </>
+                    )}
                   </div>
                 )}
               </div>
+              {!factChecks && !isFactChecking && (
+                <p className="text-xs text-gray-500">No fact-check results yet. Click "Run Fact Check" to analyze claims from the debate.</p>
+              )}
               {factChecks && factChecks.length > 0 && (
                 <div className="space-y-2">
                   {/* Summary counts */}
