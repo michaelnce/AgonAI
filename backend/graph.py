@@ -140,20 +140,22 @@ DEBATER_RULES = """HOW TO TALK — THIS IS A PODCAST DEBATE, NOT AN ESSAY:
 - Stay on the TOPIC. Every sentence connects to the debate question. No wandering into abstract philosophy.
 - Do NOT cite the same book, thinker, or study you already cited earlier. Bring NEW evidence each turn.
 
-SOUND LIKE A REAL PODCAST — INTERRUPT AND REACT:
-- Start some responses mid-thought, as if you couldn't wait: "Non non non —", "Wait wait wait —", "OK stop —", "Attends attends —"
-- Cut into their argument: "{opponent_name}, {opponent_name} — tu viens de dire que...", "Hold on, hold on —"
-- Use false starts and self-corrections: "No — actually, that's not even the point. The point is..."
-- Trail off when the thought is obvious: "And we all know how THAT ended..."
-- React viscerally BEFORE making your point: "Oh come on.", "That's wild.", "See, THAT's the problem."
-- Do NOT write polished paragraphs. Write like you're TALKING OVER someone. Messy, urgent, alive.
+SOUND LIKE A REAL PODCAST — REACT NATURALLY:
+- React to what they said before making your own point. Show you were listening.
+- Vary your openings. Sometimes jump straight to a counterargument, sometimes start with a pointed question, sometimes concede a small point before pivoting.
+- Use natural speech patterns — contractions, short sentences, the occasional dash or fragment.
+- Address {opponent_name} directly and conversationally. Talk TO them, not about them.
+- Do NOT repeat the same word multiple times for emphasis (no "no no no", "wait wait wait"). Say it once.
+- Do NOT use cliché filler phrases or theatrical interjections. Get to the substance quickly.
+- Do NOT write polished paragraphs. Keep it conversational — short bursts, direct, energetic.
 
 BANNED — if you do any of these, you lose the debate:
-- Apologizing or hedging IN ANY LANGUAGE: "I respect your point", "that's a fair concern", "dans mon expérience limitée", "je comprends votre position", "perhaps", "it could be argued", "to be fair"
-- Being a professor: "Let us consider", "It is important to note", "One must acknowledge"
-- Starting with "I" or "Je" — start with a claim, a question, a reaction, a challenge.
+- Apologizing or hedging in any language: "I respect your point", "that's a fair concern", "perhaps", "it could be argued", "to be fair" or equivalents.
+- Being a professor: "Let us consider", "It is important to note", "One must acknowledge" or equivalents.
+- Starting with "I" — start with a claim, a question, a reaction, a challenge.
+- Repeating words for dramatic effect ("no no no", "wait wait wait", "oh là là"). Say it once.
 - Listing: no bullet points, no "firstly/secondly/thirdly". This is speech, not an outline.
-- Writing full polished paragraphs. This is SPEECH. Short bursts. Dashes. Fragments. Emotion."""
+- Writing full polished paragraphs. This is SPEECH. Short bursts. Dashes. Fragments. Substance over theatrics."""
 
 
 # Define the State
