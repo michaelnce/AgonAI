@@ -90,6 +90,7 @@ function App() {
   const [factChecks, setFactChecks] = useState<FactCheck[] | null>(null);
   const [isFactChecking, setIsFactChecking] = useState(false);
   const [factCheckError, setFactCheckError] = useState<string | null>(null);
+  const [factCheckProgress, setFactCheckProgress] = useState<string | null>(null);
   const [showTopicSuggestions, setShowTopicSuggestions] = useState(false);
 
   // Agent Configuration State - Default to Random
@@ -603,34 +604,67 @@ function App() {
                   factChecks={factChecks}
                   isFactChecking={isFactChecking}
                   factCheckError={factCheckError}
+                  factCheckProgress={factCheckProgress}
                   onRerunFactCheck={async (mode) => {
                     setIsFactChecking(true);
                     setFactCheckError(null);
+                    setFactCheckProgress(null);
+                    if (mode === 'replace') {
+                      setFactChecks(null);
+                    }
                     try {
                       const response = await fetch('/api/debate/fact-check', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ messages }),
                       });
-                      const data = await response.json();
-                      if (response.ok && data.fact_checks) {
-                        if (mode === 'replace') {
-                          setFactChecks(data.fact_checks);
-                        } else {
-                          setFactChecks(prev => [...(prev || []), ...data.fact_checks]);
+                      if (!response.ok) {
+                        const err = await response.json();
+                        setFactCheckError(err.detail || 'Fact-check failed');
+                        setIsFactChecking(false);
+                        return;
+                      }
+                      const reader = response.body?.getReader();
+                      if (!reader) { setIsFactChecking(false); return; }
+                      const decoder = new TextDecoder();
+                      let buffer = '';
+                      const accumulated: FactCheck[] = [];
+
+                      while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+                        buffer += decoder.decode(value, { stream: true });
+                        const lines = buffer.split('\n');
+                        buffer = lines.pop() || '';
+                        for (const line of lines) {
+                          if (!line.startsWith('data: ')) continue;
+                          try {
+                            const evt = JSON.parse(line.slice(6));
+                            if (evt.type === 'progress') {
+                              setFactCheckProgress(`Checking message ${evt.current}/${evt.total} (${evt.speaker})...`);
+                            } else if (evt.type === 'partial') {
+                              accumulated.push(...evt.checks);
+                              if (mode === 'replace') {
+                                setFactChecks([...accumulated]);
+                              } else {
+                                setFactChecks(prev => [...(prev || []), ...evt.checks]);
+                              }
+                            } else if (evt.type === 'complete') {
+                              // Final result — ensure state is consistent
+                              if (mode === 'replace') {
+                                setFactChecks(evt.fact_checks);
+                              }
+                            } else if (evt.type === 'error') {
+                              console.warn('Fact-check partial error:', evt.message);
+                            }
+                          } catch { /* skip unparseable lines */ }
                         }
-                        setFactCheckError(null);
-                      } else {
-                        const errMsg = data.detail || 'Fact-check failed';
-                        console.error('Fact-check failed:', errMsg);
-                        setFactCheckError(errMsg);
                       }
                     } catch (e) {
-                      const errMsg = `Fact-check request failed: ${e}`;
-                      console.error(errMsg);
-                      setFactCheckError(errMsg);
+                      setFactCheckError(`Fact-check request failed: ${e}`);
                     } finally {
                       setIsFactChecking(false);
+                      setFactCheckProgress(null);
                     }
                   }}
                   onSave={saveDebate}

@@ -362,78 +362,111 @@ async def send_message(debate_id: str, request: MessageRequest):
 class FactCheckRequest(BaseModel):
     messages: List[Message]
 
+
+def _parse_fact_check_json(raw: str) -> list:
+    """Parse fact-check JSON from LLM response, handling common formatting issues."""
+    raw = raw.strip().replace("```json", "").replace("```", "").strip()
+    bracket_start = raw.find("[")
+    bracket_end = raw.rfind("]")
+    if bracket_start != -1 and bracket_end != -1 and bracket_end > bracket_start:
+        raw = raw[bracket_start:bracket_end + 1]
+    return json.loads(raw)
+
+
 @app.post("/api/debate/fact-check")
-async def run_fact_check(request: FactCheckRequest):
-    """Run a standalone fact-check on debate messages."""
+async def run_fact_check(request: Request):
+    """Run fact-check on debate messages, one message at a time, streamed via SSE."""
     from backend.graph import LLM_PROVIDER
-    logger.info(f"[FACT-CHECK] Received fact-check request with {len(request.messages)} messages (provider: {LLM_PROVIDER})")
+
+    body = await request.json()
+    messages = body.get("messages", [])
+    logger.info(f"[FACT-CHECK] Received request with {len(messages)} messages (provider: {LLM_PROVIDER})")
 
     if LLM_PROVIDER != "claude":
-        logger.warning("[FACT-CHECK] Rejected: provider is not claude")
         raise HTTPException(status_code=400, detail="Fact-checking is only available with the Claude provider")
 
-    transcript = "\n\n".join(
-        f"{m.speaker}: {m.content}" for m in request.messages
-        if not m.content.startswith("The debate has concluded")
-    )
-    if not transcript.strip():
-        logger.warning("[FACT-CHECK] Rejected: no messages after filtering")
-        raise HTTPException(status_code=400, detail="No messages to fact-check")
+    # Filter to debater messages only (skip moderator and system)
+    debater_messages = [
+        m for m in messages
+        if m.get("speaker", "").lower() in ("proponent", "opponent")
+        and not m.get("content", "").startswith("The debate has concluded")
+    ]
 
-    logger.info(f"[FACT-CHECK] Transcript built: {len(transcript)} chars from {len(request.messages)} messages")
+    if not debater_messages:
+        raise HTTPException(status_code=400, detail="No debater messages to fact-check")
 
-    fact_check_llm = get_model(MODEL_MODERATOR, label="fact-check-rerun", max_turns=3)
-    fact_check_prompt = f"""You are a rigorous fact-checker reviewing a debate transcript. Your job is to identify EVERY specific factual claim — dates, statistics, quotes, book titles, historical events, attributions — and verify them.
+    logger.info(f"[FACT-CHECK] Will process {len(debater_messages)} debater messages individually")
+
+    async def fact_check_stream():
+        total = len(debater_messages)
+        all_checks = []
+
+        for idx, msg in enumerate(debater_messages):
+            speaker = msg.get("speaker", "Unknown")
+            content = msg.get("content", "")
+            msg_num = idx + 1
+
+            logger.info(f"[FACT-CHECK] Processing message {msg_num}/{total} ({speaker}, {len(content)} chars)")
+
+            # Send progress event
+            yield f"data: {json.dumps({'type': 'progress', 'current': msg_num, 'total': total, 'speaker': speaker})}\n\n"
+
+            fact_check_llm = get_model(MODEL_MODERATOR, label=f"fact-check-msg-{msg_num}", max_turns=3)
+            prompt = f"""You are a rigorous fact-checker. Analyze this single debate statement and identify ALL specific factual claims — dates, statistics, quotes, book titles, historical events, attributions.
+
+Speaker: {speaker}
+Statement: "{content}"
 
 For each claim, determine:
 - VERIFIED: the claim is accurate
-- DISPUTED: the claim is partially true but misleading or imprecise
-- FALSE: the claim is factually wrong
+- DISPUTED: partially true but misleading or imprecise
+- FALSE: factually wrong
 - UNVERIFIABLE: cannot be confirmed or denied with confidence
 
-Debate transcript:
-{transcript}
-
-Return a JSON array of claims. Each item:
+Return a JSON array. Each item:
 {{
   "claim": "the specific factual statement",
-  "speaker": "Proponent" or "Opponent" or "Moderator",
+  "speaker": "{speaker}",
   "verdict": "VERIFIED" | "DISPUTED" | "FALSE" | "UNVERIFIABLE",
-  "explanation": "brief explanation of why"
+  "explanation": "brief explanation"
 }}
 
 Only include SPECIFIC factual claims (dates, numbers, named works, quotes, events). Do NOT fact-check opinions or arguments.
+If there are NO specific factual claims in this statement, return an empty array: []
 Return ONLY the JSON array, no other text."""
 
-    try:
-        logger.info("[FACT-CHECK] Calling LLM...")
-        response = await asyncio.wait_for(
-            fact_check_llm.ainvoke(fact_check_prompt),
-            timeout=120.0
-        )
-        raw = response.content.strip()
-        logger.info(f"[FACT-CHECK] Raw response ({len(raw)} chars): {raw[:300]}...")
+            try:
+                response = await asyncio.wait_for(
+                    fact_check_llm.ainvoke(prompt),
+                    timeout=60.0
+                )
+                raw = response.content.strip()
+                logger.info(f"[FACT-CHECK] Message {msg_num}/{total} response ({len(raw)} chars): {raw[:200]}...")
 
-        # Clean common LLM formatting issues
-        raw = raw.replace("```json", "").replace("```", "").strip()
-        # Try to extract JSON array if wrapped in extra text
-        bracket_start = raw.find("[")
-        bracket_end = raw.rfind("]")
-        if bracket_start != -1 and bracket_end != -1 and bracket_end > bracket_start:
-            raw = raw[bracket_start:bracket_end + 1]
+                checks = _parse_fact_check_json(raw)
+                if checks:
+                    all_checks.extend(checks)
+                    # Send partial results as they come
+                    yield f"data: {json.dumps({'type': 'partial', 'checks': checks, 'message_num': msg_num})}\n\n"
+                    logger.info(f"[FACT-CHECK] Message {msg_num}/{total}: found {len(checks)} claims")
+                else:
+                    logger.info(f"[FACT-CHECK] Message {msg_num}/{total}: no factual claims found")
 
-        checks = json.loads(raw)
-        logger.info(f"[FACT-CHECK] Successfully parsed {len(checks)} claims")
-        return {"status": "success", "fact_checks": checks}
-    except asyncio.TimeoutError:
-        logger.error("[FACT-CHECK] Timed out after 120s")
-        raise HTTPException(status_code=504, detail="Fact-check timed out after 120s")
-    except json.JSONDecodeError as e:
-        logger.error(f"[FACT-CHECK] JSON parse failed: {e}\nRaw content: {raw[:500]}")
-        raise HTTPException(status_code=502, detail=f"Failed to parse fact-check response: {str(e)}")
-    except Exception as e:
-        logger.error(f"[FACT-CHECK] Unexpected error: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+            except asyncio.TimeoutError:
+                logger.error(f"[FACT-CHECK] Message {msg_num}/{total} timed out after 60s")
+                yield f"data: {json.dumps({'type': 'error', 'message': f'Message {msg_num} timed out', 'message_num': msg_num})}\n\n"
+            except json.JSONDecodeError as e:
+                logger.error(f"[FACT-CHECK] Message {msg_num}/{total} JSON parse failed: {e}")
+                yield f"data: {json.dumps({'type': 'error', 'message': f'Failed to parse message {msg_num}', 'message_num': msg_num})}\n\n"
+            except Exception as e:
+                logger.error(f"[FACT-CHECK] Message {msg_num}/{total} failed: {e}", exc_info=True)
+                yield f"data: {json.dumps({'type': 'error', 'message': f'Message {msg_num} failed: {str(e)}', 'message_num': msg_num})}\n\n"
+
+        # Send final complete result
+        logger.info(f"[FACT-CHECK] Complete: {len(all_checks)} total claims from {total} messages")
+        yield f"data: {json.dumps({'type': 'complete', 'fact_checks': all_checks})}\n\n"
+
+    return StreamingResponse(fact_check_stream(), media_type="text/event-stream")
 
 class BestMatchRequest(BaseModel):
     topic: str
@@ -694,61 +727,82 @@ async def event_generator(
 
         logger.info(f"[STREAM:{debate_id[:8]}] Debate finished after {count} iterations")
 
-        # Fact-check pass — run after debate finishes
+        # Fact-check pass — run after debate finishes, message by message
         if LLM_PROVIDER == "claude":
             try:
-                logger.info(f"[STREAM:{debate_id[:8]}] Starting fact-check pass...")
+                logger.info(f"[STREAM:{debate_id[:8]}] Starting fact-check pass (per-message)...")
                 yield f"data: {json.dumps({'type': 'system', 'content': 'fact_checking'})}\n\n"
-                # Send keepalive comment to prevent SSE timeout during long LLM call
-                yield f": keepalive\n\n"
 
-                # Collect debate messages for fact-checking (skip verdict message)
-                all_messages = [m for output in graph_outputs for _, node_out in output.items() for m in node_out.get("messages", []) if not m.startswith("Moderator: The debate has concluded")]
-                # Limit transcript size to avoid CLI timeouts
-                transcript = "\n\n".join(all_messages[-20:])
+                # Collect debater messages only (skip moderator and verdict)
+                debater_messages = []
+                for output in graph_outputs:
+                    for _, node_out in output.items():
+                        for m in node_out.get("messages", []):
+                            if m.startswith("Proponent:") or m.startswith("Opponent:"):
+                                speaker = "Proponent" if m.startswith("Proponent:") else "Opponent"
+                                content = m[len(speaker) + 1:].strip()
+                                debater_messages.append({"speaker": speaker, "content": content})
 
-                fact_check_llm = get_model(MODEL_MODERATOR, label="fact-check", token_tracker=token_tracker, max_turns=3)
-                fact_check_prompt = f"""You are a rigorous fact-checker reviewing a debate transcript. Your job is to identify EVERY specific factual claim — dates, statistics, quotes, book titles, historical events, attributions — and verify them.
+                all_checks = []
+                total = len(debater_messages)
+                logger.info(f"[STREAM:{debate_id[:8]}] Will fact-check {total} debater messages individually")
+
+                for idx, msg in enumerate(debater_messages):
+                    msg_num = idx + 1
+                    speaker = msg["speaker"]
+                    content = msg["content"]
+                    logger.info(f"[STREAM:{debate_id[:8]}] Fact-checking message {msg_num}/{total} ({speaker})")
+
+                    yield f": keepalive\n\n"
+
+                    fc_llm = get_model(MODEL_MODERATOR, label=f"fact-check-msg-{msg_num}", token_tracker=token_tracker, max_turns=3)
+                    prompt = f"""You are a rigorous fact-checker. Analyze this single debate statement and identify ALL specific factual claims — dates, statistics, quotes, book titles, historical events, attributions.
+
+Speaker: {speaker}
+Statement: "{content}"
 
 For each claim, determine:
 - VERIFIED: the claim is accurate
-- DISPUTED: the claim is partially true but misleading or imprecise
-- FALSE: the claim is factually wrong
+- DISPUTED: partially true but misleading or imprecise
+- FALSE: factually wrong
 - UNVERIFIABLE: cannot be confirmed or denied with confidence
 
-Debate transcript:
-{transcript}
-
-Return a JSON array of claims. Each item:
+Return a JSON array. Each item:
 {{
   "claim": "the specific factual statement",
-  "speaker": "Proponent" or "Opponent" or "Moderator",
+  "speaker": "{speaker}",
   "verdict": "VERIFIED" | "DISPUTED" | "FALSE" | "UNVERIFIABLE",
-  "explanation": "brief explanation of why"
+  "explanation": "brief explanation"
 }}
 
 Only include SPECIFIC factual claims (dates, numbers, named works, quotes, events). Do NOT fact-check opinions or arguments.
+If there are NO specific factual claims in this statement, return an empty array: []
 Return ONLY the JSON array, no other text."""
 
-                fact_response = await asyncio.wait_for(
-                    fact_check_llm.ainvoke(fact_check_prompt),
-                    timeout=120.0
-                )
-                raw = fact_response.content.strip()
-                logger.info(f"[STREAM:{debate_id[:8]}] Fact-check raw response ({len(raw)} chars): {raw[:300]}...")
-                raw = raw.replace("```json", "").replace("```", "").strip()
-                # Extract JSON array if wrapped in extra text
-                bracket_start = raw.find("[")
-                bracket_end = raw.rfind("]")
-                if bracket_start != -1 and bracket_end != -1 and bracket_end > bracket_start:
-                    raw = raw[bracket_start:bracket_end + 1]
-                # Validate it parses before sending
-                json.loads(raw)
-                logger.info(f"[STREAM:{debate_id[:8]}] Fact-check complete, valid JSON")
-                yield f"data: {json.dumps({'type': 'fact_check', 'content': raw})}\n\n"
-            except asyncio.TimeoutError:
-                logger.error(f"[STREAM:{debate_id[:8]}] Fact-check timed out after 120s")
-                yield f"data: {json.dumps({'type': 'fact_check_error', 'content': 'Fact-check timed out'})}\n\n"
+                    try:
+                        fc_response = await asyncio.wait_for(
+                            fc_llm.ainvoke(prompt),
+                            timeout=60.0
+                        )
+                        raw = fc_response.content.strip()
+                        checks = _parse_fact_check_json(raw)
+                        if checks:
+                            all_checks.extend(checks)
+                            logger.info(f"[STREAM:{debate_id[:8]}] Message {msg_num}/{total}: {len(checks)} claims found")
+                        else:
+                            logger.info(f"[STREAM:{debate_id[:8]}] Message {msg_num}/{total}: no factual claims")
+                    except asyncio.TimeoutError:
+                        logger.error(f"[STREAM:{debate_id[:8]}] Fact-check message {msg_num}/{total} timed out")
+                    except Exception as e:
+                        logger.error(f"[STREAM:{debate_id[:8]}] Fact-check message {msg_num}/{total} failed: {e}")
+
+                if all_checks:
+                    logger.info(f"[STREAM:{debate_id[:8]}] Fact-check complete: {len(all_checks)} total claims")
+                    yield f"data: {json.dumps({'type': 'fact_check', 'content': json.dumps(all_checks)})}\n\n"
+                else:
+                    logger.info(f"[STREAM:{debate_id[:8]}] Fact-check complete: no claims found")
+                    yield f"data: {json.dumps({'type': 'fact_check', 'content': '[]'})}\n\n"
+
             except Exception as e:
                 logger.error(f"[STREAM:{debate_id[:8]}] Fact-check failed: {e}", exc_info=True)
                 yield f"data: {json.dumps({'type': 'fact_check_error', 'content': str(e)})}\n\n"

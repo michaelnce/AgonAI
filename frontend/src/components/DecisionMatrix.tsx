@@ -58,6 +58,7 @@ interface DecisionMatrixProps {
   factChecks?: FactCheck[] | null;
   isFactChecking?: boolean;
   factCheckError?: string | null;
+  factCheckProgress?: string | null;
   onRerunFactCheck?: (mode: 'replace' | 'append') => void;
   onSave?: () => void;
   onRestart: () => void;
@@ -96,6 +97,7 @@ export const DecisionMatrix: React.FC<DecisionMatrixProps> = ({
   factChecks,
   isFactChecking,
   factCheckError,
+  factCheckProgress,
   onRerunFactCheck,
   onSave,
   onRestart
@@ -496,10 +498,10 @@ export const DecisionMatrix: React.FC<DecisionMatrixProps> = ({
                   })}
                 </div>
               )}
-              {isFactChecking && !factChecks && (
-                <div className="flex items-center gap-2 text-sm text-gray-400">
-                  <div className="w-4 h-4 border-2 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
-                  Analyzing factual claims in the debate transcript...
+              {isFactChecking && (
+                <div className="flex items-center gap-2 text-sm text-gray-400 mt-2">
+                  <div className="w-4 h-4 border-2 border-orange-500 border-t-transparent rounded-full animate-spin shrink-0"></div>
+                  {factCheckProgress || 'Analyzing factual claims...'}
                 </div>
               )}
             </div>
