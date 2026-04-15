@@ -21,6 +21,7 @@ build/
 
 # Testing
 coverage/
+.coverage
 .pytest_cache/
 
 # IDE
