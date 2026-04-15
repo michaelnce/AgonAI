@@ -97,6 +97,59 @@ To stop:
 ./stop.sh
 ```
 
+## LLM Providers
+
+AgonAI supports two LLM providers. Set the `LLM_PROVIDER` variable in your `.env` file to choose which one to use.
+
+### Ollama (Local)
+
+Ollama runs open-source models locally on your machine. This is the default provider and requires no API key or subscription.
+
+1. Install Ollama from [ollama.com](https://ollama.com).
+2. Pull a model: `ollama pull glm-4:9b-chat-q4_K_M` (or any model you prefer).
+3. Make sure Ollama is running (it starts automatically after install, or run `ollama serve`).
+4. Set your `.env`:
+   ```
+   LLM_PROVIDER=ollama
+   OLLAMA_BASE_URL=http://localhost:11434
+   OLLAMA_MODEL_PROPONENT=glm-4:9b-chat-q4_K_M
+   OLLAMA_MODEL_OPPONENT=glm-4:9b-chat-q4_K_M
+   OLLAMA_MODEL_MODERATOR=glm-4:9b-chat-q4_K_M
+   ```
+
+You can assign a different model to each agent. For example, use a larger model for the Moderator and smaller ones for the debaters. Any model available through `ollama list` can be used.
+
+**Pros**: Free, private, no internet required, full control over models.
+**Cons**: Requires GPU/CPU resources, model quality depends on hardware and model size.
+
+### Claude (via Claude Code CLI)
+
+This provider uses the [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) to call Claude models. It leverages your existing Claude Max or Pro subscription -- no API key is needed.
+
+1. Install Claude Code: `npm install -g @anthropic-ai/claude-code`
+2. Authenticate: run `claude` in your terminal and follow the login flow.
+3. Set your `.env`:
+   ```
+   LLM_PROVIDER=claude
+   ```
+
+When using Claude, the backend shells out to the `claude` CLI for each agent turn. It supports real-time token streaming and tracks token usage, cache hits, and cost per call. The performance stats (tokens, duration, cost) are displayed in the Decision Matrix after each debate.
+
+**Pros**: High-quality responses (Claude Sonnet/Opus), token-by-token streaming with usage tracking, no local GPU needed.
+**Cons**: Requires a Claude Max or Pro subscription, needs internet access.
+
+### Comparison
+
+| | Ollama | Claude |
+|---|---|---|
+| Cost | Free | Claude subscription |
+| Privacy | Fully local | Data sent to Anthropic |
+| Internet | Not required | Required |
+| Streaming | Supported | Supported (with token tracking) |
+| Model quality | Varies by model/hardware | Consistently high |
+| Per-agent models | Yes (different model per agent) | Single model (Claude) |
+| Token/cost stats | Not available | Displayed in Decision Matrix |
+
 ## Environment Variables
 
 Configure these in your `.env` file:
