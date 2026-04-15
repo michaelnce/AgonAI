@@ -1,5 +1,7 @@
 # AgonAI
 
+> **This is an experimental application intended for research and educational purposes only. It is not designed for production use.**
+
 AgonAI is a multi-agent adversarial debate platform where two AI agents (Proponent and Opponent) debate a user-chosen topic, orchestrated by a Moderator agent. Each agent adopts a philosophical profile and communication tone, producing structured, real-time debates streamed to a modern web interface.
 
 The platform is designed for exploring how different ideological perspectives and rhetorical styles interact when applied to controversial or complex topics. After the debate concludes, the Moderator delivers a scored verdict via a Decision Matrix, evaluating both sides on logic, evidence, and style.
