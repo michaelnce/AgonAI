@@ -366,7 +366,10 @@ class FactCheckRequest(BaseModel):
 async def run_fact_check(request: FactCheckRequest):
     """Run a standalone fact-check on debate messages."""
     from backend.graph import LLM_PROVIDER
+    logger.info(f"[FACT-CHECK] Received fact-check request with {len(request.messages)} messages (provider: {LLM_PROVIDER})")
+
     if LLM_PROVIDER != "claude":
+        logger.warning("[FACT-CHECK] Rejected: provider is not claude")
         raise HTTPException(status_code=400, detail="Fact-checking is only available with the Claude provider")
 
     transcript = "\n\n".join(
@@ -374,7 +377,10 @@ async def run_fact_check(request: FactCheckRequest):
         if not m.content.startswith("The debate has concluded")
     )
     if not transcript.strip():
+        logger.warning("[FACT-CHECK] Rejected: no messages after filtering")
         raise HTTPException(status_code=400, detail="No messages to fact-check")
+
+    logger.info(f"[FACT-CHECK] Transcript built: {len(transcript)} chars from {len(request.messages)} messages")
 
     fact_check_llm = get_model(MODEL_MODERATOR, label="fact-check-rerun")
     fact_check_prompt = f"""You are a rigorous fact-checker reviewing a debate transcript. Your job is to identify EVERY specific factual claim — dates, statistics, quotes, book titles, historical events, attributions — and verify them.
@@ -400,19 +406,33 @@ Only include SPECIFIC factual claims (dates, numbers, named works, quotes, event
 Return ONLY the JSON array, no other text."""
 
     try:
+        logger.info("[FACT-CHECK] Calling LLM...")
         response = await asyncio.wait_for(
             fact_check_llm.ainvoke(fact_check_prompt),
-            timeout=90.0
+            timeout=120.0
         )
-        raw = response.content.strip().replace("```json", "").replace("```", "").strip()
+        raw = response.content.strip()
+        logger.info(f"[FACT-CHECK] Raw response ({len(raw)} chars): {raw[:300]}...")
+
+        # Clean common LLM formatting issues
+        raw = raw.replace("```json", "").replace("```", "").strip()
+        # Try to extract JSON array if wrapped in extra text
+        bracket_start = raw.find("[")
+        bracket_end = raw.rfind("]")
+        if bracket_start != -1 and bracket_end != -1 and bracket_end > bracket_start:
+            raw = raw[bracket_start:bracket_end + 1]
+
         checks = json.loads(raw)
+        logger.info(f"[FACT-CHECK] Successfully parsed {len(checks)} claims")
         return {"status": "success", "fact_checks": checks}
     except asyncio.TimeoutError:
-        raise HTTPException(status_code=504, detail="Fact-check timed out")
-    except json.JSONDecodeError:
-        raise HTTPException(status_code=502, detail="Failed to parse fact-check response")
+        logger.error("[FACT-CHECK] Timed out after 120s")
+        raise HTTPException(status_code=504, detail="Fact-check timed out after 120s")
+    except json.JSONDecodeError as e:
+        logger.error(f"[FACT-CHECK] JSON parse failed: {e}\nRaw content: {raw[:500]}")
+        raise HTTPException(status_code=502, detail=f"Failed to parse fact-check response: {str(e)}")
     except Exception as e:
-        logger.error(f"Fact-check rerun failed: {e}", exc_info=True)
+        logger.error(f"[FACT-CHECK] Unexpected error: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 class BestMatchRequest(BaseModel):
@@ -712,13 +732,22 @@ Return ONLY the JSON array, no other text."""
 
                 fact_response = await asyncio.wait_for(
                     fact_check_llm.ainvoke(fact_check_prompt),
-                    timeout=90.0
+                    timeout=120.0
                 )
-                raw = fact_response.content.strip().replace("```json", "").replace("```", "").strip()
-                logger.info(f"[STREAM:{debate_id[:8]}] Fact-check complete: {raw[:200]}...")
+                raw = fact_response.content.strip()
+                logger.info(f"[STREAM:{debate_id[:8]}] Fact-check raw response ({len(raw)} chars): {raw[:300]}...")
+                raw = raw.replace("```json", "").replace("```", "").strip()
+                # Extract JSON array if wrapped in extra text
+                bracket_start = raw.find("[")
+                bracket_end = raw.rfind("]")
+                if bracket_start != -1 and bracket_end != -1 and bracket_end > bracket_start:
+                    raw = raw[bracket_start:bracket_end + 1]
+                # Validate it parses before sending
+                json.loads(raw)
+                logger.info(f"[STREAM:{debate_id[:8]}] Fact-check complete, valid JSON")
                 yield f"data: {json.dumps({'type': 'fact_check', 'content': raw})}\n\n"
             except asyncio.TimeoutError:
-                logger.error(f"[STREAM:{debate_id[:8]}] Fact-check timed out after 90s")
+                logger.error(f"[STREAM:{debate_id[:8]}] Fact-check timed out after 120s")
                 yield f"data: {json.dumps({'type': 'fact_check_error', 'content': 'Fact-check timed out'})}\n\n"
             except Exception as e:
                 logger.error(f"[STREAM:{debate_id[:8]}] Fact-check failed: {e}", exc_info=True)

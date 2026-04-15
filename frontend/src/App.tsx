@@ -89,6 +89,7 @@ function App() {
   const [streamingMessage, setStreamingMessage] = useState<{ speaker: string; content: string } | null>(null);
   const [factChecks, setFactChecks] = useState<FactCheck[] | null>(null);
   const [isFactChecking, setIsFactChecking] = useState(false);
+  const [factCheckError, setFactCheckError] = useState<string | null>(null);
   const [showTopicSuggestions, setShowTopicSuggestions] = useState(false);
 
   // Agent Configuration State - Default to Random
@@ -135,6 +136,7 @@ function App() {
     setStreamingMessage(null);
     setFactChecks(null);
     setIsFactChecking(false);
+    setFactCheckError(null);
     setDebateStartTime(Date.now());
     setStatus('connecting');
     setPendingSpeaker('Moderator'); // First speaker
@@ -600,8 +602,10 @@ function App() {
                   agentNames={agentNames}
                   factChecks={factChecks}
                   isFactChecking={isFactChecking}
+                  factCheckError={factCheckError}
                   onRerunFactCheck={async (mode) => {
                     setIsFactChecking(true);
+                    setFactCheckError(null);
                     try {
                       const response = await fetch('/api/debate/fact-check', {
                         method: 'POST',
@@ -615,11 +619,16 @@ function App() {
                         } else {
                           setFactChecks(prev => [...(prev || []), ...data.fact_checks]);
                         }
+                        setFactCheckError(null);
                       } else {
-                        console.error('Fact-check failed:', data.detail);
+                        const errMsg = data.detail || 'Fact-check failed';
+                        console.error('Fact-check failed:', errMsg);
+                        setFactCheckError(errMsg);
                       }
                     } catch (e) {
-                      console.error('Fact-check request failed:', e);
+                      const errMsg = `Fact-check request failed: ${e}`;
+                      console.error(errMsg);
+                      setFactCheckError(errMsg);
                     } finally {
                       setIsFactChecking(false);
                     }
