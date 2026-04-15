@@ -94,6 +94,7 @@ class ChatClaudeCode(BaseChatModel):
 
     model_name: str = "claude"
     max_tokens: int = 4096
+    max_turns: int = 1
     call_label: str = ""
     token_tracker: Optional[TokenTracker] = None
     stream_callback: Optional[Callable] = None  # async fn(chunk: str) called for each token delta
@@ -147,14 +148,14 @@ class ChatClaudeCode(BaseChatModel):
 
     def _call_cli(self, prompt: str) -> tuple:
         """Synchronous subprocess call to claude CLI. Returns (text, raw_data)."""
-        logger.info(f"[CLAUDE-CLI] Calling claude (sync), prompt length: {len(prompt)} chars")
+        logger.info(f"[CLAUDE-CLI] Calling claude (sync), prompt length: {len(prompt)} chars, max_turns: {self.max_turns}")
         try:
             result = subprocess.run(
                 [
                     "claude",
                     "-p", "-",
                     "--output-format", "json",
-                    "--max-turns", "1",
+                    "--max-turns", str(self.max_turns),
                 ],
                 input=prompt,
                 capture_output=True,
@@ -162,6 +163,11 @@ class ChatClaudeCode(BaseChatModel):
                 timeout=120,
             )
             if result.returncode != 0:
+                # Try to recover partial result from error_max_turns
+                text, data = self._try_recover_error(result.stdout)
+                if text:
+                    logger.warning(f"[CLAUDE-CLI] Recovered partial result from error (rc={result.returncode})")
+                    return text, data
                 logger.error(f"[CLAUDE-CLI] CLI error (rc={result.returncode}): {result.stderr[:500]}")
                 raise RuntimeError(f"claude CLI failed: {result.stderr[:500]}")
             return self._parse_response(result.stdout)
@@ -171,13 +177,13 @@ class ChatClaudeCode(BaseChatModel):
     async def _acall_cli(self, prompt: str) -> tuple:
         """Async subprocess call to claude CLI (non-streaming). Returns (text, raw_data).
         Uses stdin pipe for the prompt to avoid shell argument size limits."""
-        logger.info(f"[CLAUDE-CLI] Calling claude (async), prompt length: {len(prompt)} chars")
+        logger.info(f"[CLAUDE-CLI] Calling claude (async), prompt length: {len(prompt)} chars, max_turns: {self.max_turns}")
         try:
             proc = await asyncio.create_subprocess_exec(
                 "claude",
                 "-p", "-",
                 "--output-format", "json",
-                "--max-turns", "1",
+                "--max-turns", str(self.max_turns),
                 stdin=asyncio.subprocess.PIPE,
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE,
@@ -189,6 +195,11 @@ class ChatClaudeCode(BaseChatModel):
             stdout_str = stdout.decode()
             stderr_str = stderr.decode()
             if proc.returncode != 0:
+                # Try to recover partial result from error_max_turns
+                text, data = self._try_recover_error(stdout_str)
+                if text:
+                    logger.warning(f"[CLAUDE-CLI] Recovered partial result from error (rc={proc.returncode})")
+                    return text, data
                 error_detail = stderr_str.strip() or stdout_str.strip()
                 logger.error(f"[CLAUDE-CLI] CLI error (rc={proc.returncode}): stderr={stderr_str[:300]!r} stdout={stdout_str[:300]!r}")
                 raise RuntimeError(f"claude CLI failed (rc={proc.returncode}): {error_detail[:500]}")
@@ -200,13 +211,13 @@ class ChatClaudeCode(BaseChatModel):
     async def _acall_cli_streaming(self, prompt: str) -> tuple:
         """Async streaming subprocess call. Yields token deltas via stream_callback.
         Returns (full_text, result_data)."""
-        logger.info(f"[CLAUDE-CLI] Calling claude (streaming), prompt length: {len(prompt)} chars")
+        logger.info(f"[CLAUDE-CLI] Calling claude (streaming), prompt length: {len(prompt)} chars, max_turns: {self.max_turns}")
         try:
             proc = await asyncio.create_subprocess_exec(
                 "claude",
                 "-p", "-",
                 "--output-format", "stream-json",
-                "--max-turns", "1",
+                "--max-turns", str(self.max_turns),
                 "--verbose",
                 "--include-partial-messages",
                 stdin=asyncio.subprocess.PIPE,
@@ -268,6 +279,24 @@ class ChatClaudeCode(BaseChatModel):
         except asyncio.TimeoutError:
             proc.kill()
             raise RuntimeError("claude CLI timed out after 120s")
+
+    @staticmethod
+    def _try_recover_error(raw: str) -> tuple:
+        """Try to extract a usable result from a CLI error response.
+        Handles error_max_turns where Claude hit the turn limit but may have partial output."""
+        try:
+            data = json.loads(raw)
+            if isinstance(data, dict):
+                subtype = data.get("subtype", "")
+                # error_max_turns: Claude tried to use tools and ran out of turns
+                # The result field may still contain useful text
+                if data.get("result"):
+                    logger.info(f"[CLAUDE-CLI] Recovered result from error ({subtype}): {len(data['result'])} chars")
+                    return data["result"], data
+                logger.warning(f"[CLAUDE-CLI] Error response has no result field (subtype={subtype})")
+        except (json.JSONDecodeError, KeyError):
+            pass
+        return None, None
 
     @staticmethod
     def _parse_response(raw: str) -> tuple:

@@ -382,7 +382,7 @@ async def run_fact_check(request: FactCheckRequest):
 
     logger.info(f"[FACT-CHECK] Transcript built: {len(transcript)} chars from {len(request.messages)} messages")
 
-    fact_check_llm = get_model(MODEL_MODERATOR, label="fact-check-rerun")
+    fact_check_llm = get_model(MODEL_MODERATOR, label="fact-check-rerun", max_turns=3)
     fact_check_prompt = f"""You are a rigorous fact-checker reviewing a debate transcript. Your job is to identify EVERY specific factual claim — dates, statistics, quotes, book titles, historical events, attributions — and verify them.
 
 For each claim, determine:
@@ -707,7 +707,7 @@ async def event_generator(
                 # Limit transcript size to avoid CLI timeouts
                 transcript = "\n\n".join(all_messages[-20:])
 
-                fact_check_llm = get_model(MODEL_MODERATOR, label="fact-check", token_tracker=token_tracker)
+                fact_check_llm = get_model(MODEL_MODERATOR, label="fact-check", token_tracker=token_tracker, max_turns=3)
                 fact_check_prompt = f"""You are a rigorous fact-checker reviewing a debate transcript. Your job is to identify EVERY specific factual claim — dates, statistics, quotes, book titles, historical events, attributions — and verify them.
 
 For each claim, determine:

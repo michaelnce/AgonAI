@@ -176,10 +176,10 @@ class DebateState(TypedDict):
     opponent_name: str
     verdict: str
 
-def get_model(model_name: str, label: str = "", token_tracker=None, stream_callback=None):
+def get_model(model_name: str, label: str = "", token_tracker=None, stream_callback=None, max_turns: int = 1):
     if LLM_PROVIDER == "claude":
         from backend.claude_llm import ChatClaudeCode
-        return ChatClaudeCode(model_name="claude", call_label=label, token_tracker=token_tracker, stream_callback=stream_callback)
+        return ChatClaudeCode(model_name="claude", max_turns=max_turns, call_label=label, token_tracker=token_tracker, stream_callback=stream_callback)
     else:
         from langchain_ollama import ChatOllama
         return ChatOllama(base_url=OLLAMA_BASE_URL, model=model_name)
