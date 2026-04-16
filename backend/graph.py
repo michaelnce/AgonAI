@@ -8,8 +8,15 @@ from langchain_core.runnables import RunnableConfig
 from dotenv import load_dotenv
 
 import json
+from pathlib import Path
 
 logger = logging.getLogger("debate.graph")
+
+# Load prompt templates from files
+PROMPTS_DIR = Path(__file__).parent / "prompts"
+
+def _load_prompt(name: str) -> str:
+    return (PROMPTS_DIR / name).read_text()
 
 load_dotenv()
 
@@ -21,6 +28,7 @@ OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 MODEL_PROPONENT = os.getenv("OLLAMA_MODEL_PROPONENT", "llama3")
 MODEL_OPPONENT = os.getenv("OLLAMA_MODEL_OPPONENT", "llama3")
 MODEL_MODERATOR = os.getenv("OLLAMA_MODEL_MODERATOR", "llama3")
+MODEL_FACT_CHECK = os.getenv("MODEL_FACT_CHECK", MODEL_MODERATOR)
 MAX_TURNS = int(os.getenv("MAX_TURNS", 6))
 MAX_TURNS_MIN = 10  # Debate length is randomized between MAX_TURNS_MIN and MAX_TURNS
 WORD_LIMIT = int(os.getenv("WORD_LIMIT", 200))
@@ -129,33 +137,7 @@ def build_identity_prompt(profile_data, tone_data):
     return " ".join(parts)
 
 
-# Core personality rules — podcast-style debater with intellectual depth
-DEBATER_RULES = """HOW TO TALK — THIS IS A PODCAST DEBATE, NOT AN ESSAY:
-- You are a guest on a high-profile debate podcast. You're smart, passionate, and you came to WIN.
-- Talk like a real person. Short punchy sentences. Use "look," "here's the thing," "come on" naturally.
-- DIRECTLY address the other guest BY NAME. Say "you" — "{opponent_name}, you just claimed X, but that ignores..."
-- React to what they said. If it was weak, show it. If it surprised you, say so. Be human.
-- Back up your opinions with REAL specifics — names, dates, events, data. Not "many experts say" but "Piketty showed in 2014 that..."
-- CITATION LIMIT: Cite at most ONE new source, thinker, or study per turn. Make it count. You're on a podcast, not writing a bibliography. If you drop a name, it better be your knockout punch, not a list.
-- Stay on the TOPIC. Every sentence connects to the debate question. No wandering into abstract philosophy.
-- Do NOT cite the same book, thinker, or study you already cited earlier. Bring NEW evidence each turn.
-
-SOUND LIKE A REAL PODCAST — REACT NATURALLY:
-- React to what they said before making your own point. Show you were listening.
-- Vary your openings. Sometimes jump straight to a counterargument, sometimes start with a pointed question, sometimes concede a small point before pivoting.
-- Use natural speech patterns — contractions, short sentences, the occasional dash or fragment.
-- Address {opponent_name} directly and conversationally. Talk TO them, not about them.
-- Do NOT repeat the same word multiple times for emphasis (no "no no no", "wait wait wait"). Say it once.
-- Do NOT use cliché filler phrases or theatrical interjections. Get to the substance quickly.
-- Do NOT write polished paragraphs. Keep it conversational — short bursts, direct, energetic.
-
-BANNED — if you do any of these, you lose the debate:
-- Apologizing or hedging in any language: "I respect your point", "that's a fair concern", "perhaps", "it could be argued", "to be fair" or equivalents.
-- Being a professor: "Let us consider", "It is important to note", "One must acknowledge" or equivalents.
-- Starting with "I" — start with a claim, a question, a reaction, a challenge.
-- Repeating words for dramatic effect ("no no no", "wait wait wait", "oh là là"). Say it once.
-- Listing: no bullet points, no "firstly/secondly/thirdly". This is speech, not an outline.
-- Writing full polished paragraphs. This is SPEECH. Short bursts. Dashes. Fragments. Substance over theatrics."""
+DEBATER_RULES = _load_prompt("debater_rules.txt")
 
 
 # Define the State
@@ -211,37 +193,18 @@ async def moderator_node(state: DebateState, config: RunnableConfig):
 
     wl = random_word_limit()
     if not messages:
-        prompt = f"""You're the host of a popular debate podcast. Today's topic: "{topic}"
-
-Your two guests:
-- {pro_name} (a {pro_profile} thinker) argues FOR
-- {opp_name} (a {opp_profile} thinker) argues AGAINST
-
-Open the show in under {wl} words. Be energetic, conversational, a little provocative:
-- Introduce your guests by name: {pro_name} and {opp_name}.
-- Tell the audience why this topic is a big deal RIGHT NOW. What's at stake?
-- Tease the tension: these two guests fundamentally disagree. Set up the clash.
-- Throw a sharp opening question to {pro_name} — something specific that forces them to commit, not hedge.
-
-Sound like a real podcast host. "Welcome back, folks..." not "The following debate shall commence..."
-
-You MUST speak ENTIRELY in {moderator_language}. Every word of your response must be in {moderator_language}."""
+        prompt = _load_prompt("moderator_opening.txt").format(
+            topic=topic, pro_name=pro_name, opp_name=opp_name,
+            pro_profile=pro_profile, opp_profile=opp_profile,
+            wl=wl, moderator_language=moderator_language,
+        )
     else:
         history = format_history(messages, window=6)
-        prompt = f"""You're the host of a debate podcast. The topic is: "{topic}"
-Guests: {pro_name} (FOR) and {opp_name} (AGAINST).
-
-What's been said so far:
-{history}
-
-Jump in with a SHORT, PUNCHY host intervention — MAXIMUM {MODERATOR_WORD_LIMIT} words. Be brief like a real host cutting in:
-- If someone dodged: call them BY NAME. "{pro_name}, hold on — you didn't answer about X."
-- If they're repeating themselves: throw a curveball. One sharp question.
-- If it's getting good: stoke the fire. "OK {opp_name}, but what about [edge case]?"
-
-Keep it SHORT. 2-3 sentences max. You're interrupting, not giving a speech. Don't summarize. Don't compliment.
-
-You MUST speak ENTIRELY in {moderator_language}. Every word of your response must be in {moderator_language}."""
+        prompt = _load_prompt("moderator_intervention.txt").format(
+            topic=topic, pro_name=pro_name, opp_name=opp_name,
+            history=history, moderator_word_limit=MODERATOR_WORD_LIMIT,
+            moderator_language=moderator_language,
+        )
 
     logger.info(f"[MODERATOR] Calling LLM ({LLM_PROVIDER}:{MODEL_MODERATOR})...")
     response = await llm.ainvoke(prompt)
@@ -270,38 +233,10 @@ async def verdict_node(state: DebateState, config: RunnableConfig):
     moderator_language = state.get("moderator_language", "English")
     history = format_history(messages)
 
-    prompt = f"""You are the Chief Judge of the Debate. The topic was '{topic}'.
-The Proponent was {pro_name}. The Opponent was {opp_name}.
-
-Full debate transcript:
-{history}
-
-Your task is to synthesize the exchange into a final Decision Matrix.
-1. Decide the winner (Proponent or Opponent).
-2. Assign scores (0-10) for Logic, Evidence, and Style for each side.
-3. Provide a detailed rationale for the decision. Refer to the debaters by name ({pro_name} and {opp_name}). Analyze:
-   - Which arguments went unanswered?
-   - Who engaged more directly with their opponent's points?
-   - Which side used more specific, concrete evidence vs. vague generalities?
-   - Who was more persuasive as a communicator?
-4. Recommend 2-3 specific books or academic texts related to the themes debated.
-5. Collect EVERY book, article, paper, study, or named work that was mentioned or cited by either debater during the transcript. List each with its author if mentioned. If none were cited, return an empty array.
-
-You MUST return the result as a valid JSON object with the following structure:
-{{
-  "winner": "Proponent" | "Opponent",
-  "scores": {{
-    "proponent": {{"logic": int, "evidence": int, "style": int}},
-    "opponent": {{"logic": int, "evidence": int, "style": int}}
-  }},
-  "reasoning": "string",
-  "recommendations": ["book 1", "book 2"],
-  "references": ["Author - Title (mentioned by {pro_name}/{opp_name})", ...]
-}}
-
-The "reasoning" field MUST be written ENTIRELY in {moderator_language}.
-Do NOT output any text before or after the JSON.
-"""
+    prompt = _load_prompt("verdict.txt").format(
+        topic=topic, pro_name=pro_name, opp_name=opp_name,
+        history=history, moderator_language=moderator_language,
+    )
 
     logger.info(f"[VERDICT] Calling LLM ({LLM_PROVIDER}:{MODEL_MODERATOR})...")
     response = await llm.ainvoke(prompt)
@@ -377,33 +312,22 @@ async def proponent_node(state: DebateState, config: RunnableConfig):
 
     if phase == "opening":
         history = format_history(messages)
-        phase_instruction = f"""The host just asked you to open. The topic: "{topic}" — you're arguing FOR.
-
-In under {wl} words, make your opening statement like a confident podcast guest:
-- Lead with your strongest, most specific claim. Not "there are benefits" — name THE reason.
-- Drop a concrete example — a real event, a real number, a real person. Make it vivid.
-- End by throwing down a challenge to {their_name}: "I'd love to hear how you explain THAT, {their_name}."
-- Sound like someone who BELIEVES this, not someone reading a position paper."""
+        phase_instruction = _load_prompt("debater_opening.txt").format(
+            role_intro="", topic=topic, role_for="FOR", wl=wl, opponent_name=their_name,
+        )
     elif phase == "closing":
         history = format_history(messages, window=8)
-        phase_instruction = f"""Last chance to make your case on: "{topic}" (arguing FOR).
-
-In under {wl} words, give your closing statement:
-- What's the one thing you said that {their_name} NEVER had a good answer for? Hammer it.
-- Acknowledge their best shot — then explain why it still doesn't win.
-- End with something memorable. A line the audience will remember."""
+        phase_instruction = _load_prompt("debater_closing.txt").format(
+            topic=topic, role_for="FOR", wl=wl, opponent_name=their_name,
+        )
     else:
         history = format_history(messages, window=6)
         move = get_move_for_turn(turn_count)
         opponent_quote = f'\n{their_name} just said: "{last_opponent}"' if last_opponent else ""
-        phase_instruction = f"""Topic: "{topic}" — you're arguing FOR.
-{opponent_quote}
-
-In under {wl} words, respond like you're on a live podcast:
-- Open by reacting to what {their_name} just said. Quote or paraphrase their claim. Push back directly.
-- Then advance YOUR argument with something new and specific. Do NOT repeat evidence you already used.
-- {move}
-- Keep the energy conversational. You're talking TO {their_name}, not past them."""
+        phase_instruction = _load_prompt("debater_rebuttal.txt").format(
+            topic=topic, role_for="FOR", wl=wl, opponent_name=their_name,
+            opponent_quote=opponent_quote, move=move,
+        )
 
     prompt = _build_debater_prompt(
         role_label="Proponent", role_for="FOR", my_name=my_name, opponent_name=their_name,
@@ -450,33 +374,22 @@ async def opponent_node(state: DebateState, config: RunnableConfig):
 
     if phase == "opening":
         history = format_history(messages)
-        phase_instruction = f"""Your turn to respond. The topic: "{topic}" — you're arguing AGAINST.
-
-In under {wl} words, make your opening like a confident podcast guest:
-- React to what {their_name} just said — don't ignore it. Then hit back with YOUR main claim.
-- Be specific. Name a real counterexample, a real failure, a real risk. Make it vivid.
-- End with a direct challenge: throw something back at {their_name} they'll struggle to answer.
-- Sound like you genuinely believe the other side is wrong, not like you're playing devil's advocate."""
+        phase_instruction = _load_prompt("debater_opening.txt").format(
+            role_intro="Your turn to respond. ", topic=topic, role_for="AGAINST", wl=wl, opponent_name=their_name,
+        )
     elif phase == "closing":
         history = format_history(messages, window=8)
-        phase_instruction = f"""Last chance to make your case on: "{topic}" (arguing AGAINST).
-
-In under {wl} words, give your closing statement:
-- What's the one thing you said that {their_name} NEVER had a good answer for? Hammer it.
-- Acknowledge their best shot — then explain why it still doesn't win.
-- End with something memorable. A line the audience will remember."""
+        phase_instruction = _load_prompt("debater_closing.txt").format(
+            topic=topic, role_for="AGAINST", wl=wl, opponent_name=their_name,
+        )
     else:
         history = format_history(messages, window=6)
         move = get_move_for_turn(turn_count)
         proponent_quote = f'\n{their_name} just said: "{last_proponent}"' if last_proponent else ""
-        phase_instruction = f"""Topic: "{topic}" — you're arguing AGAINST.
-{proponent_quote}
-
-In under {wl} words, respond like you're on a live podcast:
-- Open by reacting to what {their_name} just said. Quote or paraphrase their claim. Push back directly.
-- Then advance YOUR argument with something new and specific. Do NOT repeat evidence you already used.
-- {move}
-- Keep the energy conversational. You're talking TO {their_name}, not past them."""
+        phase_instruction = _load_prompt("debater_rebuttal.txt").format(
+            topic=topic, role_for="AGAINST", wl=wl, opponent_name=their_name,
+            opponent_quote=proponent_quote, move=move,
+        )
 
     prompt = _build_debater_prompt(
         role_label="Opponent", role_for="AGAINST", my_name=my_name, opponent_name=their_name,

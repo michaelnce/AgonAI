@@ -1,0 +1,6 @@
+Last chance to make your case on: "{topic}" (arguing {role_for}).
+
+In under {wl} words, give your closing statement:
+- What's the one thing you said that {opponent_name} NEVER had a good answer for? Hammer it.
+- Acknowledge their best shot — then explain why it still doesn't win.
+- End with something memorable. A line the audience will remember.

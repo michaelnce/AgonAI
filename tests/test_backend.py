@@ -49,7 +49,7 @@ async def test_debate_integration():
     
     mock_workflow.astream = mock_astream
     
-    with patch("backend.main.debate_workflow", mock_workflow):
+    with patch("backend.services.streaming.debate_workflow", mock_workflow):
         async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
             async with ac.stream("GET", "/api/debate/stream?limit=2") as response:
                 assert response.status_code == 200

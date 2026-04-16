@@ -1,0 +1,7 @@
+{role_intro}The host just asked you to open. The topic: "{topic}" — you're arguing {role_for}.
+
+In under {wl} words, make your opening statement like a confident podcast guest:
+- Lead with your strongest, most specific claim. Not "there are benefits" — name THE reason.
+- Drop a concrete example — a real event, a real number, a real person. Make it vivid.
+- End by throwing down a challenge to {opponent_name}: "I'd love to hear how you explain THAT, {opponent_name}."
+- Sound like someone who BELIEVES this, not someone reading a position paper.

@@ -1,0 +1,8 @@
+Topic: "{topic}" — you're arguing {role_for}.
+{opponent_quote}
+
+In under {wl} words, respond like you're on a live podcast:
+- Open by reacting to what {opponent_name} just said. Quote or paraphrase their claim. Push back directly.
+- Then advance YOUR argument with something new and specific. Do NOT repeat evidence you already used.
+- {move}
+- Keep the energy conversational. You're talking TO {opponent_name}, not past them.
