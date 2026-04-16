@@ -68,10 +68,13 @@ async def problem_event_generator(
         if speaker:
             await stream_queue.put(("chunk", speaker, chunk))
 
-    config = {"configurable": {
-        "token_tracker": token_tracker,
-        "stream_callback": on_stream_chunk if LLM_PROVIDER == "claude" else None,
-    }}
+    config = {
+        "recursion_limit": 100,
+        "configurable": {
+            "token_tracker": token_tracker,
+            "stream_callback": on_stream_chunk if LLM_PROVIDER == "claude" else None,
+        },
+    }
 
     try:
         graph_done = asyncio.Event()
