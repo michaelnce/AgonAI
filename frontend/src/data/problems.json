@@ -1,0 +1,42 @@
+[
+  {
+    "category": "Technology",
+    "problems": [
+      "How should a mid-size company migrate from monolithic architecture to microservices without disrupting production?",
+      "Design a strategy to reduce cloud infrastructure costs by 40% while maintaining performance SLAs",
+      "How should an organization implement AI governance policies that enable innovation while managing risk?"
+    ]
+  },
+  {
+    "category": "Business",
+    "problems": [
+      "A retail chain is losing 15% of customers to online competitors — develop a turnaround strategy",
+      "How should a startup allocate a $2M seed round across product, hiring, and marketing?",
+      "Design an employee retention strategy for a tech company experiencing 30% annual attrition"
+    ]
+  },
+  {
+    "category": "Public Policy",
+    "problems": [
+      "Design a policy framework for regulating AI-generated content without stifling innovation",
+      "How should a city of 500,000 transition its public transit to fully electric by 2035?",
+      "Propose a national strategy to address the growing gap between housing supply and demand"
+    ]
+  },
+  {
+    "category": "Environment",
+    "problems": [
+      "Develop a plan to make a university campus carbon-neutral within 5 years",
+      "How should coastal cities prepare for 1 meter of sea level rise by 2100?",
+      "Design a circular economy strategy for the fast fashion industry"
+    ]
+  },
+  {
+    "category": "Education",
+    "problems": [
+      "How should a school district integrate AI tools into K-12 education responsibly?",
+      "Design a reskilling program for workers displaced by automation in manufacturing",
+      "Propose a strategy to reduce the digital divide in rural communities"
+    ]
+  }
+]

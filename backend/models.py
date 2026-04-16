@@ -38,3 +38,15 @@ class BestMatchRequest(BaseModel):
     resolve_opponent_tone: bool = False
     current_proponent_profile: Optional[str] = None
     current_opponent_profile: Optional[str] = None
+
+
+class ProblemAgentConfig(BaseModel):
+    profile: str = "__random__"
+    tone: str = "__random__"
+    language: str = "English"
+
+
+class ProblemRequest(BaseModel):
+    problem: str
+    agents: Optional[Dict[str, ProblemAgentConfig]] = None
+    fact_check: bool = True

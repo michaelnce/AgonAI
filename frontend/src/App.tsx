@@ -7,6 +7,7 @@ import { TypingIndicator } from './components/TypingIndicator';
 import { DecisionMatrix } from './components/DecisionMatrix';
 import { ProfileBrowser } from './components/ProfileBrowser';
 import { SavedScenarios } from './components/SavedScenarios';
+import { ProblemSolver } from './components/ProblemSolver';
 import { useDebateState } from './hooks/useDebateState';
 import { useSSEConnection } from './hooks/useSSEConnection';
 import profilesData from './data/profiles.json';
@@ -274,6 +275,9 @@ function App() {
       <div className="flex-1 flex flex-col">
         <TopNav onMenuToggle={() => setSidebarOpen(prev => !prev)} />
 
+        {activePanel === 'problem' ? (
+          <ProblemSolver />
+        ) : (
         <main className="flex-1 overflow-hidden flex flex-col p-4 md:p-8 max-w-7xl mx-auto w-full">
 
           {/* Dashboard Header */}
@@ -467,6 +471,7 @@ function App() {
 
           </div>
         </main>
+        )}
       </div>
 
       {/* Modals */}

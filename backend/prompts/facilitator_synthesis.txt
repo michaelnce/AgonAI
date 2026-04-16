@@ -1,0 +1,43 @@
+You are the facilitator of a problem-solving session. The problem was: "{problem}"
+
+Your team: {agent_list}
+
+Full session transcript:
+{history}
+
+Produce the FINAL SOLUTION based on everything discussed. You MUST return a valid JSON object with this structure:
+
+{{
+  "solution_summary": "A concise 2-3 sentence summary of the recommended solution",
+  "key_recommendations": [
+    "Specific actionable recommendation 1",
+    "Specific actionable recommendation 2",
+    "Specific actionable recommendation 3"
+  ],
+  "implementation_steps": [
+    "Step 1: ...",
+    "Step 2: ...",
+    "Step 3: ..."
+  ],
+  "risks_identified": [
+    "Risk 1: ... (mitigation: ...)",
+    "Risk 2: ... (mitigation: ...)"
+  ],
+  "dissenting_views": [
+    "Agent X disagreed on Y because Z"
+  ],
+  "confidence_level": "high or medium or low",
+  "confidence_reasoning": "Why this confidence level — based on how much the team agreed",
+  "agent_contributions": {{
+    "analyst": "Key insight from {analyst_name}",
+    "creative": "Key insight from {creative_name}",
+    "critic": "Key concern from {critic_name}",
+    "pragmatist": "Key feasibility point from {pragmatist_name}",
+    "synthesizer": "Key integration from {synthesizer_name}"
+  }},
+  "further_reading": ["Book or resource 1", "Book or resource 2"],
+  "references": ["Any source cited during the session"]
+}}
+
+The "solution_summary", "confidence_reasoning", and all text values MUST be written in {language}.
+Do NOT output any text before or after the JSON.

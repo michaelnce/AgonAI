@@ -197,6 +197,69 @@ Return ONLY JSON with keys: {json.dumps(fields_to_resolve)}. Values must be exac
     return result
 
 
+# --- Problem Solver ---
+
+@app.get("/api/problem/stream")
+async def stream_problem(
+    problem: str = "How to reduce cloud costs by 40%",
+    analyst_profile: str = "__random__",
+    analyst_tone: str = "__random__",
+    analyst_language: str = "English",
+    creative_profile: str = "__random__",
+    creative_tone: str = "__random__",
+    creative_language: str = "English",
+    critic_profile: str = "__random__",
+    critic_tone: str = "__random__",
+    critic_language: str = "English",
+    pragmatist_profile: str = "__random__",
+    pragmatist_tone: str = "__random__",
+    pragmatist_language: str = "English",
+    synthesizer_profile: str = "__random__",
+    synthesizer_tone: str = "__random__",
+    synthesizer_language: str = "English",
+    fact_check: bool = True,
+):
+    from backend.services.problem_streaming import problem_event_generator
+    from backend.problem_graph import AGENT_ROLES
+    import random as rnd
+
+    session_id = str(uuid.uuid4())
+    logger.info(f"[API] /api/problem/stream called — session_id: {session_id[:8]}, problem: '{problem[:60]}'")
+
+    profile_names = [p["Movement"] for p in PROFILES]
+    tone_names = [t["tone"] for t in TONES]
+
+    def resolve(val, pool):
+        return rnd.choice(pool) if val == "__random__" else val
+
+    agent_configs = {
+        "analyst": {"profile": resolve(analyst_profile, profile_names), "tone": resolve(analyst_tone, tone_names), "language": analyst_language},
+        "creative": {"profile": resolve(creative_profile, profile_names), "tone": resolve(creative_tone, tone_names), "language": creative_language},
+        "critic": {"profile": resolve(critic_profile, profile_names), "tone": resolve(critic_tone, tone_names), "language": critic_language},
+        "pragmatist": {"profile": resolve(pragmatist_profile, profile_names), "tone": resolve(pragmatist_tone, tone_names), "language": pragmatist_language},
+        "synthesizer": {"profile": resolve(synthesizer_profile, profile_names), "tone": resolve(synthesizer_tone, tone_names), "language": synthesizer_language},
+    }
+
+    # Ensure all profiles are distinct
+    used_profiles = set()
+    for role in AGENT_ROLES:
+        while agent_configs[role]["profile"] in used_profiles:
+            agent_configs[role]["profile"] = rnd.choice(profile_names)
+        used_profiles.add(agent_configs[role]["profile"])
+
+    # Determine facilitator language (majority language)
+    langs = [agent_configs[r]["language"] for r in AGENT_ROLES]
+    facilitator_language = max(set(langs), key=langs.count)
+
+    return StreamingResponse(
+        problem_event_generator(
+            session_id, problem, agent_configs,
+            facilitator_language, fact_check,
+        ),
+        media_type="text/event-stream",
+    )
+
+
 # --- SSE debate stream ---
 
 @app.get("/api/debate/stream")

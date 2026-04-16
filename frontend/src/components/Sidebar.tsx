@@ -39,8 +39,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ onNavigate, activePanel, isOpe
 
         {/* Navigation */}
         <nav className="flex-1 p-4 space-y-2">
-          <NavItem icon="📊" label="Current Debate" active={activePanel === null} onClick={() => handleNav('current')} />
-          <NavItem icon="📁" label="Saved Debates" active={activePanel === 'debates'} onClick={() => handleNav('debates')} />
+          <NavItem icon="📊" label="Debate Arena" active={activePanel === null} onClick={() => handleNav('current')} />
+          <NavItem icon="🧠" label="Problem Solver" active={activePanel === 'problem'} onClick={() => handleNav('problem')} />
+          <NavItem icon="📁" label="Saved Sessions" active={activePanel === 'debates'} onClick={() => handleNav('debates')} />
           <NavItem icon="🔖" label="Saved Scenarios" active={activePanel === 'scenarios'} onClick={() => handleNav('scenarios')} />
           <NavItem icon="👥" label="Agent Profiles" active={activePanel === 'profiles'} onClick={() => handleNav('profiles')} />
         </nav>

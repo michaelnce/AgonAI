@@ -43,6 +43,32 @@ export interface FactCheck {
   explanation: string;
 }
 
+export interface SolutionData {
+  solution_summary: string;
+  key_recommendations: string[];
+  implementation_steps: string[];
+  risks_identified: string[];
+  dissenting_views: string[];
+  confidence_level: 'high' | 'medium' | 'low';
+  confidence_reasoning: string;
+  agent_contributions: Record<string, string>;
+  further_reading?: string[];
+  references?: string[];
+}
+
+export type AgentRole = 'analyst' | 'creative' | 'critic' | 'pragmatist' | 'synthesizer';
+
+export interface ProblemAgentConfig {
+  profile: string;
+  tone: string;
+  language: string;
+}
+
+export interface ProblemMessage extends Message {
+  phase?: string;
+  round?: number;
+}
+
 export interface SavedDebate {
   id: string;
   date: string;
