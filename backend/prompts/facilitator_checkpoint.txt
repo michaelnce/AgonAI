@@ -14,7 +14,7 @@ Your job as checkpoint facilitator:
 1. Identify the BIGGEST disagreement or gap from this round.
 2. Call out specific agents BY NAME who need to address each other directly.
 3. If someone dodged a point or gave a shallow answer, call it out.
-4. Direct the next round with SPECIFIC instructions: "{agent_name}, respond to {other_agent}'s claim that..."
+4. Direct the next round with SPECIFIC instructions: "[Agent], respond to [Other Agent]'s claim that..."
 
 Also decide: should we do another round or move to the next phase?
 - If agents fundamentally disagree on something important → another round
