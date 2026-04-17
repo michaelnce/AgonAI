@@ -18,19 +18,21 @@ interface ProblemAgentCardProps {
   onUpdate: (field: keyof ProblemAgentConfig, value: string) => void;
   disabled: boolean;
   agentName?: string;
+  status?: 'Speaking' | 'Waiting' | 'Idle';
 }
 
 export const ProblemAgentCard: React.FC<ProblemAgentCardProps> = ({
-  role, config, profiles, tones, languages, onUpdate, disabled, agentName,
+  role, config, profiles, tones, languages, onUpdate, disabled, agentName, status,
 }) => {
   const info = ROLE_INFO[role];
 
   return (
-    <div className={`${info.bgColor} border rounded-xl p-3 transition-all`}>
+    <div className={`${info.bgColor} border rounded-xl p-3 transition-all ${status === 'Speaking' ? 'ring-2 ring-green-500/50' : ''}`}>
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${info.color} bg-black/20`}>{info.badge}</span>
           <span className={`text-sm font-bold ${info.color}`}>{agentName || info.label}</span>
+          {status === 'Speaking' && <span className="text-[9px] text-green-400 font-bold animate-pulse">SPEAKING</span>}
         </div>
         <span className="text-[10px] text-gray-500">{info.description}</span>
       </div>
@@ -43,6 +45,7 @@ export const ProblemAgentCard: React.FC<ProblemAgentCardProps> = ({
           className="bg-slate-50 dark:bg-[#0F172A] border border-gray-200 dark:border-gray-700 rounded-lg px-2 py-1.5 text-[11px] text-slate-900 dark:text-white disabled:opacity-50"
         >
           <option value="__random__">Random Profile</option>
+          <option value="__best_match__">Best Match</option>
           {profiles.map((p) => (
             <option key={p.Movement} value={p.Movement}>{p.Movement}</option>
           ))}
@@ -54,6 +57,7 @@ export const ProblemAgentCard: React.FC<ProblemAgentCardProps> = ({
           className="bg-slate-50 dark:bg-[#0F172A] border border-gray-200 dark:border-gray-700 rounded-lg px-2 py-1.5 text-[11px] text-slate-900 dark:text-white disabled:opacity-50"
         >
           <option value="__random__">Random Tone</option>
+          <option value="__best_match__">Best Match</option>
           {tones.map((t) => (
             <option key={t.tone} value={t.tone}>{t.tone}</option>
           ))}

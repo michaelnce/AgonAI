@@ -199,6 +199,98 @@ Return ONLY JSON with keys: {json.dumps(fields_to_resolve)}. Values must be exac
 
 # --- Problem Solver ---
 
+@app.post("/api/problem/resolve-agents")
+async def resolve_problem_agents(request: Request):
+    """Best-match resolution for 5 problem-solving agents."""
+    body = await request.json()
+    problem = body.get("problem", "")
+    agents = body.get("agents", {})
+    logger.info(f"[PROBLEM-MATCH] Request for problem: '{problem[:60]}'")
+
+    profile_names = [p["Movement"] for p in PROFILES]
+    tone_names = [t["tone"] for t in TONES]
+
+    fields_to_resolve = {}
+    for role, cfg in agents.items():
+        resolve_profile = cfg.get("resolve_profile", False)
+        resolve_tone = cfg.get("resolve_tone", False)
+        if resolve_profile or resolve_tone:
+            fields_to_resolve[role] = {"profile": resolve_profile, "tone": resolve_tone}
+
+    if not fields_to_resolve:
+        return {}
+
+    profile_categories = {}
+    for p in PROFILES:
+        cat = p["Category"]
+        if cat not in profile_categories:
+            profile_categories[cat] = []
+        profile_categories[cat].append(p["Movement"])
+    profile_list = "; ".join(f"{cat}: {', '.join(moves)}" for cat, moves in profile_categories.items())
+    tone_list = ", ".join(tone_names)
+
+    roles_desc = ", ".join(f"{r} ({'' if f.get('profile') else 'tone only'})" for r, f in fields_to_resolve.items())
+
+    prompt = f"""Problem: "{problem}"
+
+5 specialist roles solving this problem: Analyst, Creative, Critic, Pragmatist, Synthesizer.
+Roles to assign: {roles_desc}
+
+Available profiles: {profile_list}
+Available tones: {tone_list}
+
+Pick the best profile and tone for each role. Profiles should give DIVERSE worldviews on this problem. Tones should contrast.
+Return ONLY JSON: {{"analyst": {{"profile": "...", "tone": "..."}}, "creative": {{...}}, ...}}
+Only include roles that need resolution. Values must be exact names from the lists."""
+
+    try:
+        llm = get_model(MODEL_MODERATOR, label="problem-best-match")
+        response = await asyncio.wait_for(llm.ainvoke(prompt), timeout=30.0)
+        raw = response.content.strip().replace("```json", "").replace("```", "").strip()
+        resolved = json.loads(raw)
+
+        result = {}
+        used_profiles = set()
+        for role in ["analyst", "creative", "critic", "pragmatist", "synthesizer"]:
+            if role not in fields_to_resolve:
+                continue
+            role_data = resolved.get(role, {})
+            r = {}
+            if fields_to_resolve[role].get("profile"):
+                p = role_data.get("profile", "")
+                if p in profile_names and p not in used_profiles:
+                    r["profile"] = p
+                    used_profiles.add(p)
+                else:
+                    available = [x for x in profile_names if x not in used_profiles]
+                    r["profile"] = random.choice(available) if available else random.choice(profile_names)
+                    used_profiles.add(r["profile"])
+            if fields_to_resolve[role].get("tone"):
+                t = role_data.get("tone", "")
+                r["tone"] = t if t in tone_names else random.choice(tone_names)
+            result[role] = r
+
+        logger.info(f"[PROBLEM-MATCH] Resolved: {result}")
+        return result
+    except asyncio.TimeoutError:
+        logger.warning("[PROBLEM-MATCH] Timed out, falling back to random")
+    except Exception as e:
+        logger.error(f"[PROBLEM-MATCH] Failed: {e}", exc_info=True)
+
+    result = {}
+    used_profiles = set()
+    for role in fields_to_resolve:
+        r = {}
+        if fields_to_resolve[role].get("profile"):
+            available = [x for x in profile_names if x not in used_profiles]
+            r["profile"] = random.choice(available) if available else random.choice(profile_names)
+            used_profiles.add(r["profile"])
+        if fields_to_resolve[role].get("tone"):
+            r["tone"] = random.choice(tone_names)
+        result[role] = r
+    return result
+
+
 @app.get("/api/problem/stream")
 async def stream_problem(
     problem: str = "How to reduce cloud costs by 40%",
