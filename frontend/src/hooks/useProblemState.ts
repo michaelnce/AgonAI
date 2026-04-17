@@ -24,7 +24,7 @@ export function useProblemState() {
   const [isFactChecking, setIsFactChecking] = useState(false);
   const [factCheckError, setFactCheckError] = useState<string | null>(null);
   const [factCheckProgress, setFactCheckProgress] = useState<string | null>(null);
-  const [factCheckEnabled, setFactCheckEnabled] = useState(true);
+  const [factCheckEnabled, setFactCheckEnabled] = useState(false);
   const [currentPhase, setCurrentPhase] = useState<string | null>(null);
   const [currentRound, setCurrentRound] = useState<number>(1);
 

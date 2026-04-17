@@ -18,7 +18,7 @@ export function useDebateState() {
   const [isFactChecking, setIsFactChecking] = useState(false);
   const [factCheckError, setFactCheckError] = useState<string | null>(null);
   const [factCheckProgress, setFactCheckProgress] = useState<string | null>(null);
-  const [factCheckEnabled, setFactCheckEnabled] = useState(true);
+  const [factCheckEnabled, setFactCheckEnabled] = useState(false);
 
   // Agent configuration
   const [proponentProfile, setProponentProfile] = useState("__random__");
