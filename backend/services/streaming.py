@@ -78,6 +78,7 @@ async def event_generator(
         "input_queue": queue,
         "token_tracker": token_tracker,
         "stream_callback": on_stream_chunk if LLM_PROVIDER == "claude" else None,
+        "current_speaker_ref": current_streaming_speaker,
     }}
 
     try:

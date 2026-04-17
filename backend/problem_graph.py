@@ -137,6 +137,9 @@ async def facilitator_frame_node(state: ProblemState, config: RunnableConfig):
     configurable = config.get("configurable", {})
     tracker = configurable.get("token_tracker")
     stream_cb = configurable.get("stream_callback")
+    speaker_ref = configurable.get("current_speaker_ref")
+    if speaker_ref is not None:
+        speaker_ref["name"] = "facilitator"
     llm = get_model(MODEL_FACILITATOR, label="facilitator-frame", token_tracker=tracker, stream_callback=stream_cb)
 
     wl = FACILITATOR_WORD_LIMIT
@@ -179,6 +182,12 @@ async def agent_node(state: ProblemState, config: RunnableConfig):
     configurable = config.get("configurable", {})
     tracker = configurable.get("token_tracker")
     stream_cb = configurable.get("stream_callback")
+
+    # Notify streaming layer which agent is about to speak
+    speaker_ref = configurable.get("current_speaker_ref")
+    if speaker_ref is not None:
+        speaker_ref["name"] = role
+
     label = f"{role}-{phase}-r{phase_round}"
     llm = get_model(MODEL_AGENTS, label=label, token_tracker=tracker, stream_callback=stream_cb)
 
@@ -253,6 +262,9 @@ async def facilitator_checkpoint_node(state: ProblemState, config: RunnableConfi
     configurable = config.get("configurable", {})
     tracker = configurable.get("token_tracker")
     stream_cb = configurable.get("stream_callback")
+    speaker_ref = configurable.get("current_speaker_ref")
+    if speaker_ref is not None:
+        speaker_ref["name"] = "facilitator"
 
     # For stress phase, use the stress-specific prompt on first entry
     if phase == "stress" and phase_round == 1:
@@ -337,6 +349,9 @@ async def facilitator_synthesis_node(state: ProblemState, config: RunnableConfig
     """Phase 6: Facilitator produces the Solution Matrix."""
     configurable = config.get("configurable", {})
     tracker = configurable.get("token_tracker")
+    speaker_ref = configurable.get("current_speaker_ref")
+    if speaker_ref is not None:
+        speaker_ref["name"] = "facilitator"
     llm = get_model(MODEL_FACILITATOR, label="facilitator-synthesis", token_tracker=tracker)
 
     prompt = _load_prompt("facilitator_synthesis.txt").format(

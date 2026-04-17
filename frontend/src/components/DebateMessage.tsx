@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 interface DebateMessageProps {
   speaker: string;
@@ -6,13 +7,13 @@ interface DebateMessageProps {
   turn: number;
   timestamp?: string;
   agentNames?: { proponent: string; opponent: string } | null;
+  isStreaming?: boolean;
 }
 
 export const DebateMessage: React.FC<DebateMessageProps> = ({ speaker, content, timestamp, agentNames }) => {
   const isProponent = speaker.toLowerCase().includes('proponent');
   const isModerator = speaker.toLowerCase().includes('moderator');
 
-  // Resolve display name: use assigned name if available, otherwise role
   const getDisplayName = () => {
     if (isModerator) return 'Moderator';
     if (isProponent) return agentNames?.proponent || 'Proponent';
@@ -25,8 +26,8 @@ export const DebateMessage: React.FC<DebateMessageProps> = ({ speaker, content, 
   if (isModerator) {
     return (
       <div className="flex justify-center my-6">
-        <div className="bg-slate-100 dark:bg-[#1E293B] text-slate-700 dark:text-gray-300 px-6 py-3 rounded-none text-sm border border-gray-200 dark:border-gray-700">
-          {content}
+        <div className="bg-slate-100 dark:bg-[#1E293B] text-slate-700 dark:text-gray-300 px-6 py-3 rounded-none text-sm border border-gray-200 dark:border-gray-700 prose prose-sm dark:prose-invert max-w-none">
+          <ReactMarkdown>{content}</ReactMarkdown>
         </div>
       </div>
     );
@@ -34,7 +35,6 @@ export const DebateMessage: React.FC<DebateMessageProps> = ({ speaker, content, 
 
   return (
     <div className={`flex flex-col mb-8 ${isProponent ? 'items-start' : 'items-end'}`}>
-      {/* Header */}
       <div className={`flex items-center gap-2 mb-2 ${isProponent ? 'flex-row' : 'flex-row-reverse'}`}>
         <div className={`w-7 h-7 rounded-full flex items-center justify-center text-white text-[11px] font-bold ${isProponent ? 'bg-blue-500' : 'bg-purple-500'}`}>
           {displayName.charAt(0).toUpperCase()}
@@ -48,12 +48,11 @@ export const DebateMessage: React.FC<DebateMessageProps> = ({ speaker, content, 
         <span className="text-gray-500 text-[10px]">{timestamp || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
       </div>
 
-      {/* Bubble */}
       <div className={`max-w-[95%] md:max-w-[80%] p-3 md:p-5 rounded-2xl border text-sm leading-relaxed break-words ${isProponent
         ? 'bg-slate-50 dark:bg-[#1E293B]/80 border-gray-200 dark:border-gray-700 text-blue-600 dark:text-blue-400 rounded-tl-sm'
         : 'bg-white dark:bg-[#1E293B] border-gray-200 dark:border-gray-700 text-purple-600 dark:text-purple-400 rounded-tr-sm'
-        }`}>
-        {content}
+        } prose prose-sm dark:prose-invert max-w-none [&_p]:my-1 [&_ul]:my-1 [&_ol]:my-1`}>
+        <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </div>
   );

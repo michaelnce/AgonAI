@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 const SPEAKER_STYLES: Record<string, { color: string; bgColor: string; bubbleBg: string; bubbleText: string; badge: string }> = {
   facilitator: { color: 'bg-slate-500', bgColor: '', bubbleBg: 'bg-slate-100 dark:bg-[#1E293B] border-gray-200 dark:border-gray-700', bubbleText: 'text-slate-700 dark:text-gray-300', badge: 'HOST' },
@@ -29,8 +30,8 @@ export const ProblemMessage: React.FC<ProblemMessageProps> = ({ speaker, content
   if (speakerKey === 'facilitator') {
     return (
       <div className="flex justify-center my-6">
-        <div className="bg-slate-100 dark:bg-[#1E293B] text-slate-700 dark:text-gray-300 px-6 py-3 rounded-none text-sm border border-gray-200 dark:border-gray-700 max-w-[95%] md:max-w-[85%]">
-          {cleanContent}
+        <div className="bg-slate-100 dark:bg-[#1E293B] text-slate-700 dark:text-gray-300 px-6 py-3 rounded-none text-sm border border-gray-200 dark:border-gray-700 max-w-[95%] md:max-w-[85%] prose prose-sm dark:prose-invert max-w-none">
+          <ReactMarkdown>{cleanContent}</ReactMarkdown>
         </div>
       </div>
     );
@@ -50,8 +51,8 @@ export const ProblemMessage: React.FC<ProblemMessageProps> = ({ speaker, content
         <span className="text-gray-500 text-[10px]">{timestamp || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
       </div>
 
-      <div className={`max-w-[95%] md:max-w-[80%] p-3 md:p-5 rounded-2xl border text-sm leading-relaxed break-words ${style.bubbleBg} ${style.bubbleText} ${isLeft ? 'rounded-tl-sm' : 'rounded-tr-sm'}`}>
-        {cleanContent}
+      <div className={`max-w-[95%] md:max-w-[80%] p-3 md:p-5 rounded-2xl border text-sm leading-relaxed break-words ${style.bubbleBg} ${style.bubbleText} ${isLeft ? 'rounded-tl-sm' : 'rounded-tr-sm'} prose prose-sm dark:prose-invert max-w-none [&_p]:my-1 [&_ul]:my-1 [&_ol]:my-1`}>
+        <ReactMarkdown>{cleanContent}</ReactMarkdown>
       </div>
     </div>
   );

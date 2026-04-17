@@ -171,6 +171,9 @@ async def moderator_node(state: DebateState, config: RunnableConfig):
     configurable = config.get("configurable", {})
     tracker = configurable.get("token_tracker")
     stream_cb = configurable.get("stream_callback")
+    speaker_ref = configurable.get("current_speaker_ref")
+    if speaker_ref is not None:
+        speaker_ref["name"] = "moderator"
     turn_count = state["turn_count"]
     llm = get_model(MODEL_MODERATOR, label=f"moderator-turn-{turn_count}", token_tracker=tracker, stream_callback=stream_cb)
     messages = state["messages"]
@@ -289,6 +292,9 @@ async def proponent_node(state: DebateState, config: RunnableConfig):
     configurable = config.get("configurable", {})
     tracker = configurable.get("token_tracker")
     stream_cb = configurable.get("stream_callback")
+    speaker_ref = configurable.get("current_speaker_ref")
+    if speaker_ref is not None:
+        speaker_ref["name"] = "proponent"
     llm = get_model(MODEL_PROPONENT, label=f"proponent-turn-{turn_count}", token_tracker=tracker, stream_callback=stream_cb)
     messages = state["messages"]
     topic = state.get("topic", "AI Safety")
@@ -351,6 +357,9 @@ async def opponent_node(state: DebateState, config: RunnableConfig):
     configurable = config.get("configurable", {})
     tracker = configurable.get("token_tracker")
     stream_cb = configurable.get("stream_callback")
+    speaker_ref = configurable.get("current_speaker_ref")
+    if speaker_ref is not None:
+        speaker_ref["name"] = "opponent"
     llm = get_model(MODEL_OPPONENT, label=f"opponent-turn-{turn_count}", token_tracker=tracker, stream_callback=stream_cb)
     messages = state["messages"]
     topic = state.get("topic", "AI Safety")

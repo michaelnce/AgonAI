@@ -73,6 +73,7 @@ async def problem_event_generator(
         "configurable": {
             "token_tracker": token_tracker,
             "stream_callback": on_stream_chunk if LLM_PROVIDER == "claude" else None,
+            "current_speaker_ref": current_streaming_speaker,
         },
     }
 
