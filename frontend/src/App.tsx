@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { TopNav } from './components/TopNav';
 import { AgentCard } from './components/AgentCard';
@@ -10,6 +10,7 @@ import { SavedScenarios } from './components/SavedScenarios';
 import { ProblemSolver } from './components/ProblemSolver';
 import { useDebateState } from './hooks/useDebateState';
 import { useSSEConnection } from './hooks/useSSEConnection';
+import { useSmartScroll } from './hooks/useSmartScroll';
 import profilesData from './data/profiles.json';
 import tonesData from './data/tones.json';
 import languagesData from './data/languages.json';
@@ -48,6 +49,7 @@ function App() {
   }), []);
 
   const { connect, disconnect } = useSSEConnection(sseHandlers);
+  const { containerRef: messagesRef, handleScroll: handleMessagesScroll, scrollToBottom, hasNewMessages } = useSmartScroll([state.messages, state.streamingMessage]);
 
   // --- Saved debates ---
   const fetchSavedDebates = async () => {
@@ -269,10 +271,10 @@ function App() {
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-50 dark:bg-[#0F172A] font-sans text-slate-900 dark:text-gray-300">
+    <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-[#0F172A] font-sans text-slate-900 dark:text-gray-300">
       <Sidebar onNavigate={handleNavigate} activePanel={activePanel} isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col overflow-hidden">
         <TopNav onMenuToggle={() => setSidebarOpen(prev => !prev)} />
 
         {activePanel === 'problem' ? (
@@ -400,7 +402,7 @@ function App() {
           )}
 
           {/* Chat Section */}
-          <div className="flex-1 flex flex-col bg-white dark:bg-[#020617] rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden relative">
+          <div className="flex-1 min-h-0 flex flex-col bg-white dark:bg-[#020617] rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden relative">
 
             {/* Topic Overlay */}
             <div className="absolute top-6 left-0 right-0 flex justify-center z-10">
@@ -409,8 +411,15 @@ function App() {
               </div>
             </div>
 
+            {/* Jump to bottom pill */}
+            {hasNewMessages && (
+              <button onClick={scrollToBottom} className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg transition-all animate-bounce">
+                New messages ↓
+              </button>
+            )}
+
             {/* Messages Feed */}
-            <div className="flex-1 overflow-y-auto p-4 md:p-8 pt-16 md:pt-20 space-y-2 custom-scrollbar">
+            <div ref={messagesRef} onScroll={handleMessagesScroll} className="flex-1 overflow-y-auto p-4 md:p-8 pt-16 md:pt-20 space-y-2 custom-scrollbar">
               {state.messages.length === 0 && (
                 <div className="h-full flex flex-col items-center justify-center opacity-20">
                   <div className="text-6xl mb-4 grayscale">💬</div>
