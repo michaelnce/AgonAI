@@ -406,8 +406,8 @@ export const ProblemSolver: React.FC = () => {
         </div>
       </div>
 
-      {/* Agent Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 mb-6">
+      {/* Agent Rows */}
+      <div className="flex flex-col gap-2 mb-6">
         {AGENT_ROLES.map((role) => (
           <ProblemAgentCard
             key={role} role={role}
