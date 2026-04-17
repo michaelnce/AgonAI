@@ -4,9 +4,46 @@
 
 A new mode for AgonAI where 5 specialist agents collaborate through structured phases to solve a user-defined problem. Unlike the adversarial Debate Arena, the Problem Solver is **collaborative** — agents bring different worldviews but work toward a shared solution.
 
-Each phase runs **multiple rounds** with facilitator checkpoints between them. The facilitator adapts — directing specific agents to clash when they disagree, skipping extra rounds when consensus is clear. This produces genuine depth, not 5 monologues.
+Each phase runs **multiple rounds** with facilitator checkpoints between them. The facilitator adapts — guiding agents to build on each other's insights, integrating perspectives when they diverge, and advancing when alignment is reached.
+
+The communication style is modeled on leading global think tanks — Brookings, RAND Corporation, Chatham House, CSIS, Bruegel — emphasizing evidence-based analysis, structured policy reasoning, and collaborative synthesis over adversarial debate.
 
 The feature is accessed via a new sidebar entry and runs on its own page, reusing shared components (chat feed, fact-check, token stats) while introducing a new agent layout and output format.
+
+---
+
+## Think Tank Methodology
+
+### Communication Principles
+
+The Problem Solver enforces a professional think tank tone across all agents and the facilitator:
+
+1. **Evidence over opinion** — Every claim must reference data, precedent, or a named framework. No philosophical quotations, no literary references, no dramatic language.
+2. **Build, don't attack** — Agents extend and refine each other's contributions. "Building on Sofia's point..." not "Sofia is wrong because..."
+3. **Structured brevity** — Contributions are capped at 150 words. Speak like a senior analyst in a policy briefing: structured, precise, actionable.
+4. **Identify gaps, propose solutions** — When disagreeing, always offer an alternative. "This approach has a gap in X — here's how to address it."
+5. **Collective ownership** — The solution belongs to the team, not to any individual agent. No ego, no "I win" moments.
+6. **Chatham House discipline** — Focus on the substance, not the speaker. Reference ideas by content, not by who said them.
+
+### Facilitator Role
+
+The facilitator operates as a **session chair**, not a debate moderator:
+
+- Synthesizes contributions between rounds, identifying themes and gaps
+- Asks targeted questions to deepen analysis: "What evidence supports this?" not "Attack their weakest point"
+- Guides convergence by highlighting areas of alignment
+- Never pits agents against each other — instead asks agents to integrate differing perspectives
+- Maintains a running synthesis that evolves across phases
+
+### Agent Behavior
+
+Each agent contributes from their specialist lens but follows think tank norms:
+
+- **Format**: Every contribution follows a structured template — (1) Key point, (2) Evidence/precedent, (3) Implication for the solution
+- **Tone**: Professional, measured, collegial. Like a Brookings policy brief or a RAND research memo.
+- **Citations**: Real data, named studies, specific precedents. No "many experts say" — name the expert, cite the year.
+- **Disagreement**: Constructive only. "This approach would benefit from considering X" not "This is wrong."
+- **Word limit**: 150 words max per contribution. Quality over quantity.
 
 ---
 
@@ -44,14 +81,14 @@ The session runs through 5 structured phases. Each phase has **2-3 rounds** with
 
 ### Core Mechanic: Facilitator Checkpoints
 
-After each round within a phase, the facilitator evaluates progress and issues **directed instructions**:
+After each round within a phase, the facilitator synthesizes progress and guides the next round:
 
-- **If agents disagree**: "Sofia, you and Kai fundamentally disagree on X — address each other directly."
-- **If ideas overlap**: "Three of you proposed the same thing — Pragmatist, what's wrong with it? Creative, what's missing?"
+- **If perspectives diverge**: "Sofia identified X while Kai proposed Y — how might these be integrated?"
+- **If ideas overlap**: "Three of you converged on this approach — what's the strongest evidence for it? What gap remains?"
 - **If consensus is clear**: Facilitator advances to the next phase (skips round 2, saves tokens)
-- **If a point was dodged**: "Analyst, you ignored the Critic's point about Y — respond to it."
+- **If an angle is missing**: "The team hasn't addressed the implementation timeline — Pragmatist, what's realistic?"
 
-This creates **ad-hoc focused confrontation** through prompt engineering — achieving the depth of pair debates without the routing complexity.
+This creates **guided collaborative deepening** — achieving analytical depth through structured facilitation rather than confrontation.
 
 ### Round Limits
 

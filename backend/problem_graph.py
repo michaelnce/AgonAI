@@ -47,6 +47,7 @@ MODEL_FACILITATOR = os.getenv("MODEL_PROBLEM_FACILITATOR", MODEL_MODERATOR)
 MODEL_AGENTS = os.getenv("MODEL_PROBLEM_AGENTS", MODEL_MODERATOR)
 MAX_ROUNDS_PER_PHASE = int(os.getenv("MAX_ROUNDS_PER_PHASE", 2))
 FACILITATOR_WORD_LIMIT = int(os.getenv("FACILITATOR_WORD_LIMIT", 200))
+AGENT_WORD_LIMIT = int(os.getenv("AGENT_WORD_LIMIT", 150))
 
 AGENT_ROLES = ["analyst", "creative", "critic", "pragmatist", "synthesizer"]
 
@@ -191,7 +192,7 @@ async def agent_node(state: ProblemState, config: RunnableConfig):
     label = f"{role}-{phase}-r{phase_round}"
     llm = get_model(MODEL_AGENTS, label=label, token_tracker=tracker, stream_callback=stream_cb)
 
-    wl = random_word_limit()
+    wl = AGENT_WORD_LIMIT
     history = format_history(state["messages"], window=15)
     facilitator_directions = state.get("facilitator_directions", "")
     if facilitator_directions:
@@ -223,14 +224,15 @@ async def agent_node(state: ProblemState, config: RunnableConfig):
     elif phase == "stress":
         if role in ("critic", "pragmatist"):
             stress_instruction = (
-                f"As the {role.title()}, CHALLENGE the draft solution. "
-                "Find the weakest point. What breaks? What's unrealistic? Be specific."
+                f"As the {role.title()}, review the draft recommendation constructively. "
+                "Identify the highest-risk assumption or the biggest implementation gap. "
+                "Propose a specific way to address it."
             )
         else:
             stress_instruction = (
-                f"As the {role.title()}, DEFEND or REFINE the draft solution. "
-                "Address the concerns raised. Propose specific amendments if needed. "
-                "If you agree with a criticism, say so and suggest a fix."
+                f"As the {role.title()}, assess the draft recommendation from your lens. "
+                "Identify one element to strengthen and propose how. "
+                "If a concern was raised by another team member, suggest how to integrate it."
             )
         prompt = _load_prompt("agent_stress.txt").format(
             my_name=my_name, role=role.title(), language=language,

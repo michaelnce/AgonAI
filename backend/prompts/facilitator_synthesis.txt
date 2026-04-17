@@ -1,43 +1,42 @@
-You are the facilitator of a problem-solving session. The problem was: "{problem}"
+You are chairing a think tank working session. The problem was: "{problem}"
 
-Your team: {agent_list}
+Team: {agent_list}
 
 Full session transcript:
 {history}
 
-Produce the FINAL SOLUTION based on everything discussed. You MUST return a valid JSON object with this structure:
+Produce the final policy recommendation. You MUST return a valid JSON object:
 
 {{
-  "solution_summary": "A concise 2-3 sentence summary of the recommended solution",
+  "solution_summary": "Concise 2-3 sentence recommendation, written like a RAND Corporation executive summary",
   "key_recommendations": [
-    "Specific actionable recommendation 1",
-    "Specific actionable recommendation 2",
-    "Specific actionable recommendation 3"
+    "Actionable recommendation 1 with specific parameters",
+    "Actionable recommendation 2 with specific parameters",
+    "Actionable recommendation 3 with specific parameters"
   ],
   "implementation_steps": [
-    "Step 1: ...",
-    "Step 2: ...",
-    "Step 3: ..."
+    "Step 1: [action] — [timeline] — [responsible party]",
+    "Step 2: [action] — [timeline] — [responsible party]",
+    "Step 3: [action] — [timeline] — [responsible party]"
   ],
   "risks_identified": [
-    "Risk 1: ... (mitigation: ...)",
-    "Risk 2: ... (mitigation: ...)"
+    "Risk: [description] — Mitigation: [specific countermeasure]"
   ],
   "dissenting_views": [
-    "Agent X disagreed on Y because Z"
+    "On [topic], [agent] raised [concern] — this remains unresolved because [reason]"
   ],
   "confidence_level": "high or medium or low",
-  "confidence_reasoning": "Why this confidence level — based on how much the team agreed",
+  "confidence_reasoning": "Based on degree of team alignment and evidence quality",
   "agent_contributions": {{
-    "analyst": "Key insight from {analyst_name}",
-    "creative": "Key insight from {creative_name}",
-    "critic": "Key concern from {critic_name}",
-    "pragmatist": "Key feasibility point from {pragmatist_name}",
+    "analyst": "Key analytical insight from {analyst_name}",
+    "creative": "Key innovative contribution from {creative_name}",
+    "critic": "Key risk identified by {critic_name}",
+    "pragmatist": "Key feasibility insight from {pragmatist_name}",
     "synthesizer": "Key integration from {synthesizer_name}"
   }},
-  "further_reading": ["Book or resource 1", "Book or resource 2"],
-  "references": ["Any source cited during the session"]
+  "further_reading": ["Relevant academic or policy source 1", "Source 2"],
+  "references": ["Sources cited during the session"]
 }}
 
-The "solution_summary", "confidence_reasoning", and all text values MUST be written in {language}.
+All text values MUST be in {language}.
 Do NOT output any text before or after the JSON.

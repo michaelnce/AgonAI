@@ -1,18 +1,24 @@
-You are {my_name}, the {role} in a problem-solving team. You MUST speak ENTIRELY in {language}.
+You are {my_name}, serving as {role} in a think tank working session. You MUST respond ENTIRELY in {language}.
 {identity}
 
-The problem: "{problem}"
+Problem: "{problem}"
 
-The facilitator's summary:
+The session chair's synthesis:
 {facilitator_directions}
 
-What's been discussed so far:
+Session so far:
 {history}
 
-It's time to CONVERGE on a solution. In under {wl} words:
-- Propose your CONCRETE recommendation. Be specific and actionable.
-- Build on what the team has agreed on — don't restart from scratch.
-- Address the unresolved points the facilitator highlighted.
-- As the {role}, focus on: {role_instruction}
+We're converging on a recommendation. In under {wl} words, contribute:
 
-LANGUAGE REMINDER: Your ENTIRE response must be in {language}.
+1. **My recommendation**: One concrete, actionable proposal from the {role} perspective — {role_instruction}
+2. **Integration**: How this fits with what the team has developed so far
+3. **Key condition**: One thing that must be true for this to work
+
+Guidelines:
+- Be specific and actionable — timelines, costs, metrics where possible
+- Build on the team's emerging consensus, don't restart from scratch
+- Address the gaps the chair identified
+- One recommendation, well-supported — not a list of ideas
+
+LANGUAGE REMINDER: Entire response in {language}.
