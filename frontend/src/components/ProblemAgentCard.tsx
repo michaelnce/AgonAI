@@ -14,7 +14,7 @@ interface ProblemAgentCardProps {
   config: ProblemAgentConfig;
   profiles: Array<{ Movement: string }>;
   tones: Array<{ tone: string }>;
-  languages: Array<{ language: string }>;
+  languages: Array<{ name: string; flag?: string }>;
   onUpdate: (field: keyof ProblemAgentConfig, value: string) => void;
   disabled: boolean;
   agentName?: string;
@@ -52,7 +52,7 @@ export const ProblemAgentCard: React.FC<ProblemAgentCardProps> = ({
           {tones.map((t) => <option key={t.tone} value={t.tone}>{t.tone}</option>)}
         </select>
         <select value={config.language} onChange={(e) => onUpdate('language', e.target.value)} disabled={disabled} className={selectClass}>
-          {languages.map((l) => <option key={l.language} value={l.language}>{l.language}</option>)}
+          {languages.map((l) => <option key={l.name} value={l.name}>{l.flag ? `${l.flag} ` : ''}{l.name}</option>)}
         </select>
       </div>
     </div>
